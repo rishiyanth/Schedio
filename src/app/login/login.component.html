@@ -8,19 +8,18 @@
                 <div class="card"> 
                     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
                         <mat-tab label="Login" >
-                        
                             <div class="card-body">
-                                <form class="the-form">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" id="email" placeholder="Enter your email" formControlName="email" required>
+                                <form [formGroup]="validateLogin" (ngSubmit)="validateLoginUser()" class="the-form">
+                                    <label for="loginemail">Email</label>
+                                    <input formControlName="loginemail" type="email" name="loginemail" id="loginemail" placeholder="Enter your email" required>
                                     <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
                                         Please enter your Email ID
                                     </div>
                                     <div class="form-text text-danger" *ngIf="Email.errors?.['email']">
                                         Invalid Email ID
                                     </div> -->
-                                    <label for="password">Password</label>
-                                    <input type="password" name="password" id="password" placeholder="Enter your password" formControlName="password" required>
+                                    <label for="loginpassword">Password</label>
+                                    <input formControlName="loginpassword" type="password" name="loginpassword" id="loginpassword" placeholder="Enter your password" required>
                                     <!-- <div class="form-text text-danger col-md-4" *ngIf="Password.errors?.['required'] && Password.touched">
                                         Please enter your password
                                     </div> -->
@@ -28,7 +27,30 @@
                                 </form>
                             </div>
                         </mat-tab>
-                        <mat-tab label="SignUp"> Content 2 </mat-tab>
+                        <mat-tab label="Sign Up"> 
+                            <div class="card-body">
+                                <form [formGroup]="validateSignup" (ngSubmit)="validateSignupUser()" class="the-form">
+                                    <label for="signupemail">Email</label>
+                                    <input type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail" required>
+                                    <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
+                                        Please enter your Email ID
+                                    </div>
+                                    <div class="form-text text-danger" *ngIf="Email.errors?.['email']">
+                                        Invalid Email ID
+                                    </div> -->
+                                    <label for="signupusername">Username</label>
+                                    <input type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername" required>
+                                    <label for="signuppassword">Password</label>
+                                    <input type="password" name="signuppassword" id="signuppassword" placeholder="Enter your password" formControlName="signuppassword" required>
+                                    <label for="retypepassword">Retype Password</label>
+                                    <input type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" required>
+                                    <!-- <div class="form-text text-danger col-md-4" *ngIf="Password.errors?.['required'] && Password.touched">
+                                        Please enter your password
+                                    </div> -->
+                                    <input type="submit" value="Signup">
+                                </form>
+                            </div> 
+                        </mat-tab>
                     </mat-tab-group>
                 </div>
             </div>  
