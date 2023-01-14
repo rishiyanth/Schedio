@@ -1,0 +1,42 @@
+<div>
+    <div class="row text-center">
+        <div class="vh-100 col-md-6">
+            <img src="./assets/images/login_page.jpg" class="img-fluid mx-auto ">
+        </div>
+        <div class="vh-100 col-md-6">
+            <div class="cardholder">
+                <div class="card"> 
+                    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+                        <mat-tab label="Login" >
+                        
+                            <div class="card-body">
+                                <form class="the-form">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" id="email" placeholder="Enter your email" formControlName="email" required>
+                                    <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
+                                        Please enter your Email ID
+                                    </div>
+                                    <div class="form-text text-danger" *ngIf="Email.errors?.['email']">
+                                        Invalid Email ID
+                                    </div> -->
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" placeholder="Enter your password" formControlName="password" required>
+                                    <!-- <div class="form-text text-danger col-md-4" *ngIf="Password.errors?.['required'] && Password.touched">
+                                        Please enter your password
+                                    </div> -->
+                                    <input type="submit" value="Login">
+                                </form>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="SignUp"> Content 2 </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>  
+        </div>
+    </div>
+</div>
+<div class="row text-center border border-primary">
+    <footer>
+        Made with love from generateTeamName.exe
+    </footer>
+</div>
