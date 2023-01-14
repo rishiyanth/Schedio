@@ -35,7 +35,17 @@
 
   .cardholder{
     justify-content: center;
-    padding-top: 20%;
+    padding-top: 5%;
     padding-left: 20%;
     padding-right: 20%;
   }
+
+  
+.login{
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+  .img{
+      width: auto;
+  }
+}
