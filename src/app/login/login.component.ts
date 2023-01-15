@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
 
     this.validateSignup = new FormGroup({
       signupemail: new FormControl("",[Validators.required,Validators.email]),
-      signupusername:new FormControl("",[Validators.required]),
       signuppassword: new FormControl("",Validators.required),
       retypepassword: new FormControl("",[Validators.required])
     })
