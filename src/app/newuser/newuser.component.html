@@ -1,38 +1,101 @@
 <div class="row"> 
   <div class="col-md-12 col-md-offset-3">
-      <form [formGroup]="personalDetails" id="msform">
+      <form [formGroup]="basicDetails" id="msform">
           <!-- progressbar -->
           <ul id="progressbar">
-              <li [ngClass]="step>=1 ? 'active ' : 'inactive'">Personal Details</li>
-              <li [ngClass]="step>=2 ? 'active' : 'inactive'">Social Profiles</li>
-              <li [ngClass]="step==3 ? 'active' : 'inactive'">Account Setup</li>
+              <li [ngClass]="step>=1 ? 'active ' : 'inactive'">Basic Details</li>
+              <li [ngClass]="step>=2 ? 'active' : 'inactive'">Tech Stack</li>
           </ul>
           <!-- fieldsets -->
 
           <fieldset  *ngIf="step == 1" >
-              <h2 class="fs-title">Personal Details</h2>
-              <input type="text" formControlName="name"  [ngClass]="{ 'is-invalid': personal_step && personal['Name'].errors }" placeholder="Full Name"/>
+              <h2 class="fs-title">Basic Details</h2>
+              <input type="text" formControlName="username" placeholder="*Username"/>
+              <div *ngIf="basic_step && basicDetails.controls['username'].errors">
+                <div class="form-text text-danger" *ngIf="basic['username'].errors?.['required'] || basic['username'].touched">
+                  *Username required
+                </div>
+              </div>
+              <input type="text" formControlName="firstname" placeholder="*First Name">
+              <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">
+                <div class="form-text text-danger" *ngIf="basic['firstname'].errors?.['required'] || basic['username'].touched">
+                  *Firstname required
+                </div>
+              </div>
+              <input type="text" formControlName="lastname" placeholder="Last Name">
+              <input type="text" formControlName="dob" placeholder="*Date of birth" onfocus="(this.type='date')">
+              <div *ngIf="basic_step && basicDetails.controls['dob'].errors">
+                <div class="form-text text-danger" *ngIf="basic['dob'].errors?.['required'] || basic['dob'].touched">
+                  *Date of birth required
+                </div>
+              </div>
+              <!-- <div id="radio-group">
+                <td>
+                  <label for = "male">Male</label>
+                <input type="radio" id='male' name="gender" formControlName="gender" placeholder="Gender">
+                </td>
+                <td>
+                  <label for = "female">Female</label>
+                  <input type="radio" id='female' name="gender" formControlName="gender" placeholder="Gender">
+                </td>
+              </div>
+              <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
+                <div class="form-text text-danger" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">
+                  *Choose a gender
+                </div>
+              </div> -->
               <input type="text" formControlName="email" name="email" placeholder="Email"/>
+              <div *ngIf="basic_step && basicDetails.controls['email'].errors">
+                <div class="form-text text-danger" *ngIf="basic['email'].errors?.['required'] || basic['email'].touched">
+                  *Email required
+                </div>
+              </div>
               <input type="text" formControlName="phone" name="phone" placeholder="Phone"/>
+              <div *ngIf="basic_step && basicDetails.controls['phone'].errors">
+                <div class="form-text text-danger" *ngIf="basic['phone'].errors?.['required'] || basic['phone'].touched">
+                  *Phone required
+                </div>
+              </div>
+              <select formControlName="country">
+                <option [ngValue]="null" disabled selected>*Select Country</option>
+                <option *ngFor="let country of countries" [ngValue]="country.name">{{country.name}}</option>
+              </select>
+              <div *ngIf="basic_step && basicDetails.controls['country'].errors">
+                <div class="form-text text-danger" *ngIf="basic['country'].errors?.['required'] || basic['country'].touched">
+                  *Country required
+                </div>
+              </div>
+              <select formControlName="profession">
+                <option [ngValue]="null" disabled selected>*Select profession</option>
+                <option value="Student">Student</option>
+                <option value="Professor">Professor</option>
+                <option value="Software Engineer">Software Engineer</option>
+              </select>
+              <div *ngIf="basic_step && basicDetails.controls['profession'].errors">
+                <div class="form-text text-danger" *ngIf="basic['profession'].errors?.['required'] || basic['profession'].touched">
+                  *Profession required
+                </div>
+              </div>
+              <br>
               <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
           </fieldset>
       </form>
-       <form [formGroup]="addressDetails" id="msform">
-          <fieldset *ngIf="step == 2" >
-              <h2 class="fs-title">Address Details</h2>
-              <input type="text" formControlName="city"  placeholder="City"/>
-              <textarea rows="5" cols="5" formControlName="address"  placeholder="address"></textarea>
-              <input type="text" formControlName="pincode"  placeholder="Pincode"/>
-              <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-              <input  (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
-          </fieldset>
-      </form>
-       <form [formGroup]="addressDetails" id="msform">
-          <fieldset *ngIf="step == 3">
-              <h2 class="fs-title">Educational Details</h2>
-              <input type="text" formControlName="highest_qualification" placeholder="Highest Qualification"/>
-              <input type="text" formControlName="university"  placeholder="University"/>
-              <input type="text" formControlName="total_marks" placeholder="Total Marks"/>  
+       <form [formGroup]="techstackDetails" id="msform">
+          <fieldset *ngIf="step == 2">
+              <div class="cont-main">
+                  <div class="cont-checkbox" *ngFor="let tool of techstack; index as i" >
+                    <input type="checkbox" [id]="i" (change)="changeSelection($event)"/>
+                    <label [for]="i">
+                      <img [src]="tool.img" />
+                      <span class="cover-checkbox">
+                        <svg viewBox="0 0 12 10">
+                          <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                        </svg>
+                      </span>
+                      <div class="info">{{ tool.name }}</div>
+                    </label>
+                  </div>
+              </div>
               <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
               <input (click)="submit()"type="submit" name="submit" class="submit action-button" value="Submit"/>
           </fieldset>
@@ -41,24 +104,3 @@
   </div>
 </div>
 
-<!-- <div class="cardholder">
-    <div class="card vh-100">
-        <div class="cont-main">
-            <div class="cont-checkbox" *ngFor="let tool of techstack; index as i" >
-              <input type="checkbox" [id]="i" (change)="changeSelection($event)"/>
-              <label [for]="i">
-                <img [src]="tool.img" />
-                <span class="cover-checkbox">
-                  <svg viewBox="0 0 12 10">
-                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                  </svg>
-                </span>
-                <div class="info">{{ tool.name }}</div>
-              </label>
-            </div>
-        </div>
-        <div class=" d-flex justify-content-center">
-            <button type="button" class="btn btn-primary" (click)="printPreferences()">Submit</button>
-        </div>
-    </div>
-</div> -->
