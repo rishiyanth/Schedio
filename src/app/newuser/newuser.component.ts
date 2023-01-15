@@ -32,7 +32,7 @@ export class NewuserComponent implements OnInit {
         firstname: ['',Validators.required],
         lastname: [''],
         dob: ['',Validators.required],
-        //gender: ['',Validators.required], 
+        gender: ['',Validators.required], 
         email: ['', Validators.required],
         phone: ['',Validators.required],
         country: [null,Validators.required],

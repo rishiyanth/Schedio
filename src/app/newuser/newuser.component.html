@@ -10,52 +10,68 @@
 
           <fieldset  *ngIf="step == 1" >
               <h2 class="fs-title">Basic Details</h2>
+
+              <!-- Username -->
               <input type="text" formControlName="username" placeholder="*Username"/>
               <div *ngIf="basic_step && basicDetails.controls['username'].errors">
                 <div class="form-text text-danger" *ngIf="basic['username'].errors?.['required'] || basic['username'].touched">
                   *Username required
                 </div>
               </div>
+
+              <!-- Firstname -->
               <input type="text" formControlName="firstname" placeholder="*First Name">
               <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">
                 <div class="form-text text-danger" *ngIf="basic['firstname'].errors?.['required'] || basic['username'].touched">
                   *Firstname required
                 </div>
               </div>
+
+              <!-- Last name -->
               <input type="text" formControlName="lastname" placeholder="Last Name">
+
+              <!-- Date of birth -->
               <input type="text" formControlName="dob" placeholder="*Date of birth" onfocus="(this.type='date')">
               <div *ngIf="basic_step && basicDetails.controls['dob'].errors">
                 <div class="form-text text-danger" *ngIf="basic['dob'].errors?.['required'] || basic['dob'].touched">
                   *Date of birth required
                 </div>
               </div>
-              <!-- <div id="radio-group">
+
+              <!-- Gender -->
+              <div id="radio-group">
                 <td>
                   <label for = "male">Male</label>
-                <input type="radio" id='male' name="gender" formControlName="gender" placeholder="Gender">
+                <input type="radio" id='male' name="gender" value="male" formControlName="gender" placeholder="Gender">
                 </td>
                 <td>
                   <label for = "female">Female</label>
-                  <input type="radio" id='female' name="gender" formControlName="gender" placeholder="Gender">
+                  <input type="radio" id='female' name="gender" value="female" formControlName="gender" placeholder="Gender">
                 </td>
               </div>
               <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
                 <div class="form-text text-danger" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">
                   *Choose a gender
                 </div>
-              </div> -->
+              </div>
+
+              <!-- Email -->
               <input type="text" formControlName="email" name="email" placeholder="Email"/>
               <div *ngIf="basic_step && basicDetails.controls['email'].errors">
                 <div class="form-text text-danger" *ngIf="basic['email'].errors?.['required'] || basic['email'].touched">
                   *Email required
                 </div>
               </div>
+
+              <!-- Phone Number -->
               <input type="text" formControlName="phone" name="phone" placeholder="Phone"/>
               <div *ngIf="basic_step && basicDetails.controls['phone'].errors">
                 <div class="form-text text-danger" *ngIf="basic['phone'].errors?.['required'] || basic['phone'].touched">
                   *Phone required
                 </div>
               </div>
+
+              <!-- Country -->
               <select formControlName="country">
                 <option [ngValue]="null" disabled selected>*Select Country</option>
                 <option *ngFor="let country of countries" [ngValue]="country.name">{{country.name}}</option>
@@ -65,6 +81,8 @@
                   *Country required
                 </div>
               </div>
+
+              <!-- Profession -->
               <select formControlName="profession">
                 <option [ngValue]="null" disabled selected>*Select profession</option>
                 <option value="Student">Student</option>
@@ -76,7 +94,8 @@
                   *Profession required
                 </div>
               </div>
-              <br>
+              
+              <!-- Next Button -->
               <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
           </fieldset>
       </form>
