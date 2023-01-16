@@ -14,12 +14,12 @@ export class NewuserComponent implements OnInit {
 
   selectedItemsList:any = [];
   checkedIDs:any = [];
+  alert_techstack = false;
 
   public techstack:any = techstack
   public countries:any = countries
 
   basicDetails!:FormGroup;
-  techstackDetails!:FormGroup;
   basic_step = false;
   techstack_step = false;
   step = 1;
@@ -38,9 +38,6 @@ export class NewuserComponent implements OnInit {
         country: [null,Validators.required],
         profession: [null,Validators.required]
     });
-    this.techstackDetails = this.formBuilder.group({
-       techpreferences: ['',Validators.required] 
-    });
   }
 
   changeSelection(event:any) {
@@ -52,10 +49,13 @@ export class NewuserComponent implements OnInit {
       let index = event.target.id
       this.checkedIDs.push(this.techstack[index].name)
     }
+    else{
+      let index = event.target.id
+      this.checkedIDs.splice(this.checkedIDs.indexOf(this.techstack[index].name),1)
+    }
   }
 
   get basic() { return this.basicDetails.controls; }
-  get techStack() { return this.techstackDetails.controls; }
 
   next(){
     console.log(this.basic)
@@ -63,10 +63,6 @@ export class NewuserComponent implements OnInit {
           this.basic_step = true;
           if (this.basicDetails.invalid) { return  }
           this.step++
-    }
-    if(this.step==2){
-        this.techstack_step = true;
-        if (this.techstackDetails.invalid) { return }
     }
   }
   previous(){
@@ -79,8 +75,13 @@ export class NewuserComponent implements OnInit {
     console.log(this.checkedIDs)
     if(this.step==2){
       this.techstack_step = true;
-      if (this.techstackDetails.invalid) { return }
+      if (this.checkedIDs.length==0) { 
+        this.alert_techstack = true  
+        return 
+      }
+      else { 
+        this.alert_techstack = false
+      }
     }
   }
-
 }
