@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   constructor() { }
   validateLogin!:FormGroup
   validateSignup!: FormGroup
+  valid_signup = false
+  valid_login = false
 
   ngOnInit(): void {
     this.validateLogin = new FormGroup({
@@ -25,12 +27,19 @@ export class LoginComponent implements OnInit {
     })
   };
 
+  get login(){return this.validateLogin.controls;}
+  get signup(){return this.validateSignup.controls;}
+
   validateLoginUser(){
     console.log("Login works")
+    this.valid_login = true
+    if (this.validateLogin.invalid) { return  }
   }
 
   validateSignupUser(){
     console.log("Signup works")
+    this.valid_signup = true
+    if (this.validateSignup.invalid) { return  }
   }
 
 }

@@ -23,43 +23,63 @@
                     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
                         <mat-tab label="Login" >
                             <div class="card-body">
-                                <form [formGroup]="validateLogin" (ngSubmit)="validateLoginUser()" class="the-form">
+                                <form [formGroup]="validateLogin" class="the-form">
+                                    <!-- Login email -->
                                     <label for="loginemail">Email</label>
                                     <input formControlName="loginemail" type="email" name="loginemail" id="loginemail" placeholder="Enter your email" required>
-                                    <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
-                                        Please enter your Email ID
+                                    <div *ngIf="valid_login && validateLogin.controls['loginemail'].errors">
+                                        <div class="form-text text-danger" *ngIf="login['loginemail'].errors?.['required'] || login['loginemail'].touched">
+                                            Enter your Email ID
+                                        </div>
+                                        <div class="form-text text-danger" *ngIf="login['loginemail'].errors?.['email']">
+                                            Invalid Email ID
+                                        </div>
                                     </div>
-                                    <div class="form-text text-danger" *ngIf="Email.errors?.['email']">
-                                        Invalid Email ID
-                                    </div> -->
+                                    <!-- Login Password -->
                                     <label for="loginpassword">Password</label>
                                     <input formControlName="loginpassword" type="password" name="loginpassword" id="loginpassword" placeholder="Enter your password" required>
-                                    <!-- <div class="form-text text-danger col-md-4" *ngIf="Password.errors?.['required'] && Password.touched">
-                                        Please enter your password
-                                    </div> -->
-                                    <input type="submit" value="Login">
+                                    <div *ngIf="valid_login && validateLogin.controls['loginpassword'].errors">
+                                        <div class="form-text text-danger" *ngIf="login['loginpassword'].errors?.['required'] || login['loginpassword'].touched">
+                                            Password is compulsory
+                                        </div>
+                                    </div>
+                                    <!-- Login button -->
+                                    <input type="submit" value="Login" (click)="validateLoginUser()">
                                 </form>
                             </div>
                         </mat-tab>
                         <mat-tab label="Sign Up"> 
                             <div class="card-body">
-                                <form [formGroup]="validateSignup" (ngSubmit)="validateSignupUser()" class="the-form">
+                                <form [formGroup]="validateSignup" class="the-form">
+                                    <!-- Signup email -->
                                     <label for="signupemail">Email</label>
-                                    <input type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail" required>
-                                    <!-- <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && Email.touched">
-                                        Please enter your Email ID
+                                    <input type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail">
+                                    <div *ngIf="valid_signup && validateSignup.controls['signupemail'].errors">
+                                        <div class="form-text text-danger" *ngIf="signup['signupemail'].errors?.['required'] || signup['signupemail'].touched">
+                                            Enter your Email ID
+                                        </div>
+                                        <div class="form-text text-danger" *ngIf="signup['signupemail'].errors?.['email']">
+                                            Invalid Email ID
+                                        </div>
                                     </div>
-                                    <div class="form-text text-danger" *ngIf="Email.errors?.['email']">
-                                        Invalid Email ID
-                                    </div> -->
+                                    <!-- Signup password  -->
                                     <label for="signuppassword">Password</label>
                                     <input type="password" name="signuppassword" id="signuppassword" placeholder="Enter your password" formControlName="signuppassword" required>
+                                    <div *ngIf="valid_signup && validateSignup.controls['signuppassword'].errors">
+                                        <div class="form-text text-danger" *ngIf="signup['signuppassword'].errors?.['required'] || signup['signuppassword'].touched">
+                                            Password is compulsory
+                                        </div>
+                                    </div>
+                                    <!-- Signup retype password -->
                                     <label for="retypepassword">Retype Password</label>
                                     <input type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" required>
-                                    <!-- <div class="form-text text-danger col-md-4" *ngIf="Password.errors?.['required'] && Password.touched">
-                                        Please enter your password
-                                    </div> -->
-                                    <input type="submit" value="Signup">
+                                    <div *ngIf="valid_signup && validateSignup.controls['retypepassword'].errors">
+                                        <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['required'] || signup['retypepassword'].touched">
+                                            Password did not match
+                                        </div>
+                                    </div>
+                                    <!-- Signup button -->
+                                    <input type="submit" value="Signup" (click)="validateSignupUser()">
                                 </form>
                             </div> 
                         </mat-tab>
