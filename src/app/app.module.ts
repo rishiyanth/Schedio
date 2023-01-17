@@ -8,16 +8,16 @@ import { LoginComponent } from './login/login.component';
 import { NewuserComponent } from './newuser/newuser.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
-import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderInterceptor } from '../interceptors/loader.interceptor';
 import { FeedComponent } from './feed/feed.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-
-
+import {MatIconModule} from '@angular/material/icon';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NewuserComponent,
     FeedComponent,
     LoaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    LoaderComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     MatTabsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
   ],
   providers: [
     {
