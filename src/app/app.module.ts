@@ -14,6 +14,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LoaderComponent } from './loader/loader.component';
 import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { LoaderInterceptor } from '../interceptors/loader.interceptor';
+import { FeedComponent } from './feed/feed.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
@@ -22,7 +24,9 @@ import { LoaderInterceptor } from '../interceptors/loader.interceptor';
     AppComponent,
     LoginComponent,
     NewuserComponent,
-    LoaderComponent
+    FeedComponent,
+    LoaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
