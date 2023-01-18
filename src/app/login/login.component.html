@@ -26,7 +26,7 @@
                                 <form [formGroup]="validateLogin" class="the-form">
                                     <!-- Login email -->
                                     <label for="loginemail">Email</label>
-                                    <input formControlName="loginemail" type="email" name="loginemail" id="loginemail" placeholder="Enter your email" required>
+                                    <input formControlName="loginemail" type="text" name="loginemail" id="loginemail" placeholder="Enter your email" required>
                                     <div *ngIf="valid_login && validateLogin.controls['loginemail'].errors">
                                         <div class="form-text text-danger" *ngIf="login['loginemail'].errors?.['required'] || login['loginemail'].touched">
                                             Enter your Email ID

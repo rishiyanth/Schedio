@@ -19,6 +19,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatIconModule} from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { ProfileComponent } from './profile/profile.component';
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    HttpClientModule,
   ],
   providers: [
     {
