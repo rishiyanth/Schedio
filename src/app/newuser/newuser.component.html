@@ -11,14 +11,6 @@
           <fieldset  *ngIf="step == 1" >
               <h2 class="fs-title">Basic Details</h2>
 
-              <!-- Username -->
-              <input type="text" formControlName="username" placeholder="*Username"/>
-              <div *ngIf="basic_step && basicDetails.controls['username'].errors">
-                <div class="form-text text-danger" *ngIf="basic['username'].errors?.['required'] || basic['username'].touched">
-                  *Username required
-                </div>
-              </div>
-
               <!-- Firstname -->
               <input type="text" formControlName="firstname" placeholder="*First Name">
               <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">

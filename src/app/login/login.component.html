@@ -25,14 +25,11 @@
                             <div class="card-body">
                                 <form [formGroup]="validateLogin" class="the-form">
                                     <!-- Login email -->
-                                    <label for="loginemail">Email</label>
-                                    <input formControlName="loginemail" type="text" name="loginemail" id="loginemail" placeholder="Enter your email" required>
-                                    <div *ngIf="valid_login && validateLogin.controls['loginemail'].errors">
-                                        <div class="form-text text-danger" *ngIf="login['loginemail'].errors?.['required'] || login['loginemail'].touched">
-                                            Enter your Email ID
-                                        </div>
-                                        <div class="form-text text-danger" *ngIf="login['loginemail'].errors?.['email']">
-                                            Invalid Email ID
+                                    <label for="loginusername">Username</label>
+                                    <input formControlName="loginusername" type="text" name="loginusername" id="loginusername" placeholder="Enter your email" required>
+                                    <div *ngIf="valid_login && validateLogin.controls['loginusername'].errors">
+                                        <div class="form-text text-danger" *ngIf="login['loginusername'].errors?.['required'] || login['loginusername'].touched">
+                                            Enter your Username
                                         </div>
                                     </div>
                                     <!-- Login Password -->
@@ -51,6 +48,15 @@
                         <mat-tab label="Sign Up"> 
                             <div class="card-body">
                                 <form [formGroup]="validateSignup" class="the-form">
+                                    <!-- Signup username -->
+                                    <label for="signupusername">Email</label>
+                                    <input type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
+                                    <div *ngIf="valid_signup && validateSignup.controls['signupusernmae'].errors">
+                                        <div class="form-text text-danger" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
+                                            Choose an username
+                                        </div>
+                                    </div>
+
                                     <!-- Signup email -->
                                     <label for="signupemail">Email</label>
                                     <input type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail">

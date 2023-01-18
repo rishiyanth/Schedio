@@ -28,7 +28,6 @@ export class NewuserComponent implements OnInit {
 
   ngOnInit(): void {
     this.basicDetails = this.formBuilder.group({
-        username: ['', Validators.required],
         firstname: ['',Validators.required],
         lastname: [''],
         dob: ['',Validators.required],
