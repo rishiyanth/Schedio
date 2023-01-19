@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService : CookieService,private router:Router) { }
   validateLogin!:FormGroup
   validateSignup!: FormGroup
   valid_signup = false
@@ -41,8 +43,10 @@ export class LoginComponent implements OnInit {
 
     this.http.post(
       "http://localhost:8000/login/", formDataLogin
-    ).subscribe((data)=>{
-      console.log(data)
+    ).subscribe((data:any)=>{
+      this.cookieService.set('Token','Token '+ data.token)
+      console.log(this.cookieService.get('Token'))
+      this.router.navigate(['feed'])
     })
     this.valid_login = true
     if (this.validateLogin.invalid) { return  }
@@ -57,8 +61,10 @@ export class LoginComponent implements OnInit {
     formDataSignup.append('password',this.signup['signuppassword'].value);
     this.http.post(
       "http://localhost:8000/register/", formDataSignup
-    ).subscribe((data)=>{
-      console.log(data)
+    ).subscribe((data:any)=>{
+      this.cookieService.set('Token','Token '+ data.token)
+      console.log(this.cookieService.get('Token'))
+      this.router.navigate(['newuser'])
     })
   }
 

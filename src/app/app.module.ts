@@ -18,6 +18,9 @@ import { FeedComponent } from './feed/feed.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatIconModule} from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { ChatSectionComponent } from './chat-section/chat-section.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { ProfileComponent } from './profile/profile.component';
     SidebarComponent,
     LoaderComponent,
     ProfileComponent,
+    ChatSectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +46,7 @@ import { ProfileComponent } from './profile/profile.component';
     MatProgressSpinnerModule,
     MatIconModule,
     HttpClientModule,
+    ImageCropperModule
   ],
   providers: [
     {
@@ -49,6 +54,7 @@ import { ProfileComponent } from './profile/profile.component';
       useClass: LoaderInterceptor,
       multi: true,
    },
+   CookieService
   ],
   bootstrap: [AppComponent]
 })
