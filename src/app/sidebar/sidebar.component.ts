@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,14 +10,21 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private cookieService: CookieService, private route: Router) { }
+  constructor(private cookieService: CookieService, private route: Router,private http: HttpClient) { }
 
   ngOnInit(): void {
   }
 
   logout(): void{
+    let logoutheader = new HttpHeaders().set('Authorization',this.cookieService.get('Token'))
+    // console.log(logoutheader.get('Authorization'))
+
+    this.http.post("http://localhost:8000/logout/",{},{headers: logoutheader})
+    .subscribe(()=>{
+
+    })
     this.cookieService.delete('Token')
-    console.log(this.cookieService.get('Token'))
+    // console.log(this.cookieService.get('Token'))
     this.route.navigate(['login'])
   }
 

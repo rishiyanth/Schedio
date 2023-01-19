@@ -49,7 +49,7 @@
                             <div class="card-body">
                                 <form [formGroup]="validateSignup" class="the-form">
                                     <!-- Signup username -->
-                                    <label for="signupusername">Email</label>
+                                    <label for="signupusername">Username</label>
                                     <input type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
                                     <div *ngIf="valid_signup && validateSignup.controls['signupusernmae'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
