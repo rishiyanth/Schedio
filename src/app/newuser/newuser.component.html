@@ -40,6 +40,18 @@
                   <label for = "female">Female</label>
                   <input type="radio" id='female' name="gender" value="female" formControlName="gender" placeholder="Gender">
                 </td>
+                <td>
+                  <label for = "transgender">Transgender</label>
+                  <input type="radio" id='transgender' name="gender" value="transgender" formControlName="gender" placeholder="Gender">
+                </td>
+                <td>
+                  <label for = "nonbinary">Non binary</label>
+                  <input type="radio" id='nonbinary' name="gender" value="nonbinary" formControlName="gender" placeholder="Gender">
+                </td>                
+                <td>
+                  <label for = "prefer">Prefer not to say</label>
+                  <input type="radio" id='prefer' name="gender" value="Prefer not to say" formControlName="gender" placeholder="Gender">
+                </td>
               </div>
               <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
                 <div class="form-text text-danger" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">

@@ -51,7 +51,7 @@
                                     <!-- Signup username -->
                                     <label for="signupusername">Username</label>
                                     <input type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
-                                    <div *ngIf="valid_signup && validateSignup.controls['signupusernmae'].errors">
+                                    <div *ngIf="valid_signup && validateSignup.controls['signupusername'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
                                             Choose an username
                                         </div>

@@ -16,11 +16,13 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoaderInterceptor } from '../interceptors/loader.interceptor';
 import { FeedComponent } from './feed/feed.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ChatSectionComponent } from './chat-section/chat-section.component';
 import { CookieService } from 'ngx-cookie-service';
+import {MatButtonModule} from '@angular/material/button';
+import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { CookieService } from 'ngx-cookie-service';
     LoaderComponent,
     ProfileComponent,
     ChatSectionComponent,
+    ImageCropperComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { CookieService } from 'ngx-cookie-service';
     MatProgressSpinnerModule,
     MatIconModule,
     HttpClientModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatButtonModule,
   ],
   providers: [
     {
