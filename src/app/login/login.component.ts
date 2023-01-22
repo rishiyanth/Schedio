@@ -3,6 +3,7 @@ import {FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { LoaderService } from 'src/services/loader.service';
 
 @Component({
   selector: 'app-login',
@@ -11,13 +12,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, private cookieService : CookieService,private router:Router) { }
+  constructor(private http: HttpClient, private cookieService : CookieService,private router:Router,private loaderService:LoaderService) { }
   validateLogin!:FormGroup
   validateSignup!: FormGroup
   valid_signup = false
   valid_login = false
 
   ngOnInit(): void {
+    this.loaderService.checkLogin()
     this.validateLogin = new FormGroup({
       loginusername: new FormControl("",[Validators.required]),
       loginpassword: new FormControl("",Validators.required)
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
       retypepassword: new FormControl("",[Validators.required])
     }
     )
+
   };
 
   get login(){return this.validateLogin.controls;}
