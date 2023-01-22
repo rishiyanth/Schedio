@@ -12,7 +12,6 @@ import { LoaderService } from 'src/services/loader.service';
 })
 export class FeedComponent implements OnInit {
 
-  invalid_user = true
   constructor(private loaderService:LoaderService) { }
 
   ngOnInit(): void {

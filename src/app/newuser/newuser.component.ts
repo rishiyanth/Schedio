@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { countries } from 'src/assets/datastore/country-data';
 import { techstack } from 'src/assets/datastore/techstack-data';
+import { LoaderService } from 'src/services/loader.service';
 
 @Component({
   selector: 'app-newuser',
@@ -24,9 +25,10 @@ export class NewuserComponent implements OnInit {
   techstack_step = false;
   step = 1;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,private loaderService: LoaderService) { }
 
   ngOnInit(): void {
+    this.loaderService.checkUser()
     this.basicDetails = this.formBuilder.group({
         firstname: ['',Validators.required],
         lastname: [''],
