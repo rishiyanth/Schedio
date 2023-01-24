@@ -19,7 +19,7 @@
                     [alignImage]="'center'"
                     [style.display]="showCropper ? null : 'none'"
                     format="png"
-                    imageURL="https://www.filmibeat.com/wimgm/1366x70/desktop/2022/08/xrashmika-mandanna_24.jpg.pagespeed.ic.j1Nj6lSoJX.jpg"
+                    [imageURL]="originalImage"
                     (imageCropped)="imageCropped($event)"
                     (imageLoaded)="imageLoaded()"
                     (cropperReady)="cropperReady($event)"
@@ -51,7 +51,7 @@
                         <i class="btn btn-dark bi bi-arrow-clockwise mx-2" (click)="resetImage()"></i>
                     </div>
 
-                    <div></div>
+                    <div><button (click)="imageSubmit()">Save</button></div>
                 </div>
             </div>
 

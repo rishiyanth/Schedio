@@ -23,6 +23,8 @@ import { ChatSectionComponent } from './chat-section/chat-section.component';
 import { CookieService } from 'ngx-cookie-service';
 import {MatButtonModule} from '@angular/material/button';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
+import { PostComponent } from './post/post.component';
+import { SafePipe } from './safehtml.pipe';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { ImageCropperComponent } from './image-cropper/image-cropper.component';
     ProfileComponent,
     ChatSectionComponent,
     ImageCropperComponent,
+    PostComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ImageCroppedEvent, Dimensions, ImageTransform, LoadedImage, base64ToFile } from 'ngx-image-cropper';
 
 @Component({
@@ -7,6 +7,10 @@ import { ImageCroppedEvent, Dimensions, ImageTransform, LoadedImage, base64ToFil
   styleUrls: ['./image-cropper.component.scss']
 })
 export class ImageCropperComponent implements OnInit {
+
+  @Input() receivedImage = "";
+  @Input() originalImage = "";
+  @Output() imageCropEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -21,6 +25,7 @@ export class ImageCropperComponent implements OnInit {
   showCropper = false;
   containWithinAspectRatio = false;
   transform: ImageTransform = {};
+  base: any ='';
 
   fileChangeEvent(event: any): void {
       this.imageChangedEvent = event;
@@ -28,7 +33,15 @@ export class ImageCropperComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
       this.croppedImage = event.base64;
+      this.base = event.base64;
       // console.log(event, base64ToFile(event.base64));
+  }
+
+  imageSubmit(): void{
+    let blob = new Blob([base64ToFile(this.base)], {type: 'text/plain'});
+    this.imageCropEvent.emit(URL.createObjectURL(blob));
+
+    // this.imageCropEvent.emit(base64ToFile(this.base));
   }
 
   imageLoaded() {
