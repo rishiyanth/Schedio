@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoaderService } from 'src/services/loader.service';
+import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
   selector: 'app-profile',

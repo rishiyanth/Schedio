@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { countries } from 'src/assets/datastore/country-data';
 import { techstack } from 'src/assets/datastore/techstack-data';
-import { LoaderService } from 'src/services/loader.service';
+import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
   selector: 'app-newuser',

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, throwError } from 'rxjs';
-import { LoaderService } from 'src/services/loader.service';
+import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
   selector: 'app-feed',

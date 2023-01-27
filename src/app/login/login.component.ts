@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
-import { LoaderService } from 'src/services/loader.service';
+import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
   selector: 'app-login',
