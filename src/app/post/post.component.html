@@ -16,9 +16,9 @@
             <div class="my-4">
                 <h3 class="display-6 fs-2 my-3">Expend</h3>
                 <p>An Angular + Django based project collaboration platform to view, share and colloborate projects with the community of developers and students.</p>
-                <div class="hover-container">
+                <!-- <div class="hover-container">
                     <a href="">Explore</a>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="col-md-1 text-center">
@@ -34,13 +34,15 @@
         </div>
     </div>
 
-    <div>
-        <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
-    </div>
+    <hr>
 
-    <div *ngIf="cropStatus">
+    <!-- <div>
+        <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
+    </div> -->
+
+    <!-- <div *ngIf="cropStatus">
         <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
-    </div>
+    </div> -->
 </div>
 
 
