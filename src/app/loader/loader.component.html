@@ -1,6 +1,5 @@
-<div *ngIf="isLoading | async" class="overlay bg-dark">
-  <!-- <mat-progress-spinner class="spinner"
-                        mode="indeterminate">
-  </mat-progress-spinner> -->
-  <div class="loader"></div>
+<div *ngIf="isLoading | async" class="overlay bg-light">
+  <mat-progress-spinner class="spinner" mode="indeterminate">
+  </mat-progress-spinner>
+  <img src="assets/images/schedio-logo.png" class="spinner" width="60" height="60">
 </div>
