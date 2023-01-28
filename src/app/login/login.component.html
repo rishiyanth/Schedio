@@ -9,11 +9,7 @@
 
         <div class="vh-100 col-md-6 login-image-section" >
             <div class="align-self-center">
-<<<<<<< Updated upstream
-                <img src="./assets/images/schedio-logo.png" class="img-fluid mx-auto w-50">
-=======
                 <!-- <img src="./assets/images/schedio-logo.png" class="img-fluid mx-auto w-50">
->>>>>>> Stashed changes
                 <p class="display-3">Schedio</p>
                 <p class="lead">The Missing Piece.</p> -->
             </div>
@@ -144,11 +140,14 @@
                                 <!-- Signup retype password -->
 
                                 <div class="form-floating my-2">
-                                    <input class="form-control login-form-input shadow-none" type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" required>
+                                    <input class="form-control login-form-input shadow-none" type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" pattern="{{ signup['signuppassword'].value }}"  required>
                                     <label for="retypepassword">Confirm Password</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['retypepassword'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['required'] || signup['retypepassword'].touched">
-                                            Password did not match
+                                            Retype password to confirm
+                                        </div>
+                                        <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['pattern']"> 
+                                            Password & Confirm Password does not match.
                                         </div>
                                     </div>
                                 </div>
@@ -169,6 +168,12 @@
                         </div> 
                 </div>
             </div>  
+            <div class="position-absolute bottom-0 end-0">
+                <ngb-toast [autohide]="true" *ngIf= "invalid_credentials" class="bg-dark text-light"> Invalid credentials </ngb-toast>
+            </div>
+            <div class="position-absolute bottom-0 end-0">
+                <ngb-toast [autohide]="true" *ngIf= "invalid_username" class="bg-dark text-light"> Username already taken. Try something different </ngb-toast>
+            </div>
         </div>
     </div>
 </div>

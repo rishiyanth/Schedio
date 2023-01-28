@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators } from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { Newuser } from 'src/assets/interfaces/Newuser.model';
 import { url } from 'src/assets/constants/url';
+import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,11 +15,14 @@ import { url } from 'src/assets/constants/url';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private http: HttpClient, private cookieService : CookieService,private router:Router,private loaderService:LoaderService) { }
+  constructor(private http: HttpClient, private cookieService : CookieService,private router:Router,private loaderService:LoaderService) {}
+
   validateLogin!:FormGroup
   validateSignup!: FormGroup
   valid_signup = false
   valid_login = false
+  invalid_credentials = false
+  invalid_username = false
 
   isLogin = true;
 
@@ -35,7 +40,6 @@ export class LoginComponent implements OnInit {
       retypepassword: new FormControl("",[Validators.required])
     }
     )
-
   };
 
   get login(){return this.validateLogin.controls;}
@@ -47,9 +51,13 @@ export class LoginComponent implements OnInit {
 
   validateLoginUser(){
 
+    this.invalid_credentials = false
     var formDataLogin: any = new FormData();
     formDataLogin.append('username', this.login['loginusername'].value);
     formDataLogin.append('password', this.login['loginpassword'].value);
+
+    this.valid_login = true
+    if (this.validateLogin.invalid) { return  }
 
     this.http.post(
       url+"login/", formDataLogin
@@ -57,13 +65,17 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
       this.router.navigate(['feed'])
+    },
+    (error)=>{
+      this.invalid_credentials = true
     })
-    this.valid_login = true
-    if (this.validateLogin.invalid) { return  }
+    
   }
 
   validateSignupUser(){
     this.valid_signup = true
+    this.invalid_username = false
+
     if (this.validateSignup.invalid) { return  }
     var formDataSignup: any = new FormData();
     formDataSignup.append('username',this.signup['signupusername'].value);
@@ -75,7 +87,11 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
       this.router.navigate(['newuser'])
+    },
+    (error)=>{
+      this.invalid_username = true
     })
   }
 
 }
+
