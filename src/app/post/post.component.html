@@ -1,6 +1,6 @@
-<div class="card post-card my-3">
+<div class="card post-card my-2">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 p-4">
             <img [src]="imageTemp | safe:'url'" alt="post-placeholder" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
@@ -9,12 +9,16 @@
             <div class="d-flex align-items-center p-2 my-2">
                 <img src="assets/images/post-placeholder.jpg" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
                 <div class="d-block mx-3">
-                    <p class="text-body m-1"><span class="lead">Krishna Sameer | </span> CEO </p>
+                    <p class="text-body mx-1 my-0"><span class="lead fs-6">Krishna Sameer | </span> CEO </p>
+                    <span class="post-date mx-1 my-0">JAN 28, 2023</span>
+                </div>
+                <div class="flex-end align-self-center ">
+                    
                 </div>
             </div>
 
-            <div class="my-4">
-                <h3 class="display-6 fs-2 my-3">Expend</h3>
+            <div class="my-2">
+                <h3 class="fs-4 my-3 text-body">Expend</h3>
                 <p>An Angular + Django based project collaboration platform to view, share and colloborate projects with the community of developers and students.</p>
                 <!-- <div class="hover-container">
                     <a href="">Explore</a>
@@ -23,18 +27,18 @@
         </div>
         <div class="col-md-1 text-center">
             <div class="py-3">
-                <mat-icon class="fs-2">bookmark</mat-icon>
+                <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
             </div>
             <div class="py-3">
-                <mat-icon class="fs-2">favorite</mat-icon>
+                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill' : 'bi-heart'" (click)="toggleLike()"></i>
             </div>
             <div class="py-3">
-                <mat-icon class="fs-2">link</mat-icon>
+                <i class="bi bi-arrow-right fs-4"></i>
             </div>
         </div>
     </div>
 
-    <hr>
+    <hr class="my-0">
 
     <!-- <div>
         <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
