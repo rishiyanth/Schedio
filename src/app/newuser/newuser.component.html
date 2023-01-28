@@ -34,23 +34,23 @@
               <div id="radio-group">
                 <td>
                   <label for = "male">Male</label>
-                <input type="radio" id='male' name="gender" value="male" formControlName="gender" placeholder="Gender">
+                <input type="radio" id='male' name="gender" value="Male" formControlName="gender" placeholder="Gender">
                 </td>
                 <td>
                   <label for = "female">Female</label>
-                  <input type="radio" id='female' name="gender" value="female" formControlName="gender" placeholder="Gender">
+                  <input type="radio" id='female' name="gender" value="Female" formControlName="gender" placeholder="Gender">
                 </td>
                 <td>
                   <label for = "transgender">Transgender</label>
-                  <input type="radio" id='transgender' name="gender" value="transgender" formControlName="gender" placeholder="Gender">
+                  <input type="radio" id='transgender' name="gender" value="Transgender" formControlName="gender" placeholder="Gender">
                 </td>
                 <td>
                   <label for = "nonbinary">Non binary</label>
-                  <input type="radio" id='nonbinary' name="gender" value="nonbinary" formControlName="gender" placeholder="Gender">
+                  <input type="radio" id='nonbinary' name="gender" value="Nonbinary" formControlName="gender" placeholder="Gender">
                 </td>                
                 <td>
                   <label for = "prefer">Prefer not to say</label>
-                  <input type="radio" id='prefer' name="gender" value="Prefer not to say" formControlName="gender" placeholder="Gender">
+                  <input type="radio" id='prefer' name="gender" value="None" formControlName="gender" placeholder="Gender">
                 </td>
               </div>
               <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
@@ -98,6 +98,9 @@
                   *Profession required
                 </div>
               </div>
+
+              <!-- Organisation -->
+              <input type="text" formControlName="organisation" placeholder="Organisation">
               
               <!-- Next Button -->
               <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>

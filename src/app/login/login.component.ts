@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/services/loader/loader.service';
-
+import { Newuser } from 'src/assets/interfaces/Newuser.model';
+import { url } from 'src/assets/constants/url';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnInit {
     formDataLogin.append('password', this.login['loginpassword'].value);
 
     this.http.post(
-      "http://localhost:8000/login/", formDataLogin
+      url+"login/", formDataLogin
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
@@ -63,7 +64,7 @@ export class LoginComponent implements OnInit {
     formDataSignup.append('email',this.signup['signupemail'].value);
     formDataSignup.append('password',this.signup['signuppassword'].value);
     this.http.post(
-      "http://localhost:8000/register/", formDataSignup
+      url+"register/", formDataSignup
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))

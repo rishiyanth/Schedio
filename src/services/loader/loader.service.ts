@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
+import { url } from 'src/assets/constants/url';
 
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class LoaderService {
   isLoading = new Subject<boolean>();
+  userData:any
  
   constructor(private cookieservice: CookieService,private http: HttpClient,private router: Router) {
     
@@ -25,7 +27,7 @@ export class LoaderService {
 
   checkUser(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get("http://localhost:8000/user/",{headers:logoutheader}).subscribe(
+    this.http.get(url+"user/",{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(data)
         if(!data.user_exists)
@@ -39,7 +41,7 @@ export class LoaderService {
 
   checkLogin(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get("http://localhost:8000/user/",{headers:logoutheader}).subscribe(
+    this.http.get(url+"user/",{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(data)
         if(data.user_exists)
@@ -49,6 +51,18 @@ export class LoaderService {
         this.router.navigate(['login'])
       }
     )
+  }
+
+  getUserData(){
+    let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
+    this.http.get(url+"get-username/",{headers:logoutheader}).subscribe(
+      (data:any)=>{
+        this.userData = data
+      },
+      (error)=>{
+        this.router.navigate(['login'])
+      }
+    );
   }
   
 }
