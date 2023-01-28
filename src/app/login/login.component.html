@@ -4,66 +4,121 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
 
-<div>
+<div class="login-section">
     <div class="row text-center g-0 grid">
-        <div class="vh-100 col-md-6">
+
+        <div class="vh-100 col-md-6 login-image-section" >
             <div class="align-self-center">
+<<<<<<< Updated upstream
                 <img src="./assets/images/schedio-logo.png" class="img-fluid mx-auto w-50">
+=======
+                <!-- <img src="./assets/images/schedio-logo.png" class="img-fluid mx-auto w-50">
+>>>>>>> Stashed changes
                 <p class="display-3">Schedio</p>
-                <p class="lead">The Missing Piece.</p>
+                <p class="lead">The Missing Piece.</p> -->
             </div>
         </div>
+
         <div class="vh-100 col-md-6 login-section m-0">
-            <div class="login">
-                <a id="google-button" class="btn btn-block btn-social btn-google">
-                    <i class="fa fa-google"></i> Continue with Google
-                </a>
-                <a id="github-button" class="btn btn-block btn-social btn-github">
-                    <i class="fa fa-github"></i> Continue with Github
-                </a>
-            </div>
-            <div class="cardholder">
-                <div class="card"> 
-                    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-                        <mat-tab label="Login" >
-                            <div class="card-body">
-                                <form [formGroup]="validateLogin" class="the-form">
-                                    <!-- Login email -->
-                                    <label for="loginusername">Username</label>
-                                    <input formControlName="loginusername" type="text" name="loginusername" id="loginusername" placeholder="Enter your email" required>
-                                    <div *ngIf="valid_login && validateLogin.controls['loginusername'].errors">
-                                        <div class="form-text text-danger" *ngIf="login['loginusername'].errors?.['required'] || login['loginusername'].touched">
-                                            Enter your Username
+
+            <div class="cardholder-login w-100 min-vh d-flex justify-content-center align-items-center">
+                <div class="card card-login pt-4 pb-2 px-3 shadow border-0 w-100"> 
+
+                        <!-- LOGIN TAB -->
+                        
+                            <div class="card-body p-4" *ngIf="isLogin">
+                                <form [formGroup]="validateLogin" class="d-flex flex-wrap flex-column p-3" >
+
+                                    <!-- TITLE -->
+
+                                    <span class="fs-2 text-dark login-form-title">SCHEDIO</span>
+                                    <span class="fs-7 text-body login-form-subtitle mb-4">The Missing Piece</span>
+ 
+                                    <!-- Login Username -->
+
+                                    <div class="form-floating my-3">
+                                        <input 
+                                            class="form-control login-form-input shadow-none" 
+                                            formControlName="loginusername" 
+                                            type="text" 
+                                            name="loginusername" 
+                                            id="loginusername" 
+                                            placeholder="name@example.com"
+                                            required
+                                        >
+                                        <label for="loginusername">Username</label>
+
+                                        <div *ngIf="valid_login && validateLogin.controls['loginusername'].errors">
+                                            <div class="form-text text-danger" *ngIf="login['loginusername'].errors?.['required'] || login['loginusername'].touched">
+                                                Enter your Username
+                                            </div>
                                         </div>
                                     </div>
+
                                     <!-- Login Password -->
-                                    <label for="loginpassword">Password</label>
-                                    <input formControlName="loginpassword" type="password" name="loginpassword" id="loginpassword" placeholder="Enter your password" required>
-                                    <div *ngIf="valid_login && validateLogin.controls['loginpassword'].errors">
-                                        <div class="form-text text-danger" *ngIf="login['loginpassword'].errors?.['required'] || login['loginpassword'].touched">
-                                            Password is compulsory
+
+                                    <div class="form-floating my-2">
+                                        <input 
+                                            class="form-control login-form-input shadow-none" 
+                                            formControlName="loginpassword" 
+                                            type="password" 
+                                            name="loginpassword" 
+                                            id="loginpassword" 
+                                            placeholder="Enter your password" 
+                                            required
+                                        >
+                                        <label for="loginpassword">Password</label>
+
+                                        <div *ngIf="valid_login && validateLogin.controls['loginpassword'].errors">
+                                            <div class="form-text text-danger" *ngIf="login['loginpassword'].errors?.['required'] || login['loginpassword'].touched">
+                                                Password is required
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- Login button -->
-                                    <input type="submit" value="Login" (click)="validateLoginUser()">
+
+                                    <button class="btn btn-dark my-3 px-3" type="submit" value="Login" (click)="validateLoginUser()">Login</button>
                                 </form>
+
+                                <p>Don't have an account? <span role="button" (click)="switchForm()">Sign Up</span></p>
+
+                                <!-- Social Buttons -->
+                                
+                                <div>
+                                    <button class="btn"><i class="bi bi-google fs-3 mx-3"></i></button>
+                                    <button class="btn"><i class="bi bi-github fs-3 mx-3"></i></button>
+                                </div>
+                                
                             </div>
-                        </mat-tab>
-                        <mat-tab label="Sign Up"> 
-                            <div class="card-body">
-                                <form [formGroup]="validateSignup" class="the-form">
-                                    <!-- Signup username -->
+
+
+                        <!-- SIGNUP TAB -->
+
+                        <div class="card-body p-3" *ngIf="!isLogin">
+                            <form [formGroup]="validateSignup" class="d-flex flex-wrap flex-column p-3">
+
+                                <!-- TITLE -->
+
+                                <span class="fs-2 text-dark login-form-title">SCHEDIO</span>
+                                <span class="fs-7 text-body login-form-subtitle mb-4">The Missing Piece</span>
+
+                                <!-- Signup username -->
+
+                                <div class="form-floating my-2">
+                                    <input class="form-control login-form-input shadow-none" type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
                                     <label for="signupusername">Username</label>
-                                    <input type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
                                     <div *ngIf="valid_signup && validateSignup.controls['signupusername'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
                                             Choose an username
                                         </div>
                                     </div>
+                                </div>
 
-                                    <!-- Signup email -->
+
+                                <!-- Signup email -->
+
+                                <div class="form-floating my-2">
+                                    <input class="form-control login-form-input shadow-none" type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail">
                                     <label for="signupemail">Email</label>
-                                    <input type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail">
                                     <div *ngIf="valid_signup && validateSignup.controls['signupemail'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['signupemail'].errors?.['required'] || signup['signupemail'].touched">
                                             Enter your Email ID
@@ -72,35 +127,48 @@
                                             Invalid Email ID
                                         </div>
                                     </div>
-                                    <!-- Signup password  -->
+                                </div>
+
+                                <!-- Signup password  -->
+
+                                <div class="form-floating my-2">
+                                    <input class="form-control login-form-input shadow-none" type="password" name="signuppassword" id="signuppassword" placeholder="Enter your password" formControlName="signuppassword" required>
                                     <label for="signuppassword">Password</label>
-                                    <input type="password" name="signuppassword" id="signuppassword" placeholder="Enter your password" formControlName="signuppassword" required>
                                     <div *ngIf="valid_signup && validateSignup.controls['signuppassword'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['signuppassword'].errors?.['required'] || signup['signuppassword'].touched">
                                             Password is compulsory
                                         </div>
                                     </div>
-                                    <!-- Signup retype password -->
-                                    <label for="retypepassword">Retype Password</label>
-                                    <input type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" required>
+                                </div>
+
+                                <!-- Signup retype password -->
+
+                                <div class="form-floating my-2">
+                                    <input class="form-control login-form-input shadow-none" type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" required>
+                                    <label for="retypepassword">Confirm Password</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['retypepassword'].errors">
                                         <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['required'] || signup['retypepassword'].touched">
                                             Password did not match
                                         </div>
                                     </div>
-                                    <!-- Signup button -->
-                                    <input type="submit" value="Signup" (click)="validateSignupUser()">
-                                </form>
-                            </div> 
-                        </mat-tab>
-                    </mat-tab-group>
+                                </div>
+
+                                <!-- Signup button -->
+
+                                <button class="btn btn-dark my-3 px-3" type="submit" value="Signup" (click)="validateSignupUser()">Sign up</button>
+                            </form>
+
+                            <p>Already have an account? <span role="button" (click)="switchForm()">Login</span></p>
+
+                            <!-- Social Buttons -->
+
+                            <div>
+                                <button class="btn"><i class="bi bi-google fs-3 mx-3"></i></button>
+                                <button class="btn"><i class="bi bi-github fs-3 mx-3"></i></button>
+                            </div>
+                        </div> 
                 </div>
             </div>  
         </div>
     </div>
 </div>
-<!-- <div class="row text-center border border-primary">
-    <footer>
-        Made with love from generateTeamName.exe
-    </footer>
-</div> -->

@@ -19,6 +19,8 @@ export class LoginComponent implements OnInit {
   valid_signup = false
   valid_login = false
 
+  isLogin = true;
+
   ngOnInit(): void {
     this.loaderService.checkLogin()
     this.validateLogin = new FormGroup({
@@ -38,6 +40,10 @@ export class LoginComponent implements OnInit {
 
   get login(){return this.validateLogin.controls;}
   get signup(){return this.validateSignup.controls;}
+
+  switchForm(){
+    this.isLogin = !this.isLogin;
+  }
 
   validateLoginUser(){
 
