@@ -1,57 +1,48 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-2">
-            <app-sidebar></app-sidebar>
+    <div class="card profile-card-3 mb-3">
+        <div class="background-block">
+            <!-- <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/> -->
         </div>
-        <div class="col-md-7 bg-light">
+        <div class="profile-thumb-block">
+            <!-- <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" class="profile"/> -->
+            <img src="assets/images/rishidp.jpg" alt="profile-image" class="profile"/>
+        </div>
+        <div class="card-content">
 
-            <div class="card profile-card-3 mb-3">
-                <div class="background-block">
-                    <!-- <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="profile-sample1" class="background"/> -->
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <p>Thamizhan | Melanophile</p>
+                    <p>CVV'18 | KPC'20 | TCE'24</p>
                 </div>
-                <div class="profile-thumb-block">
-                    <!-- <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" class="profile"/> -->
-                    <img src="assets/images/rishidp.jpg" alt="profile-image" class="profile"/>
+                <div class="col-4">
+                    <h2>Rishiyanth<small>Designer</small></h2>
+                    <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
                 </div>
-                <div class="card-content">
-
-                    <div class="row align-items-center">
-                        <div class="col-4">
-                            <p>Thamizhan | Melanophile</p>
-                            <p>CVV'18 | KPC'20 | TCE'24</p>
-                        </div>
-                        <div class="col-4">
-                            <h2>Rishiyanth<small>Designer</small></h2>
-                            <div class="icon-block"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"> <i class="fa fa-twitter"></i></a><a href="#"> <i class="fa fa-google-plus"></i></a></div>
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-dark mx-1">Message</button>
-                            <button type="button" class="btn btn-dark mx-1">Following</button>
-                        </div>
-                    </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-dark mx-1">Message</button>
+                    <button type="button" class="btn btn-dark mx-1">Following</button>
                 </div>
             </div>
-
-            <div class="card bg-transparent profile-tab-card">
-                <ul class="nav nav-tabs flex-column flex-sm-row">
-                    <li class="nav-item flex-sm-fill text-sm-end border-end border-dark">
-                      <a class="nav-link text-dark" aria-current="page">Posts</a>
-                    </li>
-                    <li class="nav-item flex-sm-fill text-sm-start">
-                      <a class="nav-link text-dark">Saved</a>
-                    </li>
-                </ul>
-            </div>
-
-
-            <app-post></app-post>
-            <app-post></app-post>
-            <app-post></app-post>
-            <app-post></app-post>
-                
-
         </div>
     </div>
+
+    <div class="card bg-transparent profile-tab-card">
+        <ul class="nav nav-tabs flex-column flex-sm-row">
+            <li class="nav-item flex-sm-fill text-sm-end border-end border-dark">
+                <a class="nav-link text-dark" aria-current="page">Posts</a>
+            </li>
+            <li class="nav-item flex-sm-fill text-sm-start">
+                <a class="nav-link text-dark">Saved</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+    <app-post></app-post>
+            
 </div>
 
 

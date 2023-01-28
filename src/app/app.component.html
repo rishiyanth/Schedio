@@ -1,3 +1,12 @@
-<router-outlet>
-    <app-loader></app-loader>
-</router-outlet>
+<div class="container-fluid bg-light">
+    <div class="row">
+        <div class="col-md-2" *ngIf = "!(router.url === '/login' || router.url === '/newuser')">
+            <app-sidebar></app-sidebar>
+        </div>
+        <div class="{{!(router.url === '/login' || router.url === '/newuser') ? 'col-md-7' : ''}} bg-light">
+            <router-outlet>
+                <app-loader></app-loader>
+            </router-outlet> 
+        </div>
+    </div>
+</div>
