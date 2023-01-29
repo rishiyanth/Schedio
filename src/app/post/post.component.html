@@ -1,7 +1,7 @@
 <div class="card post-card my-2">
     <div class="row">
         <div class="col-md-3 p-4">
-            <img [src]="imageTemp | safe:'url'" alt="post-placeholder" class="post-placeholder">
+            <img [src]="postData?.image_urls" alt="post-placeholder" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
         <div class="col-md-8">
@@ -18,8 +18,8 @@
             </div>
 
             <div class="my-2">
-                <h3 class="fs-4 my-3 text-body">Expend</h3>
-                <p>An Angular + Django based project collaboration platform to view, share and colloborate projects with the community of developers and students.</p>
+                <h3 class="fs-4 my-3 text-body">{{postData?.post_title}}</h3>
+                <p>{{postData?.post_description}}</p>
                 <!-- <div class="hover-container">
                     <a href="">Explore</a>
                 </div> -->
@@ -40,13 +40,13 @@
 
     <hr class="my-0">
 
-    <div>
+    <!-- <div>
         <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
     </div>
 
     <div *ngIf="cropStatus">
         <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
-    </div>
+    </div> -->
 </div>
 
 

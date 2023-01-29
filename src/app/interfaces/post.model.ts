@@ -1,8 +1,8 @@
 export interface IPost {
     id: number,
-    imageUrl: string,
-    title: string,
-    gist: string,
-    description: string,
+    image_urls: string[],
+    post_title: string,
+    post_gist: string,
+    post_description: string,
     likes: number,
 }

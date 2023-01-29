@@ -5,17 +5,17 @@
         </div>
         <div class="profile-thumb-block">
             <!-- <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="profile-image" class="profile"/> -->
-            <img src="assets/images/rishidp.jpg" alt="profile-image" class="profile"/>
+            <img [src]="profileData?.profile_photo" alt="profile-image" class="profile"/>
         </div>
         <div class="card-content">
 
             <div class="row align-items-center">
                 <div class="col-4">
-                    <p>Thamizhan | Melanophile</p>
-                    <p>CVV'18 | KPC'20 | TCE'24</p>
+                    <p>{{ profileData?.user_bio }}</p>
+                    <!-- <p>CVV'18 | KPC'20 | TCE'24</p> -->
                 </div>
                 <div class="col-4">
-                    <h2>Rishiyanth<small>Designer</small></h2>
+                    <h2>{{ profileData?.username?.toUpperCase() }}<small>{{ profileData?.profession }}</small></h2>
                     <div class="icon-block">
                         <a href="#"><i class="bi bi-linkedin"></i></a>
                         <a href="#"><i class="bi bi-github"></i></a>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <div class="card bg-transparent profile-tab-card">
+    <div class="card bg-transparent profile-tab-card ">
         <ul class="nav nav-tabs flex-column flex-sm-row">
             <li class="nav-item flex-sm-fill text-sm-end border-end border-dark">
                 <a class="nav-link text-dark" aria-current="page">Posts</a>
@@ -40,11 +40,10 @@
         </ul>
     </div>
 
+    <div *ngFor="let post of posts">
+        <app-post [postData]="post"></app-post>
+    </div>
 
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
-    <app-post></app-post>
             
 </div>
 

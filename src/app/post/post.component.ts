@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IPost } from '../interfaces/post.model';
 
 @Component({
   selector: 'app-post',
@@ -7,13 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostComponent implements OnInit {
 
+  @Input() postData?: IPost;
+  
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   cropStatus = false;
-  imageTemp = "assets/images/login_page.jpg";
+  imageTemp = "assets/images/rishidp.jpg";
   imageOriginal = "assets/images/rishidp.jpg"
 
   isLiked = false;

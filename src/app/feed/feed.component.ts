@@ -7,6 +7,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { catchError, throwError } from 'rxjs';
 import { BACKEND_URL } from 'src/assets/constants/url';
 import { LoaderService } from 'src/services/loader/loader.service';
+import { IPost } from '../interfaces/post.model';
+import { PostService } from '../post/post.service';
 
 @Component({
   selector: 'app-feed',
@@ -15,10 +17,11 @@ import { LoaderService } from 'src/services/loader/loader.service';
 })
 export class FeedComponent implements OnInit {
 
+  posts: IPost[] = []
   postForm !: FormGroup
   modal:any
 
-  constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,private http:HttpClient) {
+  constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,private http:HttpClient, private postService: PostService) {
     config.backdrop = 'static';
 		config.keyboard = false;
    }
@@ -32,6 +35,8 @@ export class FeedComponent implements OnInit {
       descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
       // postImage: new FormControl(null,Validators.required)
     })  
+
+    this.postService.getAllPosts().subscribe((posts) => this.posts = posts)
   }
 
   get postform(){return this.postForm.controls;}
