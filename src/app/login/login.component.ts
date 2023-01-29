@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
     formDataLogin.append('password', this.login['loginpassword'].value);
 
     this.valid_login = true
-    if (this.validateLogin.invalid) { return  }
+    if (this.validateLogin.invalid) { return }
 
     this.http.post(
       url+"login/", formDataLogin

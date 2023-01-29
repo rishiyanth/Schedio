@@ -1,9 +1,7 @@
-<div class="card text-white bg-dark mb-3">
-    <div class="card-header">Image Cropper</div>
+<div>
     <div class="card-body">
-
         <div class="row">
-            <div class="col-8">    
+            <div class="col-7">    
                 <div>
                     <image-cropper
                     [imageChangedEvent]="imageChangedEvent"
@@ -24,25 +22,20 @@
                     (imageLoaded)="imageLoaded()"
                     (cropperReady)="cropperReady($event)"
                     (loadImageFailed)="loadImageFailed()"
-                    [roundCropper]="true"
+                    [roundCropper]="false"
                   ></image-cropper>
                   </div>
             </div>
-
-            <div class="col-4">
-                <div class="m-3">
-                    <p>Preview</p>
-                    <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'" class="rounded-circle"/>
-                </div>
-
+    
+            <div class="col-3">
                 <div>
                     <input type="file" (change)="fileChangeEvent($event)" />
-
+    
                     <div class="m-2">
                         <i class="btn btn-dark bi bi-zoom-in mx-2" (click)="zoomIn()"></i>
                         <i class="btn btn-dark bi bi-zoom-out mx-2" (click)="zoomOut()"></i>
                     </div>
-
+    
                     <div class="m-2">
                         <i class="btn btn-dark bi mx-2" 
                         (click)="toggleContainWithinAspectRatio()"
@@ -50,21 +43,19 @@
                         ></i>
                         <i class="btn btn-dark bi bi-arrow-clockwise mx-2" (click)="resetImage()"></i>
                     </div>
-
-                    <div><button (click)="imageSubmit()">Save</button></div>
+    
+                    <div><button (click)="imageSubmit()" class="btn btn-outline-dark rounded-pill">Save</button></div>
                 </div>
+                <!-- <div *ngIf="croppedImage">
+                    <div>
+                        <p>Preview</p>
+                        <img [src]="croppedImage" [style.border]="croppedImage ? '1px solid black' : 'none'"/>
+                    </div>
+                </div> -->
             </div>
-
         </div>
-
-
 
         
-        <div class="d-flex align-items-center">
-
-
-        </div>
-
     </div>
   </div>
 

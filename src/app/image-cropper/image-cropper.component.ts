@@ -11,6 +11,7 @@ export class ImageCropperComponent implements OnInit {
   @Input() receivedImage = "";
   @Input() originalImage = "";
   @Output() imageCropEvent = new EventEmitter<any>();
+  @Output() closeEvent = new EventEmitter<any>();
 
   constructor() { }
 
@@ -40,7 +41,7 @@ export class ImageCropperComponent implements OnInit {
   imageSubmit(): void{
     let blob = new Blob([base64ToFile(this.base)], {type: 'text/plain'});
     this.imageCropEvent.emit(URL.createObjectURL(blob));
-
+    this.closeEvent.emit();
     // this.imageCropEvent.emit(base64ToFile(this.base));
   }
 
