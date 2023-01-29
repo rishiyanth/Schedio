@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, throwError } from 'rxjs';
-import { url } from 'src/assets/constants/url';
+import { BACKEND_URL } from 'src/assets/constants/url';
 import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
@@ -61,7 +61,7 @@ export class FeedComponent implements OnInit {
   uploadPost(){
 
     var postFormData: any = this.getPostFormData()
-    this.http.post(url+"create-newpost/",postFormData).subscribe((data) =>{
+    this.http.post(BACKEND_URL+"create-newpost/",postFormData).subscribe((data) =>{
       console.log(data)
     },
     (error) =>{

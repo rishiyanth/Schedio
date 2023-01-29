@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { url } from 'src/assets/constants/url';
+import { BACKEND_URL } from 'src/assets/constants/url';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieService.get('Token'))
     // console.log(logoutheader.get('Authorization'))
 
-    this.http.post(url+"logout/",{},{headers: logoutheader})
+    this.http.post(BACKEND_URL+"logout/",{},{headers: logoutheader})
     .subscribe(()=>{
 
     })

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, UrlSegment } from '@angular/router';
-import { url } from 'src/assets/constants/url';
+import { BACKEND_URL } from 'src/assets/constants/url';
 import { countries } from 'src/assets/datastore/country-data';
 import { techstack } from 'src/assets/datastore/techstack-data';
 import { LoaderService } from 'src/services/loader/loader.service';
@@ -91,7 +91,7 @@ export class NewuserComponent implements OnInit {
       }
       else { 
         this.alert_techstack = false
-        this.http.post(url+"user-profile/",newUserData).subscribe((data) =>{
+        this.http.post(BACKEND_URL+"user-profile/",newUserData).subscribe((data) =>{
           this.router.navigate(['feed']);
         },
         (error)=>{

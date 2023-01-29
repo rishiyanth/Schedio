@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { Newuser } from 'src/assets/interfaces/Newuser.model';
-import { url } from 'src/assets/constants/url';
+import { BACKEND_URL } from 'src/assets/constants/url';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
 @Component({
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
     if (this.validateLogin.invalid) { return }
 
     this.http.post(
-      url+"login/", formDataLogin
+      BACKEND_URL+"login/", formDataLogin
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
     formDataSignup.append('email',this.signup['signupemail'].value);
     formDataSignup.append('password',this.signup['signuppassword'].value);
     this.http.post(
-      url+"register/", formDataSignup
+      BACKEND_URL+"register/", formDataSignup
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
