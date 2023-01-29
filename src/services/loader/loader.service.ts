@@ -55,14 +55,14 @@ export class LoaderService {
 
   getUserData(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get(url+"get-username/",{headers:logoutheader}).subscribe(
+    this.http.get(url+"get-mydata/",{headers:logoutheader}).subscribe(
       (data:any)=>{
         this.userData = data
       },
       (error)=>{
-        this.router.navigate(['login'])
+        // this.router.navigate(['login'])
       }
     );
   }
-  
+
 }
