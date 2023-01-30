@@ -103,7 +103,8 @@
               <input type="text" formControlName="organisation" placeholder="Organisation">
               
               <!-- Next Button -->
-              <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/>
+              <!-- <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/> -->
+              <button class="btn btn-dark my-3 px-3 rounded-pill" (click)="next()">Next</button>
           </fieldset>
       </form>
       <fieldset *ngIf="step == 2" id="msform">

@@ -3,6 +3,7 @@
         <div class="col-md-2" *ngIf = "!(router.url === '/login' || router.url === '/newuser' || router.url === '/')">
             <app-sidebar></app-sidebar>
         </div>
+        <div class="col-md-1"></div>
         <div class="{{!(router.url === '/login' || router.url === '/newuser' || router.url == '/') ? 'col-md-6' : ''}} bg-light">
             <router-outlet>
                 <app-loader></app-loader>

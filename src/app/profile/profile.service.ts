@@ -18,4 +18,8 @@ export class ProfileService {
     return this.http.get<IProfile>(BACKEND_URL+"get-mydata/",{headers: this.token});
   }
 
+  getUserProfile(id: number): Observable<IProfile> {
+    return this.http.get<IProfile>(BACKEND_URL + `user-post/${id}`,);
+  }
+
 }
