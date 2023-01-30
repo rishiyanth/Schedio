@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, UrlSegment } from '@angular/router';
+import { async } from 'rxjs';
 import { BACKEND_URL, CREATE_USER_PROFILE } from 'src/assets/constants/url';
 import { countries } from 'src/assets/datastore/country-data';
 import { techstack } from 'src/assets/datastore/techstack-data';
@@ -19,6 +20,7 @@ export class NewuserComponent implements OnInit {
   selectedItemsList:any = [];
   checkedIDs:any = [];
   alert_techstack = false;
+  user: any = this.loaderService.userData
 
   public techstack:any = techstack
   public countries:any = countries
@@ -38,7 +40,7 @@ export class NewuserComponent implements OnInit {
       lastname: [''],
       dob: ['',Validators.required],
       gender: ['',Validators.required], 
-      email: [this.loaderService.userData.email, Validators.required],
+      email: ['', Validators.required],
       phone: ['',Validators.required],
       country: [null,Validators.required],
       profession: [null,Validators.required],

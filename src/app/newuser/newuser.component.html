@@ -9,102 +9,132 @@
           <!-- fieldsets -->
 
           <fieldset  *ngIf="step == 1" >
-              <h2 class="fs-title">Basic Details</h2>
+            <h2 class="fs-title">Basic Details</h2>
 
-              <!-- Firstname -->
-              <input type="text" formControlName="firstname" placeholder="*First Name">
-              <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">
-                <div class="form-text text-danger" *ngIf="basic['firstname'].errors?.['required'] || basic['username'].touched">
-                  *Firstname required
+            <div class="row">
+              <div class="form-floating my-3 col-md-6">
+                <!-- Firstname -->
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="firstname" id="firstname" placeholder="*First Name">
+                <label for="firstname">*First name</label>
+                <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['firstname'].errors?.['required'] || basic['username'].touched">
+                    *Firstname required
+                  </div>
                 </div>
               </div>
-
-              <!-- Last name -->
-              <input type="text" formControlName="lastname" placeholder="Last Name">
-
-              <!-- Date of birth -->
-              <input type="text" formControlName="dob" placeholder="*Date of birth" onfocus="(this.type='date')">
-              <div *ngIf="basic_step && basicDetails.controls['dob'].errors">
-                <div class="form-text text-danger" *ngIf="basic['dob'].errors?.['required'] || basic['dob'].touched">
-                  *Date of birth required
+  
+              <div class="form-floating my-3 col-md-6">
+                <!-- Last name -->
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="lastname" id="lastname" placeholder="Last Name">
+                <label for="lastname">Last name</label>
+              </div>  
+            </div>
+            
+            <div class="row">
+              <div class="form-floating my-3 col-md-6">
+                <!-- Date of birth -->
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="dob" id="dob" placeholder="*Date of birth" onfocus="(this.type='date')">
+                <label for="dob">*Date of birth</label>
+                <div *ngIf="basic_step && basicDetails.controls['dob'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['dob'].errors?.['required'] || basic['dob'].touched">
+                    *Date of birth required
+                  </div>
                 </div>
               </div>
-
-              <!-- Gender -->
-              <div id="radio-group">
-                <td>
-                  <label for = "male">Male</label>
-                <input type="radio" id='male' name="gender" value="Male" formControlName="gender" placeholder="Gender">
-                </td>
-                <td>
-                  <label for = "female">Female</label>
-                  <input type="radio" id='female' name="gender" value="Female" formControlName="gender" placeholder="Gender">
-                </td>
-                <td>
-                  <label for = "transgender">Transgender</label>
-                  <input type="radio" id='transgender' name="gender" value="Transgender" formControlName="gender" placeholder="Gender">
-                </td>
-                <td>
-                  <label for = "nonbinary">Non binary</label>
-                  <input type="radio" id='nonbinary' name="gender" value="Nonbinary" formControlName="gender" placeholder="Gender">
-                </td>                
-                <td>
-                  <label for = "prefer">Prefer not to say</label>
-                  <input type="radio" id='prefer' name="gender" value="None" formControlName="gender" placeholder="Gender">
-                </td>
-              </div>
-              <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
-                <div class="form-text text-danger" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">
-                  *Choose a gender
+                
+              <div class="form-floating my-3 col-md-6">
+                <!-- Gender -->
+                <div id="radio-group" class="form-control newuser-form-input shadow-none ">
+                  <td class="col-md-3 ">
+                    <input type="radio" id='male' name="gender" value="Male" formControlName="gender" placeholder="Gender">
+                    <label for = "male">Male</label>
+                  </td>
+                  <td class="col-md-3">
+                    <input type="radio" id='female' name="gender" value="Female" formControlName="gender" placeholder="Gender">
+                    <label for = "female">Female</label>
+                  </td>
+                  <td class="col-md-3">
+                    <input type="radio" id='prefer' name="gender" value="None" formControlName="gender" placeholder="Gender">
+                    <label for = "prefer">Prefer not to say</label>
+                  </td>            
                 </div>
+                <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">
+                    *Choose a gender
+                  </div>
+                </div>
+                <label for="radio-group">*Gender</label>
               </div>
+            </div>
 
+            <div class="form-floating my-3">
               <!-- Email -->
-              <input type="text" formControlName="email" name="email" placeholder="Email"/>
+              <input class="form-control newuser-form-input shadow-none" type="text" formControlName="email" id="email" name="email" placeholder="Email"/>
+              <label for="email">*Email</label>
               <div *ngIf="basic_step && basicDetails.controls['email'].errors">
-                <div class="form-text text-danger" *ngIf="basic['email'].errors?.['required'] || basic['email'].touched">
+                <div class="form-text text-danger d-flex float-left" *ngIf="basic['email'].errors?.['required'] || basic['email'].touched">
                   *Email required
                 </div>
               </div>
+            </div>
 
-              <!-- Phone Number -->
-              <input type="text" formControlName="phone" name="phone" placeholder="Phone"/>
-              <div *ngIf="basic_step && basicDetails.controls['phone'].errors">
-                <div class="form-text text-danger" *ngIf="basic['phone'].errors?.['required'] || basic['phone'].touched">
-                  *Phone required
+            <div class="row">
+              <div class="form-floating my-3 col-md-6">
+                <!-- Country -->
+                <select formControlName="country" id="country" class="form-control newuser-form-input shadow-none">
+                  <!-- <option [ngValue]="null" disabled selected>*Select Country</option> -->
+                  <option *ngFor="let country of countries" [ngValue]="country.name">{{country.name}}</option>
+                </select>
+                <label for="country">*Country</label>
+                <div *ngIf="basic_step && basicDetails.controls['country'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['country'].errors?.['required'] || basic['country'].touched">
+                    *Country required
+                  </div>
                 </div>
               </div>
-
-              <!-- Country -->
-              <select formControlName="country">
-                <option [ngValue]="null" disabled selected>*Select Country</option>
-                <option *ngFor="let country of countries" [ngValue]="country.name">{{country.name}}</option>
-              </select>
-              <div *ngIf="basic_step && basicDetails.controls['country'].errors">
-                <div class="form-text text-danger" *ngIf="basic['country'].errors?.['required'] || basic['country'].touched">
-                  *Country required
+  
+              <div class="form-floating my-3 col-md-6">
+                <!-- Phone Number -->
+                <!-- <input class="form-control newuser-form-input shadow-none" type="text" id="phonecode" name="phonecode" value="{{countries[this.basic['country'].value].code}}"> -->
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="phone" id="phone" name="phone" placeholder="Phone"/>
+                <label for="phone">*Phone</label>
+                <div *ngIf="basic_step && basicDetails.controls['phone'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['phone'].errors?.['required'] || basic['phone'].touched">
+                    *Phone required
+                  </div>
                 </div>
               </div>
+            </div>
 
-              <!-- Profession -->
-              <select formControlName="profession">
-                <option [ngValue]="null" disabled selected>*Select profession</option>
-                <option value="Student">Student</option>
-                <option value="Professor">Professor</option>
-                <option value="Software Engineer">Software Engineer</option>
-              </select>
-              <div *ngIf="basic_step && basicDetails.controls['profession'].errors">
-                <div class="form-text text-danger" *ngIf="basic['profession'].errors?.['required'] || basic['profession'].touched">
-                  *Profession required
+            <div class="row">
+              <div class="form-floating my-3 col-md-6">
+                <!-- Profession -->
+                <select formControlName="profession" id="profession" class="form-control newuser-form-input shadow-none">
+                  <!-- <option [ngValue]="null" disabled selected>*Select profession</option> -->
+                  <option value="Student">Student</option>
+                  <option value="Professor">Professor</option>
+                  <option value="Software Engineer">Software Engineer</option>
+                </select>
+                <label for="profession">*Profession</label>
+                <div *ngIf="basic_step && basicDetails.controls['profession'].errors">
+                  <div class="form-text text-danger d-flex float-left" *ngIf="basic['profession'].errors?.['required'] || basic['profession'].touched">
+                    *Profession required
+                  </div>
                 </div>
               </div>
-
-              <!-- Organisation -->
-              <input type="text" formControlName="organisation" placeholder="Organisation">
-              
+  
+              <div class="form-floating my-3 col-md-6">
+                <!-- Organisation -->
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="organisation" id="organisation" placeholder="Organisation">
+                <label for="organisation">Organisation</label>
+              </div>
+            </div>
+            
+            <div class="form-floating my-3">
               <!-- Next Button -->
-              <!-- <input (click)="next()" type="button" name="next" class="next action-button" value="Next"/> -->
               <button class="btn btn-dark my-3 px-3 rounded-pill" (click)="next()">Next</button>
+            </div>
+            
           </fieldset>
       </form>
       <fieldset *ngIf="step == 2" id="msform">
@@ -123,11 +153,11 @@
                 </label>
               </div>
           </div>
-          <div class="form-text text-danger" *ngIf="alert_techstack">
+          <div class="form-text text-danger d-flex float-left" *ngIf="alert_techstack">
             *Select atleast one tool
           </div>
-          <input (click)="previous()" type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-          <input (click)="submit()"type="submit" name="submit" class="submit action-button" value="Submit"/>
+          <input (click)="previous()" type="button" name="previous" class="previous btn btn-dark my-3 px-3 rounded-pill mx-2" value="Previous"/>
+          <input (click)="submit()"type="submit" name="submit" class="submit btn btn-dark my-3 px-3 rounded-pill" value="Submit"/>
       </fieldset>
   </div>
 </div>

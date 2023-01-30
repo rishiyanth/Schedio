@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class="vh-100 col-md-6 login-section m-0">
+        <div class="col-md-6 login-section m-0">
 
             <div class="cardholder-login w-100 min-vh d-flex justify-content-center align-items-center">
                 <div class="card card-login pt-4 pb-2 px-3 shadow border-0 w-100"> 
@@ -45,7 +45,7 @@
                                         <label for="loginusername">Username</label>
 
                                         <div *ngIf="valid_login && validateLogin.controls['loginusername'].errors">
-                                            <div class="form-text text-danger" *ngIf="login['loginusername'].errors?.['required'] || login['loginusername'].touched">
+                                            <div class="form-text text-danger d-flex float-left" *ngIf="login['loginusername'].errors?.['required'] || login['loginusername'].touched">
                                                 Enter your Username
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                         <label for="loginpassword">Password</label>
 
                                         <div *ngIf="valid_login && validateLogin.controls['loginpassword'].errors">
-                                            <div class="form-text text-danger" *ngIf="login['loginpassword'].errors?.['required'] || login['loginpassword'].touched">
+                                            <div class="form-text text-danger d-flex float-left" *ngIf="login['loginpassword'].errors?.['required'] || login['loginpassword'].touched">
                                                 Password is required
                                             </div>
                                         </div>
@@ -103,7 +103,7 @@
                                     <input class="form-control login-form-input shadow-none" type="text" name="signupusername" id="signupusername" placeholder="Enter your username" formControlName="signupusername">
                                     <label for="signupusername">Username</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['signupusername'].errors">
-                                        <div class="form-text text-danger" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['signupusername'].errors?.['required'] || signup['signupusername'].touched">
                                             Choose an username
                                         </div>
                                     </div>
@@ -116,10 +116,10 @@
                                     <input class="form-control login-form-input shadow-none" type="email" name="signupemail" id="signupemail" placeholder="Enter your email" formControlName="signupemail">
                                     <label for="signupemail">Email</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['signupemail'].errors">
-                                        <div class="form-text text-danger" *ngIf="signup['signupemail'].errors?.['required'] || signup['signupemail'].touched">
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['signupemail'].errors?.['required'] || signup['signupemail'].touched">
                                             Enter your Email ID
                                         </div>
-                                        <div class="form-text text-danger" *ngIf="signup['signupemail'].errors?.['email']">
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['signupemail'].errors?.['email']">
                                             Invalid Email ID
                                         </div>
                                     </div>
@@ -131,7 +131,7 @@
                                     <input class="form-control login-form-input shadow-none" type="password" name="signuppassword" id="signuppassword" placeholder="Enter your password" formControlName="signuppassword" required>
                                     <label for="signuppassword">Password</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['signuppassword'].errors">
-                                        <div class="form-text text-danger" *ngIf="signup['signuppassword'].errors?.['required'] || signup['signuppassword'].touched">
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['signuppassword'].errors?.['required'] || signup['signuppassword'].touched">
                                             Password is compulsory
                                         </div>
                                     </div>
@@ -143,10 +143,10 @@
                                     <input class="form-control login-form-input shadow-none" type="password" name="retypepassword" id="retypepassword" placeholder="Enter your password again" formControlName="retypepassword" pattern="{{ signup['signuppassword'].value }}"  required>
                                     <label for="retypepassword">Confirm Password</label>
                                     <div *ngIf="valid_signup && validateSignup.controls['retypepassword'].errors">
-                                        <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['required'] || signup['retypepassword'].touched">
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['retypepassword'].errors?.['required'] || signup['retypepassword'].touched">
                                             Retype password to confirm
                                         </div>
-                                        <div class="form-text text-danger" *ngIf="signup['retypepassword'].errors?.['pattern']"> 
+                                        <div class="form-text text-danger d-flex float-left" *ngIf="signup['retypepassword'].errors?.['pattern']"> 
                                             Password & Confirm Password does not match.
                                         </div>
                                     </div>

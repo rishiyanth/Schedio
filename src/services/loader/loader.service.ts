@@ -57,7 +57,7 @@ export class LoaderService {
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
     this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
       (data:any)=>{
-        // console.log(data)
+        // console.log(data.email)
         this.userData = data
       },
       (error)=>{

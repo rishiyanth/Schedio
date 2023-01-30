@@ -158,27 +158,10 @@
 }
 
 /*inputs*/
-#msform input, #msform textarea, #msform select, #msform #radio-group{
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 0px;
-    margin-bottom: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    color: #2C3E50;
-    font-size: 13px;
-}
-
-#msform input:focus, #msform textarea:focus,#msform select:focus, #msform #radio-group:focus{
-    -moz-box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important;
-    border: 1px solid #ee0979;
-    outline-width: 0;
-    transition: All 0.5s ease-in;
-    -webkit-transition: All 0.5s ease-in;
-    -moz-transition: All 0.5s ease-in;
-    -o-transition: All 0.5s ease-in;
+.login-form-input{
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  color: #555555;
 }
 
 /*buttons*/
