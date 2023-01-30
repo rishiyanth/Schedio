@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { ProfileService } from './profile.service';
-import { IProfile } from '../interfaces/profile.model';
+import { IProfile } from '../../assets/interfaces/profile.model';
 import { PostService } from '../post/post.service';
-import { IPost } from '../interfaces/post.model';
+import { IPost } from 'src/assets/interfaces/post.model';
 
 @Component({
   selector: 'app-profile',
