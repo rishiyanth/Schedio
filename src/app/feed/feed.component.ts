@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { CookieService } from 'ngx-cookie-service';
 import { catchError, throwError } from 'rxjs';
-import { BACKEND_URL } from 'src/assets/constants/url';
+import { BACKEND_URL, CREATE_POST } from 'src/assets/constants/url';
 import { LoaderService } from 'src/services/loader/loader.service';
-import { IPost } from '../interfaces/post.model';
+import { IPost } from 'src/assets/interfaces/post.model';
 import { PostService } from '../post/post.service';
 
 @Component({
@@ -66,13 +66,14 @@ export class FeedComponent implements OnInit {
   uploadPost(){
 
     var postFormData: any = this.getPostFormData()
-    this.http.post(BACKEND_URL+"create-newpost/",postFormData).subscribe((data) =>{
-      console.log(data)
+    this.http.post(BACKEND_URL+CREATE_POST,postFormData).subscribe((data) =>{
+      this.postForm.reset()
+      console.log("Done")
     },
     (error) =>{
       console.log(error)
     })
-    console.log("OK post form collects data successfully")
+    
     // this.modal.close('Close click')
   }
 

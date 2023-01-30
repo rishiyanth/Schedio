@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
-import { BACKEND_URL } from 'src/assets/constants/url';
+import { BACKEND_URL, GET_MY_PROFILE, USER_EXISTS } from 'src/assets/constants/url';
 
 
 @Injectable({
@@ -27,7 +27,7 @@ export class LoaderService {
 
   checkUser(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get(BACKEND_URL+"user/",{headers:logoutheader}).subscribe(
+    this.http.get(BACKEND_URL+USER_EXISTS,{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(data)
         if(!data.user_exists)
@@ -41,7 +41,7 @@ export class LoaderService {
 
   checkLogin(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get(BACKEND_URL+"user/",{headers:logoutheader}).subscribe(
+    this.http.get(BACKEND_URL+USER_EXISTS,{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(data)
         if(data.user_exists)
@@ -55,8 +55,9 @@ export class LoaderService {
 
   getUserData(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get(BACKEND_URL+"get-mydata/",{headers:logoutheader}).subscribe(
+    this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
       (data:any)=>{
+        // console.log(data)
         this.userData = data
       },
       (error)=>{

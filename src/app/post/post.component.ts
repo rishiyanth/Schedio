@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IPost } from '../interfaces/post.model';
 import { ProfileService } from '../profile/profile.service';
+import { IPost } from 'src/assets/interfaces/post.model';
 
 @Component({
   selector: 'app-post',
