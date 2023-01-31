@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from '../profile/profile.service';
 import { IPost } from 'src/assets/interfaces/post.model';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-post',
@@ -11,11 +12,11 @@ export class PostComponent implements OnInit {
 
   @Input() postData?: IPost;
   
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService,private postService: PostService) { }
 
   ngOnInit(): void {
     // this.profileService.getMyProfile()
-    this.profileService.getUserProfile(2).subscribe((data)=> console.log(data));
+    // this.profileService.getUserProfile(2).subscribe((data)=> console.log(data));
   }
 
   cropStatus = false;

@@ -1,50 +1,51 @@
-<div class="d-flex flex-column flex-shrink-0  vh-100 sidebar-container sticky-top">
-
-  <a href="/" class="d-flex align-items-center my-3 mb-md-0 me-md-auto  text-decoration-none">
-    <img src="assets/images/schedio-logo.png" alt="profile-image" width="70" height="70"/>
-    <span class="fs-4 sidenav-title text-dark ms-2">SCHEDIO</span>
-  </a>
-  <hr>
-
-  <ul class="nav nav-pills flex-column mb-auto sidenav-list">
-
-    <li>
-        <a [routerLink]="['/feed']" class="nav-link text-dark" aria-current="page">
-        <i class="bi bi-house-fill me-2 fs-5"></i>
-        Home
+<div class="sticky-top border-start border-end"> 
+  <div class="mx-3 d-flex flex-column flex-shrink-0 vh-100">
+    <a href="/" class="d-flex align-items-center my-3 mb-md-0 me-md-auto  text-decoration-none">
+      <img src="assets/images/schedio-logo.png" alt="profile-image" width="70" height="70"/>
+      <span class="fs-4 sidenav-title text-dark ms-2">SCHEDIO</span>
+    </a>
+    <hr>
+  
+    <ul class="nav nav-pills flex-column mb-auto sidenav-list">
+  
+      <li>
+          <a [routerLink]="['/feed']" class="nav-link text-dark" aria-current="page">
+          <i class="bi bi-house-fill me-2 fs-5"></i>
+          Home
+          </a>
+          <hr/>
+      </li>
+      <li>
+          <a [routerLink]="['/login']" class="nav-link text-dark">
+          <i class="bi bi-box-arrow-in-right me-2 fs-5"></i>
+          Login
+          </a>
+          <hr/>
+      </li>
+      <li>
+          <a [routerLink]="['/newuser']" class="nav-link text-dark">
+            <i class="bi bi-person-plus me-2 fs-5"></i>
+          New User
+          </a>
+          <hr/>
+      </li>
+      <li>
+        <a [routerLink]="['/profile']" class="nav-link text-dark">
+        <i class="bi bi-person-fill me-2 fs-5"></i>
+        Profile
         </a>
         <hr/>
-    </li>
-    <li>
-        <a [routerLink]="['/login']" class="nav-link text-dark">
-        <i class="bi bi-box-arrow-in-right me-2 fs-5"></i>
-        Login
-        </a>
-        <hr/>
-    </li>
-    <li>
-        <a [routerLink]="['/newuser']" class="nav-link text-dark">
-          <i class="bi bi-person-plus me-2 fs-5"></i>
-        New User
-        </a>
-        <hr/>
-    </li>
-    <li>
-      <a [routerLink]="['/profile']" class="nav-link text-dark">
-      <i class="bi bi-person-fill me-2 fs-5"></i>
-      Profile
-      </a>
-      <hr/>
-    </li>
-
-  </ul>
-  <hr/>
-
-  <button (click)="logout()" class="btn btn-dark mb-3">
-    <i class="bi bi-box-arrow-left me-2 fs-5"></i>
-    Logout
-  </button>
-
+      </li>
+  
+    </ul>
+    <hr/>
+  
+    <button (click)="logout()" class="btn btn-dark mb-3">
+      <i class="bi bi-box-arrow-left me-2 fs-5"></i>
+      Logout
+    </button>
+  
+  </div>
 </div>
 
 <!--  <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2"> -->

@@ -25,6 +25,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { PostComponent } from './post/post.component';
 import { SafePipe } from './safehtml.pipe';
+import { PostdetailComponent } from './postdetail/postdetail.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { SafePipe } from './safehtml.pipe';
     ChatSectionComponent,
     ImageCropperComponent,
     PostComponent,
-    SafePipe
+    SafePipe,
+    PostdetailComponent
   ],
   imports: [
     BrowserModule,
