@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from '../profile/profile.service';
 import { IPost } from 'src/assets/interfaces/post.model';
 import { PostService } from './post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-post',
@@ -12,7 +13,7 @@ export class PostComponent implements OnInit {
 
   @Input() postData?: IPost;
   
-  constructor(private profileService: ProfileService,private postService: PostService) { }
+  constructor(private profileService: ProfileService,private postService: PostService,private router: Router) { }
 
   ngOnInit(): void {
     // this.profileService.getMyProfile()
@@ -48,4 +49,7 @@ export class PostComponent implements OnInit {
     this.isSaved = !this.isSaved;
   }
 
+  openPost(postId:any):void{
+    this.router.navigate(["/post"],{queryParams:{id:postId}})
+  }
 }

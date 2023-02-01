@@ -13,7 +13,7 @@
         <hr>
     </div>
     <div *ngFor="let post of posts; index as id;"> 
-        <app-post [postData]="post" routerLink="/post" [queryParams]="{id: post.id}"></app-post>
+        <app-post [postData]="post"></app-post>
     </div>
 </div>
 

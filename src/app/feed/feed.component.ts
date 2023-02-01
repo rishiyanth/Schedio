@@ -36,7 +36,10 @@ export class FeedComponent implements OnInit {
       // postImage: new FormControl(null,Validators.required)
     })  
 
-    this.postService.getAllPosts().subscribe((posts) => this.posts = posts)
+    this.postService.getAllPosts().subscribe((posts) => {
+      // console.log(posts)
+      this.posts = posts
+    })
   }
 
   get postform(){return this.postForm.controls;}
