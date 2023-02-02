@@ -30,5 +30,9 @@ export class PostService {
   getSelectedPostUserDetails(id:any){
     return this.http.get(BACKEND_URL+GET_USER_DATA+id)
   }
+  
+  getUserPosts(id: any): Observable<IPost[]>{
+    return this.http.get<IPost[]>(BACKEND_URL+'post/userid/'+id);
+  }
 
 }

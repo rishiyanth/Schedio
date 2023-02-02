@@ -19,7 +19,7 @@ export class ProfileService {
   }
 
   getUserProfile(id: number): Observable<IProfile> {
-    return this.http.get<IProfile>(BACKEND_URL + `user-post/${id}`,);
+    return this.http.get<IProfile>(BACKEND_URL + `user/id/${id}`);
   }
 
 }

@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProfileService } from '../profile/profile.service';
 import { IPost } from 'src/assets/interfaces/post.model';
 import { PostService } from './post.service';
+import { IProfile } from 'src/assets/interfaces/profile.model';
+import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,12 +14,12 @@ import { Router } from '@angular/router';
 export class PostComponent implements OnInit {
 
   @Input() postData?: IPost;
-  
-  constructor(private profileService: ProfileService,private postService: PostService,private router: Router) { }
+  userData?: IProfile;
+
+  constructor(private profileService: ProfileService,private postService: PostService, private router: Router) { }
 
   ngOnInit(): void {
-    // this.profileService.getMyProfile()
-    // this.profileService.getUserProfile(2).subscribe((data)=> console.log(data));
+    this.profileService.getUserProfile(this.postData!.user_id).subscribe((userData)=> this.userData = userData);
   }
 
   cropStatus = false;
@@ -52,4 +54,8 @@ export class PostComponent implements OnInit {
   openPost(postId:any):void{
     this.router.navigate(["/post"],{queryParams:{id:postId}})
   }
+  navigateToUserPage(): void{
+    this.router.navigate(['user'],{ queryParams: { userId: this.postData?.user_id } });
+  }
+
 }

@@ -7,22 +7,16 @@
         <div class="col-md-8">
 
             <div class="d-flex align-items-center p-2 my-2">
-                <img src="assets/images/post-placeholder.jpg" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
-                <div class="d-block mx-3">
-                    <p class="text-body mx-1 my-0"><span class="lead fs-6">Krishna Sameer | </span> CEO </p>
-                    <span class="post-date mx-1 my-0">JAN 28, 2023</span>
-                </div>
-                <div class="flex-end align-self-center ">
-                    
+                <img src={{userData?.profile_photo}} alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
+                <div class="d-block mx-3" (click)="navigateToUserPage()">
+                    <p class="text-body mx-1 my-0"><span class="lead fs-6">{{userData?.first_name}} | </span> {{userData?.profession}} </p>
+                    <span class="post-date mx-1 my-0">{{postData?.last_edit | date: 'shortDate'}}</span>
                 </div>
             </div>
 
             <div class="my-2">
                 <h3 class="fs-4 my-3 text-body">{{postData?.post_title}}</h3>
                 <p>{{postData?.post_description}}</p>
-                <!-- <div class="hover-container">
-                    <a href="">Explore</a>
-                </div> -->
             </div>
         </div>
         <div class="col-md-1 text-center">

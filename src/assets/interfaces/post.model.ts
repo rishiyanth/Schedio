@@ -5,5 +5,8 @@ export interface IPost {
     post_gist: string,
     post_description: string,
     user_id: number;
+    time_created: Date,
+    last_edit: Date,
+    tech_stack: string[],
     likes: number,
 }

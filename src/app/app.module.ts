@@ -26,6 +26,7 @@ import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { PostComponent } from './post/post.component';
 import { SafePipe } from './safehtml.pipe';
 import { PostdetailComponent } from './postdetail/postdetail.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { PostdetailComponent } from './postdetail/postdetail.component';
     ImageCropperComponent,
     PostComponent,
     SafePipe,
-    PostdetailComponent
+    PostdetailComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

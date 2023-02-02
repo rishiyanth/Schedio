@@ -20,7 +20,7 @@ export class PostdetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(params =>{
       this.postService.getSelectedPost(params['id']).subscribe((post) => {
-        this.postService.getSelectedPostUserDetails(5).subscribe((res) =>{
+        this.postService.getSelectedPostUserDetails(2).subscribe((res) =>{
           this.selectedPostUserDetail = res
           console.log(this.selectedPostUserDetail)
         })
