@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { async, Observable } from 'rxjs';
 import { IPost } from 'src/assets/interfaces/post.model';
+import { IProfile } from 'src/assets/interfaces/profile.model';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { LoaderComponent } from '../loader/loader.component';
 import { PostService } from '../post/post.service';
+import { ProfileService } from '../profile/profile.service';
 
 @Component({
   selector: 'app-postdetail',
@@ -13,20 +15,20 @@ import { PostService } from '../post/post.service';
 })
 export class PostdetailComponent implements OnInit {
 
-  selectedPost?: any
-  selectedPostUserDetail?: any
-  constructor(private route: ActivatedRoute,private postService: PostService) { }
+  selectedPost?: IPost
+  selectedPostUserDetail?: IProfile
+  constructor(private route: ActivatedRoute,private postService: PostService, private profileService: ProfileService) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params =>{
-      this.postService.getSelectedPost(params['id']).subscribe((post) => {
-        this.postService.getSelectedPostUserDetails(2).subscribe((res) =>{
-          this.selectedPostUserDetail = res
-          console.log(this.selectedPostUserDetail)
+    this.route.queryParams.subscribe(params => {
+      this.postService.getSelectedPost(params['id']).subscribe((postData) => {
+        this.selectedPost = postData[0];
+        this.profileService.getUserProfile(this.selectedPost.user_id).subscribe((userData) => {
+          this.selectedPostUserDetail = userData;
         })
-        this.selectedPost = post
       })
-    });
+    })
+
   }
 
   isLiked = false;
@@ -40,5 +42,8 @@ export class PostdetailComponent implements OnInit {
     this.isSaved = !this.isSaved;
   }
 
+  deletePost(id: number): void{
+    this.postService.deleteMyPost(id).subscribe((res)=>{})
+  }
 
 }

@@ -1,49 +1,50 @@
-<div *ngFor="let post of selectedPost">
-    <div class="card post-card my-2">
-        <div class="row">
-            <div class="col-md-8">
-    
-                <div class="d-flex align-items-center p-2 my-2">
-                    <img src="assets/images/post-placeholder.jpg" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
-                    <div class="d-block mx-3">
-                        <p class="text-body mx-1 my-0"><span class="lead fs-6">{{selectedPostUserDetail.username}} | </span> {{selectedPostUserDetail.profession}} </p>
-                        <span class="post-date mx-1 my-0">JAN 28, 2023</span>
-                    </div>
-                    <div class="flex-end align-self-center ">
-                        
-                    </div>
+
+<div class="card post-card my-2">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="d-flex align-items-center p-2 my-2">
+                <img src="assets/images/post-placeholder.jpg" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
+                <div class="d-block mx-3">
+                    <p class="text-body mx-1 my-0"><span class="lead fs-6">{{selectedPostUserDetail?.username}} | </span> {{selectedPostUserDetail?.profession}} </p>
+                    <span class="post-date mx-1 my-0">JAN 28, 2023</span>
                 </div>
-    
-                <div class="my-2">
-                    <h3 class="fs-4 my-3 text-body">{{post?.post_title}}</h3>
-                    <p>{{post?.post_description}}</p>
-                    <!-- <div class="hover-container">
-                        <a href="">Explore</a>
-                    </div> -->
+                <div class="flex-end align-self-center ">
+                    
                 </div>
             </div>
-            <div class="col-md-3 p-4">
-                <img *ngIf="post?.image_urls.length !=0"  [src]="post?.image_urls" alt="post-placeholder" class="post-placeholder">
-                <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
-            </div>
-            <div class="col-md-1 text-center">
-                <div class="py-3">
-                    <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
-                </div>
-                <div class="py-3">
-                    <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill' : 'bi-heart'" (click)="toggleLike()"></i>
-                </div>
+
+            <div class="my-2">
+                <h3 class="fs-4 my-3 text-body">{{selectedPost?.post_title}}</h3>
+                <p>{{selectedPost?.post_description}}</p>
+                <!-- <div class="hover-container">
+                    <a href="">Explore</a>
+                </div> -->
             </div>
         </div>
-    
-        <hr class="my-0">
-    
-        <!-- <div>
-            <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
+        <div class="col-md-3 p-4">
+            <img *ngIf="selectedPost?.image_urls"  [src]="selectedPost?.image_urls" alt="post-placeholder" class="post-placeholder">
+            <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
-    
-        <div *ngIf="cropStatus">
-            <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
-        </div> -->
-    </div>    
-</div>
+        <div class="col-md-1 text-center">
+            <div class="py-3">
+                <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
+            </div>
+            <div class="py-3">
+                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill' : 'bi-heart'" (click)="toggleLike()"></i>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-dark w-25" (click)="deletePost(selectedPost!.id)">Delete</button>
+
+    <hr class="my-4">
+
+    <!-- <div>
+        <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
+    </div>
+
+    <div *ngIf="cropStatus">
+        <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
+    </div> -->
+</div>    
