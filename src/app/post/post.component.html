@@ -1,24 +1,33 @@
 <div class="card post-card my-2">
     <div class="row">
+
+        <!-- POST IMAGE -->
         <div class="col-md-3 p-4">
             <img [src]="postData?.image_urls" alt="post-placeholder" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
+
+        <!-- CONTENT SECTION -->
         <div class="col-md-8">
 
+            <!-- USER DATA -->
             <div class="d-flex align-items-center p-2 my-2">
-                <img src={{userData?.profile_photo}} alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
-                <div class="d-block mx-3" (click)="navigateToUserPage()">
+                <img src={{userData?.profile_photo}} alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle" role="button" (click)="navigateToUserPage()">
+                <div class="d-block mx-3">
                     <p class="text-body mx-1 my-0"><span class="lead fs-6">{{userData?.first_name}} | </span> {{userData?.profession}} </p>
                     <span class="post-date mx-1 my-0">{{postData?.last_edit | date: 'shortDate'}}</span>
                 </div>
             </div>
 
+            <!-- POST DATA -->
             <div class="my-2">
+                <p class="text-body-secondary fs-8 tech-stack-tag"><span *ngFor="let tech of postData?.tech_stack">{{tech | titlecase}} | </span></p>
                 <h3 class="fs-4 my-3 text-body">{{postData?.post_title}}</h3>
-                <p>{{postData?.post_description}}</p>
+                <p>{{postData?.post_gist}}</p>
             </div>
         </div>
+
+        <!-- ACTION SECTION -->
         <div class="col-md-1 text-center">
             <div class="py-3">
                 <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>

@@ -9,6 +9,8 @@ import { BACKEND_URL, CREATE_POST } from 'src/assets/constants/url';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { IPost } from 'src/assets/interfaces/post.model';
 import { PostService } from '../post/post.service';
+import { techstack } from 'src/assets/datastore/techstack-data';
+import { Techstack } from 'src/assets/interfaces/Techstack.model';
 
 @Component({
   selector: 'app-feed',
@@ -20,6 +22,7 @@ export class FeedComponent implements OnInit {
   posts: IPost[] = []
   postForm !: FormGroup
   modal:any
+  techstacks:Techstack[] = techstack;
 
   constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,private http:HttpClient, private postService: PostService) {
     config.backdrop = 'static';
@@ -33,6 +36,7 @@ export class FeedComponent implements OnInit {
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
       descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
+      techStack : new FormControl([""]),
       // postImage: new FormControl(null,Validators.required)
     })  
 
@@ -86,6 +90,7 @@ export class FeedComponent implements OnInit {
     postFormData.append('post_title',this.postform['titleInput'].value);
     postFormData.append('post_gist',this.postform['gistInput'].value);
     postFormData.append('post_description',this.postform['descriptionInput'].value);
+    postFormData.append('tech_stack',this.postform['techStack'].value);
     return postFormData
   }
 
