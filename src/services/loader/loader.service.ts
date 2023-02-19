@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Subject } from 'rxjs';
-import { BACKEND_URL, GET_MY_PROFILE, USER_EXISTS } from 'src/assets/constants/url';
+import { BACKEND_URL, GET_MY_PROFILE, GET_MY_USERNAME, USER_EXISTS } from 'src/assets/constants/url';
 
 
 @Injectable({
@@ -55,12 +55,14 @@ export class LoaderService {
 
   getUserData(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
-    this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
+    this.http.get(BACKEND_URL+GET_MY_USERNAME,{headers:logoutheader}).subscribe(
       (data:any)=>{
-        // console.log(data.email)
+        // console.log(logoutheader)
+        console.log(data.email)
         this.userData = data
       },
       (error)=>{
+        console.log(this.cookieservice.get('Token'))
         // this.router.navigate(['login'])
       }
     );

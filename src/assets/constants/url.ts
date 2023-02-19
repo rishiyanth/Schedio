@@ -14,7 +14,7 @@ export const GET_ALL_USERS = "user/all/";
 export const CREATE_USER_PROFILE = "user/createprofile/";
 export const GET_MY_PROFILE = "user/myprofile/";  //token required
 export const GET_USER_DATA = "user/id/";
-
+export const GET_MY_USERNAME = "user/getusername/" // token required
 // POST
 
 export const GET_MY_POSTS = "post/myposts/";    //token required
