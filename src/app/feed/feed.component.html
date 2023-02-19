@@ -1,4 +1,6 @@
 <div class="container-fluid bg-light border-start border-end">
+
+    <!-- Search bar -->
     <div>
         <div class="input-group w-80 p-4">
             <input type="text" class="form-control rounded-pill" placeholder="Search">
@@ -6,17 +8,22 @@
         </div>
         <hr>
     </div>
+
+    <!-- Start post form button -->
     <div>   
         <div class="d-flex ms-4 justify-content-center">
             <button type="button" class="w-75 btn btn-outline-dark rounded-pill" (click)="openScrollableContent(longContent)">Start a post</button>
         </div>
         <hr>
     </div>
+
+    <!-- Feed posts -->
     <div *ngFor="let post of posts; index as id;"> 
         <app-post [postData]="post"></app-post>
     </div>
 </div>
 
+<!-- Start Post Modal -->
 <form [formGroup]="postForm">
 <ng-template #longContent let-modal>
         <div class="modal-header">
@@ -53,6 +60,15 @@
                             <div class="form-text text-danger" *ngIf="postform['descriptionInput'].errors?.['required'] && postform['descriptionInput'].touched">
                                 Enter a description
                             </div>
+                        </div>
+
+                        <!-- TechStack input -->
+                        <div class="mb-3">
+                            <label for="techStack" class="mb-2">TechStack</label>
+                            <select formControlName="techStack" id="techStack" class="form-control newuser-form-input shadow-none selectpicker" multiple size="3">
+                              <option *ngFor="let techstack of techstacks" [ngValue]="techstack.name">{{techstack.name}}</option>
+                              <option ngValue="Other">Other</option>
+                            </select>
                         </div>
                         
                     </div>
