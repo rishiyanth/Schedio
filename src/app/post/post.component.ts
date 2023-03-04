@@ -23,8 +23,8 @@ export class PostComponent implements OnInit {
   }
 
   cropStatus = false;
-  imageTemp = "assets/images/rishidp.jpg";
-  imageOriginal = "assets/images/rishidp.jpg"
+  imageTemp = "assets/images/schedio_cover.jpg";
+  imageOriginal = "assets/images/schedio_cover.jpg"
 
   isLiked = false;
   isSaved = false;
@@ -45,6 +45,14 @@ export class PostComponent implements OnInit {
 
   toggleLike(): void{
     this.isLiked = !this.isLiked;
+    this.postService.likePost(this.postData?.id as number).subscribe((data)=>{
+      // console.log(data)
+      },
+      (error: any)=>{
+        console.log(error)
+      }
+    )
+    // console.log("LIked "+ this.postData?.id)
   }
 
   toggleSave(): void{

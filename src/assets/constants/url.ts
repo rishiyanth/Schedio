@@ -23,4 +23,5 @@ export const GET_POST_DATA = "post/userid/";
 export const CREATE_POST = "post/newpost/";
 export const GET_SELECTED_POST = "post/id/";
 export const DELETE_POST = "post/delete/";
+export const LIKE_POST = "post/like/";
 
