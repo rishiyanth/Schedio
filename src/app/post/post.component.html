@@ -21,7 +21,7 @@
 
             <!-- POST DATA -->
             <div class="my-2">
-                <p class="text-body-secondary fs-8 tech-stack-tag"><span *ngFor="let tech of postData?.tech_stack">{{tech | titlecase}} | </span></p>
+                <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of postData?.tech_stack">{{tech | titlecase}} | </span></p>
                 <h3 class="fs-4 my-3 text-body">{{postData?.post_title}}</h3>
                 <p>{{postData?.post_gist}}</p>
             </div>

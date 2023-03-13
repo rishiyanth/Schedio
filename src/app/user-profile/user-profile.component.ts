@@ -24,6 +24,8 @@ export class UserProfileComponent implements OnInit {
   posts: IPost[] = [];
   userId:number = 0;
 
+  isFollowed = false;
+
   ngOnInit(): void {
     this.loaderService.checkUser()
 
@@ -32,5 +34,13 @@ export class UserProfileComponent implements OnInit {
       this.profileService.getUserProfile(this.userId).subscribe((profile) => {this.profileData = profile;});
       this.postService.getUserPosts(this.userId).subscribe((posts) => {this.posts = posts;});
     })
+  }
+
+  followUser(): void {
+    this.isFollowed = true;
+  }
+
+  unfollowUser(): void {
+    this.isFollowed = false;
   }
 }

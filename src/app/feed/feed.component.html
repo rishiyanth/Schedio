@@ -1,10 +1,50 @@
 <div class="container-fluid bg-light border-start border-end">
 
     <!-- Search bar -->
-    <div>
+    <!-- <div>
         <div class="input-group w-80 p-4">
             <input type="text" class="form-control rounded-pill" placeholder="Search">
             <button type="button" class="btn btn-outline-dark rounded-pill ms-4"><i class="bi bi-search"></i></button>
+        </div>
+        <hr>
+    </div> -->
+
+    <div class="p-4">
+        <div class="w-60">
+            <!-- <ng-select [(ngModel)]="searchText">
+                <ng-option *ngFor="let post of posts" [value]="post.post_title">{{post.post_title}}</ng-option>
+            </ng-select> -->
+            <!-- <button type="button" class="btn btn-outline-dark rounded-pill ms-4"><i class="bi bi-search"></i></button> -->
+
+            <!-- <ng-select 
+                [items]="posts"
+                bindLabel="tech_stack"
+                bindValue="post_title"
+                groupBy="post_title"
+                [(ngModel)]="searchText">
+                <ng-template ng-optgroup-tmp let-item="item">
+                    {{item.post_title || 'Unnamed group'}}
+                </ng-template>
+            </ng-select> -->
+
+            <ng-select [items]="postsAll"
+                bindLabel="post_title"
+                bindValue="id"
+                [searchFn]="customSearchFn"
+                [editableSearchTerm]="true"
+                [closeOnSelect]="true"
+                [markFirst]="false"  
+                [(ngModel)]="selectedTechStackId"  
+                (close)="navigateToSelectedPost()"
+                [keyDownFn]="filterOnEnter"
+                (search)="whileSearch($event)"
+            >
+                <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                    <span [ngOptionHighlight]="search">{{item.post_title}}</span>
+                    <!-- {{item.post_title}}  --><br/>
+                    <small [ngOptionHighlight]="search" class="text-body-secondary">{{item.tech_stack}}</small>
+                </ng-template>
+            </ng-select>
         </div>
         <hr>
     </div>

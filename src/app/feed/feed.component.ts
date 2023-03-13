@@ -19,12 +19,15 @@ import { Techstack } from 'src/assets/interfaces/Techstack.model';
 })
 export class FeedComponent implements OnInit {
 
+  postsAll: IPost[] = []
   posts: IPost[] = []
   postForm !: FormGroup
   modal:any
   techstacks:Techstack[] = techstack;
+  searchText: string = "";
 
-  constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,private http:HttpClient, private postService: PostService) {
+  constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,
+    private http:HttpClient, private postService: PostService, private router: Router) {
     config.backdrop = 'static';
 		config.keyboard = false;
    }
@@ -42,7 +45,8 @@ export class FeedComponent implements OnInit {
 
     this.postService.getAllPosts().subscribe((posts) => {
       // console.log(posts)
-      this.posts = posts
+      this.posts = posts;
+      this.postsAll = posts;
     })
   }
 
@@ -92,6 +96,42 @@ export class FeedComponent implements OnInit {
     postFormData.append('post_description',this.postform['descriptionInput'].value);
     postFormData.append('tech_stack',this.postform['techStack'].value);
     return postFormData
+  }
+
+  // Search related function
+
+  selectedTechStackId = ""
+  currentSearchTerm: string = "";
+  currentSearchItems: IPost[] = [];
+  counter = 0;
+
+  customSearchFn(term: string, item: IPost) {
+    term = term.toLowerCase();
+    // const termTitleCase = term.charAt(0).toUpperCase() + term.slice(1);
+    return item.tech_stack.join("").toLowerCase().includes(term) || item.post_title.toLowerCase().indexOf(term) > -1
+    // const techStackLowerCase = item.tech_stack.map((stack)=> stack.toLowerCase());
+  }
+
+  navigateToSelectedPost(){
+    if(this.selectedTechStackId){
+      this.router.navigate(["/post"],{queryParams:{id:this.selectedTechStackId}})
+    }
+  }
+
+  filterOnEnter = ($event: KeyboardEvent): boolean => {
+    if($event.key == "Enter"){
+      // this.renderFilteredPosts()
+      this.posts = this.currentSearchItems;
+    }
+    return true;
+  }
+
+  whileSearch = ($event: { term: string; items: IPost[]; }) => {
+    this.currentSearchTerm = $event.term;
+    this.currentSearchItems = []
+    $event.items.forEach((item: IPost) => {
+      this.currentSearchItems.push(item);
+    })
   }
 
 }

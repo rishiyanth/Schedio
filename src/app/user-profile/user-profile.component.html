@@ -21,10 +21,21 @@
                         <a href="#"><i class="bi bi-github"></i></a>
                         <a href="#"><i class="bi bi-instagram"></i></a></div>
                 </div>
-                <!-- <div class="col-4">
+                <div class="col-4 d-flex" *ngIf="isFollowed">
                     <button type="button" class="btn btn-dark mx-1">Message</button>
-                    <button type="button" class="btn btn-dark mx-1">Following</button>
-                </div> -->
+                    <div ngbDropdown class="">
+                        <button type="button" class="btn btn-dark mx-1" id="dropdownBasic1" ngbDropdownToggle>
+                            Following
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button ngbDropdownItem class="btn btn-outline-danger">Block</button>
+                            <button ngbDropdownItem class="btn btn-secondary" (click)="unfollowUser()">Unfollow</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="!isFollowed">
+                    <button type="button" class="btn btn-dark mx-1" (click)="followUser()">Follow</button>
+                </div>
             </div>
         </div>
     </div>
@@ -46,5 +57,3 @@
 
             
 </div>
-
-
