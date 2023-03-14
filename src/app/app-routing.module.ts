@@ -5,6 +5,7 @@ import { ChatSectionComponent } from './chat-section/chat-section.component';
 import { FeedComponent } from './feed/feed.component';
 import { LoginComponent } from './login/login.component';
 import { NewuserComponent } from './newuser/newuser.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 import { PostdetailComponent } from './postdetail/postdetail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'user',component:UserProfileComponent},
   {path: 'chat', component:ChatSectionComponent},
   {path: 'post',component:PostdetailComponent},
+  {path: 'notifications',component:NotificationsComponent},
   {path: '',component: LoginComponent}
 ];
 

@@ -30,6 +30,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 import { ChatpageComponent } from './chatpage/chatpage.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ChatpageComponent } from './chatpage/chatpage.component';
     SafePipe,
     PostdetailComponent,
     UserProfileComponent,
-    ChatpageComponent
+    ChatpageComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
