@@ -1,1 +1,55 @@
-<p>notifications works!</p>
+<!-- <ul ngbNav #nav="ngbNav" class="nav-tabs justify-content-center mt-4 "> -->
+<ul ngbNav #nav="ngbNav" class="nav-pills nav-fill justify-content-center my-4 notification-nav-pill">
+    <li ngbNavItem>
+      <a ngbNavLink>General</a>
+      <ng-template ngbNavContent>
+
+        <div class="lead my-2">Recent Activity</div>
+
+        <div *ngFor="let notification of notificationsData" class="card notification-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <img src="https://picsum.photos/id/118/500/500" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle" role="button">
+                        <p class="mx-3">{{notification.message}}</p>
+                    </div>
+                    <small class="text-muted">{{notification.time}}</small>
+                </div>
+            </div>
+            <hr class="my-0">
+        </div>
+          
+    </ng-template>
+    </li>
+    <li ngbNavItem>
+      <a ngbNavLink>Requests</a>
+      <ng-template ngbNavContent>
+
+        <div class="lead my-2">Recent Requests</div>
+
+        <div *ngFor="let notification of notificationsData" class="card notification-card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div class="d-flex">
+                        <img src="https://picsum.photos/id/118/500/500" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle" role="button">
+                        <p class="mx-3">{{notification.message}}</p>
+                    </div>
+
+                    <div class="d-flex justify-content-end align-items-center">
+                        <div class="justify-content-end mx-2">
+                            <small class="text-muted">{{notification.time}}</small>
+                        </div>
+                        <i class="fs-3 mx-1 bi bi-check2" role="button"></i>
+                        <i class="fs-3 mx-1 bi bi-x" role="button"></i>
+                    </div>
+                </div>
+
+
+            </div>
+            <hr class="my-0">
+        </div>
+
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
