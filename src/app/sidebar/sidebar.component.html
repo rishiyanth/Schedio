@@ -1,8 +1,10 @@
 <div class="sticky-top border-start border-end"> 
   <div class="mx-3 d-flex flex-column flex-shrink-0 vh-100">
     <a href="/" class="d-flex align-items-center my-3 mb-md-0 me-md-auto  text-decoration-none">
-      <img src="assets/images/schedio-logo.png" alt="profile-image" width="70" height="70"/>
-      <span class="fs-4 sidenav-title text-dark ms-2">SCHEDIO</span>
+      <div class="mb-auto">
+        <img src="assets/images/schedio-logo.png" alt="profile-image" width="70" height="70"/>
+        <span class= "fs-4 sidenav-title text-dark ms-2">SCHEDIO</span>
+      </div>
     </a>
     <hr>
   
@@ -26,6 +28,13 @@
           <a [routerLink]="['/newuser']" class="nav-link text-dark">
             <i class="bi bi-person-plus me-2 fs-5"></i>
           New User
+          </a>
+          <hr/>
+      </li>
+      <li>
+          <a [routerLink]="['/chat']" class="nav-link text-dark">
+          <i class="bi bi-chat-fill me-2 fs-5"></i>
+            Messages
           </a>
           <hr/>
       </li>
