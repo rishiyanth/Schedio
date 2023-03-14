@@ -40,6 +40,7 @@ export class FeedComponent implements OnInit {
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
       descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
       techStack : new FormControl([""]),
+      file : new FormControl("")
       // postImage: new FormControl(null,Validators.required)
     })  
 
@@ -54,16 +55,18 @@ export class FeedComponent implements OnInit {
 
   imageTemp = ''
   imageOriginal = ''
+  imageFile : any
 
   openScrollableContent(longContent: any) {
 		this.modalService.open(longContent, { scrollable: true,size: 'lg' });
 	}
 
   renderImage(imageURL: any): void{
-    console.log("Received blob")
+    console.log("Received file")
     console.log(imageURL)
 
     this.imageTemp = imageURL;
+    this.imageFile = new File([this.imageTemp],"name");
 
     // let blob = new Blob([value], {type: 'text/plain'});
     // this.imageTemp = URL.createObjectURL(blob)
@@ -97,6 +100,7 @@ export class FeedComponent implements OnInit {
     postFormData.append('post_gist',this.postform['gistInput'].value);
     postFormData.append('post_description',this.postform['descriptionInput'].value);
     postFormData.append('tech_stack',this.postform['techStack'].value);
+    postFormData.append('file',this.imageFile)
     return postFormData
   }
 
