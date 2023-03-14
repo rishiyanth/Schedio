@@ -167,7 +167,7 @@
 /*buttons*/
 #msform .action-button {
     width: 100px;
-    background: #ee0979;
+    background: black;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -178,7 +178,7 @@
 }
 
 #msform .action-button:hover, #msform .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+    box-shadow: 0 0 0 2px white, 0 0 0 3px black;
 }
 
 #msform .action-button-previous {
@@ -267,7 +267,7 @@
 /*marking active/completed steps green*/
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before, #progressbar li.active:after {
-    background: #ee0979;
+    background: black;
     color: white;
 }
 
@@ -322,3 +322,9 @@
   //              margin-left: 0%;width: 100%;
   //          }
   // }
+
+  .newuser-form-input{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #555555;
+  }

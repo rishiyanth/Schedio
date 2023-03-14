@@ -14,66 +14,66 @@
             <div class="row">
               <div class="form-floating my-3 col-md-6">
                 <!-- Firstname -->
-                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="firstname" id="firstname" placeholder="*First Name">
-                <label for="firstname">*First name</label>
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="firstname" id="firstname">
+                <label for="firstname" class="mx-2">* First name</label>
                 <div *ngIf="basic_step && basicDetails.controls['firstname'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['firstname'].errors?.['required'] || basic['username'].touched">
-                    *Firstname required
+                    * Firstname required
                   </div>
                 </div>
               </div>
   
               <div class="form-floating my-3 col-md-6">
                 <!-- Last name -->
-                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="lastname" id="lastname" placeholder="Last Name">
-                <label for="lastname">Last name</label>
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="lastname" id="lastname">
+                <label for="lastname" class="mx-2">Last name</label>
               </div>  
             </div>
             
             <div class="row">
               <div class="form-floating my-3 col-md-6">
                 <!-- Date of birth -->
-                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="dob" id="dob" placeholder="*Date of birth" onfocus="(this.type='date')">
-                <label for="dob">*Date of birth</label>
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="dob" id="dob" onfocus="(this.type='date')">
+                <label for="dob" class="mx-2">* Date of birth</label>
                 <div *ngIf="basic_step && basicDetails.controls['dob'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['dob'].errors?.['required'] || basic['dob'].touched">
-                    *Date of birth required
+                    * Date of birth required
                   </div>
                 </div>
               </div>
                 
               <div class="form-floating my-3 col-md-6">
                 <!-- Gender -->
-                <div id="radio-group" class="form-control newuser-form-input shadow-none ">
-                  <td class="col-md-3 ">
-                    <input type="radio" id='male' name="gender" value="Male" formControlName="gender" placeholder="Gender">
+                <div id="radio-group" class="form-control newuser-form-input shadow-none">
+                  <td class="col-md-3">
+                    <input type="radio" id='male' name="gender" value="Male" formControlName="gender">
                     <label for = "male">Male</label>
                   </td>
                   <td class="col-md-3">
-                    <input type="radio" id='female' name="gender" value="Female" formControlName="gender" placeholder="Gender">
+                    <input type="radio" id='female' name="gender" value="Female" formControlName="gender">
                     <label for = "female">Female</label>
                   </td>
                   <td class="col-md-3">
-                    <input type="radio" id='prefer' name="gender" value="None" formControlName="gender" placeholder="Gender">
+                    <input type="radio" id='prefer' name="gender" value="None" formControlName="gender">
                     <label for = "prefer">Prefer not to say</label>
                   </td>            
                 </div>
                 <div *ngIf="basic_step && basicDetails.controls['gender'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['gender'].errors?.['required'] || basic['gender'].touched">
-                    *Choose a gender
+                    * Choose a gender
                   </div>
                 </div>
-                <label for="radio-group">*Gender</label>
+                <label for="radio-group" class="mx-2">* Gender</label>
               </div>
             </div>
 
             <div class="form-floating my-3">
               <!-- Email -->
-              <input class="form-control newuser-form-input shadow-none" type="text" formControlName="email" id="email" name="email" placeholder="Email"/>
-              <label for="email">*Email</label>
+              <input class="form-control newuser-form-input shadow-none" type="text" formControlName="email" id="email" name="email"/>
+              <label for="email">* Email</label>
               <div *ngIf="basic_step && basicDetails.controls['email'].errors">
                 <div class="form-text text-danger d-flex float-left" *ngIf="basic['email'].errors?.['required'] || basic['email'].touched">
-                  *Email required
+                  * Email required
                 </div>
               </div>
             </div>
@@ -85,10 +85,10 @@
                   <!-- <option [ngValue]="null" disabled selected>*Select Country</option> -->
                   <option *ngFor="let country of countries" [ngValue]="country.name">{{country.name}}</option>
                 </select>
-                <label for="country">*Country</label>
+                <label for="country" class="mx-2">* Country</label>
                 <div *ngIf="basic_step && basicDetails.controls['country'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['country'].errors?.['required'] || basic['country'].touched">
-                    *Country required
+                    * Country required
                   </div>
                 </div>
               </div>
@@ -96,11 +96,11 @@
               <div class="form-floating my-3 col-md-6">
                 <!-- Phone Number -->
                 <!-- <input class="form-control newuser-form-input shadow-none" type="text" id="phonecode" name="phonecode" value="{{countries[this.basic['country'].value].code}}"> -->
-                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="phone" id="phone" name="phone" placeholder="Phone"/>
-                <label for="phone">*Phone</label>
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="phone" id="phone" name="phone" />
+                <label for="phone" class="mx-2">* Phone</label>
                 <div *ngIf="basic_step && basicDetails.controls['phone'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['phone'].errors?.['required'] || basic['phone'].touched">
-                    *Phone required
+                    * Phone required
                   </div>
                 </div>
               </div>
@@ -115,18 +115,18 @@
                   <option value="Professor">Professor</option>
                   <option value="Software Engineer">Software Engineer</option>
                 </select>
-                <label for="profession">*Profession</label>
+                <label for="profession" class="mx-2">*Profession</label>
                 <div *ngIf="basic_step && basicDetails.controls['profession'].errors">
                   <div class="form-text text-danger d-flex float-left" *ngIf="basic['profession'].errors?.['required'] || basic['profession'].touched">
-                    *Profession required
+                    * Profession required
                   </div>
                 </div>
               </div>
   
               <div class="form-floating my-3 col-md-6">
                 <!-- Organisation -->
-                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="organisation" id="organisation" placeholder="Organisation">
-                <label for="organisation">Organisation</label>
+                <input class="form-control newuser-form-input shadow-none" type="text" formControlName="organisation" id="organisation">
+                <label for="organisation" class="mx-2">Organisation</label>
               </div>
             </div>
             
@@ -154,7 +154,7 @@
               </div>
           </div>
           <div class="form-text text-danger d-flex float-left" *ngIf="alert_techstack">
-            *Select atleast one tool
+            * Select atleast one tool
           </div>
           <input (click)="previous()" type="button" name="previous" class="previous btn btn-dark my-3 px-3 rounded-pill mx-2" value="Previous"/>
           <input (click)="submit()"type="submit" name="submit" class="submit btn btn-dark my-3 px-3 rounded-pill" value="Submit"/>

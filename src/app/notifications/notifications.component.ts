@@ -39,6 +39,4 @@ export class NotificationsComponent implements OnInit {
       message: "You have a new message from Tom Williams",
     },
   ];
-  
-
 }
