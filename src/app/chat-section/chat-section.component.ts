@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IPost } from 'src/assets/interfaces/post.model';
+import { IProfile } from 'src/assets/interfaces/profile.model';
+import { ProfileService } from '../profile/profile.service';
 
 @Component({
   selector: 'app-chat-section',
@@ -9,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 export class ChatSectionComponent implements OnInit {
 
   chatProfile : any
-
+  myProfile?: IProfile = {};
   contacts = [
     {
       id:1,
@@ -44,9 +47,10 @@ export class ChatSectionComponent implements OnInit {
   
   ]
 
-  constructor() { }
+  constructor(private profileService:ProfileService) { }
 
   ngOnInit(): void {
+    this.profileService.getMyProfile().subscribe((profile) => {this.myProfile = profile;console.log(profile)});
   }
 
   openChat(id:any){
