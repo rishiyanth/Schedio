@@ -50,4 +50,9 @@ export class PostService {
   likePost(id:number): Observable<any>{
     return this.httpClientHandler.get(BACKEND_URL+LIKE_POST+id,{headers:this.token});
   }
+
+  savePost(id:number): Observable<any>{
+    // return this.httpClientHandler.get(BACKEND_URL+LIKE_POST+id,{headers:this.token});
+    return of(true);
+  }
 }

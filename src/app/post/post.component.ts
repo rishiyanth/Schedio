@@ -50,17 +50,21 @@ export class PostComponent implements OnInit {
   toggleLike(): void{
     this.isLiked = !this.isLiked;
     this.postService.likePost(this.postData?.id as number).subscribe((data)=>{
-      // console.log(data)
       },
       (error: any)=>{
         console.log(error)
       }
     )
-    // console.log("LIked "+ this.postData?.id)
   }
 
   toggleSave(): void{
     this.isSaved = !this.isSaved;
+    this.postService.savePost(this.postData?.id as number).subscribe((data)=>{
+    },
+    (error: any)=>{
+      console.log(error)
+    }
+  )
   }
 
   openPost(postId:any):void{
