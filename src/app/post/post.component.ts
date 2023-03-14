@@ -16,7 +16,11 @@ export class PostComponent implements OnInit {
   @Input() postData?: IPost;
   userData?: IProfile;
 
-  constructor(private profileService: ProfileService,private postService: PostService, private router: Router) { }
+  constructor(
+    private profileService: ProfileService,
+    private postService: PostService, 
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.profileService.getUserProfile(this.postData!.user_id).subscribe((userData)=> this.userData = userData);

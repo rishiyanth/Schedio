@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IPost } from 'src/assets/interfaces/post.model';
@@ -11,7 +11,14 @@ import { TitleStrategy } from '@angular/router';
 })
 export class PostService {
 
-  constructor(private http:HttpClient, private cookieService: CookieService) {}
+  constructor(
+    private http: HttpClient, 
+    private cookieService: CookieService,
+    private httpClientHandler: HttpClient,
+    private httpBackendHandler: HttpBackend,
+  ) {
+    this.httpClientHandler = new HttpClient(httpBackendHandler);
+  }
   
   token = new HttpHeaders().set('Authorization',this.cookieService.get('Token'))
 
@@ -41,6 +48,6 @@ export class PostService {
   }
 
   likePost(id:number): Observable<any>{
-    return this.http.get(BACKEND_URL+LIKE_POST+id,{headers:this.token});
+    return this.httpClientHandler.get(BACKEND_URL+LIKE_POST+id,{headers:this.token});
   }
 }
