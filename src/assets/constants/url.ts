@@ -25,3 +25,7 @@ export const GET_SELECTED_POST = "post/id/";
 export const DELETE_POST = "post/delete/";
 export const LIKE_POST = "post/like/";
 
+//COLLABORATE
+
+export const SEND_EMAIL = "email/id";
+

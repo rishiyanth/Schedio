@@ -17,9 +17,11 @@ export class PostdetailComponent implements OnInit {
 
   selectedPost?: IPost
   selectedPostUserDetail?: IProfile
-  constructor(private route: ActivatedRoute,private postService: PostService, private profileService: ProfileService) { }
+  constructor(private route: ActivatedRoute,private postService: PostService, private profileService: ProfileService, private loaderService: LoaderService) { }
 
   ngOnInit(): void {
+    
+    this.loaderService.getUserProfile();
     this.route.queryParams.subscribe(params => {
       this.postService.getSelectedPost(params['id']).subscribe((postData) => {
         this.selectedPost = postData[0];
@@ -44,6 +46,13 @@ export class PostdetailComponent implements OnInit {
 
   deletePost(id: number): void{
     this.postService.deleteMyPost(id).subscribe((res)=>{})
+  }
+
+  collaborate(id: any){
+    // console.log(this.loaderService.userProfile.id)
+    // console.log(this.selectedPostUserDetail)
+    // console.log("Id:"+id)
+    this.postService.sendEmail(id) //sending email
   }
 
 }

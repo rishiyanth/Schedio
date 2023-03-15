@@ -12,6 +12,7 @@ import { BACKEND_URL, GET_MY_PROFILE, GET_MY_USERNAME, USER_EXISTS } from 'src/a
 export class LoaderService {
   isLoading = new Subject<boolean>();
   userData:any
+  userProfile: any
  
   constructor(private cookieservice: CookieService,private http: HttpClient,private router: Router) {
     
@@ -60,6 +61,21 @@ export class LoaderService {
         // console.log(logoutheader)
         console.log(data.email)
         this.userData = data
+      },
+      (error)=>{
+        console.log(this.cookieservice.get('Token'))
+        // this.router.navigate(['login'])
+      }
+    );
+  }
+
+  getUserProfile(){
+    let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
+    this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
+      (data:any)=>{
+        // console.log(logoutheader)
+        console.log(data.email)
+        this.userProfile = data
       },
       (error)=>{
         console.log(this.cookieservice.get('Token'))
