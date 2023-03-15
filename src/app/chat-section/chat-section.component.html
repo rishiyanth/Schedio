@@ -16,7 +16,10 @@
 
           <div class="list-group list-group-flush border-bottom scrollarea">
 
-              <a class="list-group-item list-group-item-action py-3 lh-sm" aria-current="true" *ngFor="let contact of contacts" (click)="openChat(contact.id)">
+              <a class="contact-list list-group-item list-group-item-action py-3 lh-sm" aria-current="true" 
+                *ngFor="let contact of contacts; let idx=index;" (click)="openChat(contact.id); changeSelectedIndex(idx);"
+                [ngClass]="{'active' : idx == selectedIndex}"
+                >
                 <div class="media">
                   <div class="row">
                     <div class="col-md-2">

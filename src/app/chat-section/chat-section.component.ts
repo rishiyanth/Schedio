@@ -13,6 +13,7 @@ export class ChatSectionComponent implements OnInit {
 
   chatProfile : any
   myProfile?: IProfile = {};
+  selectedIndex: number = 0;
   contacts = [
     {
       id:1,
@@ -35,13 +36,25 @@ export class ChatSectionComponent implements OnInit {
     {
       id:4,
       name: 'Groot',
-      content: 'Im Groot.Im Groot.Im Groot.Im Groot.Im Groot.Im Groot.',
+      content: 'Im Groot.Im Groot.Im Groot.Im Groot.Im Groot.',
       lastTexted: 'tue'
     },
     {
       id:5,
       name: 'Batman',
       content: 'Im Batman.',
+      lastTexted: 'thurs'
+    },
+    {
+      id:6,
+      name: 'Iron Man',
+      content: 'Im IronMan.',
+      lastTexted: 'thurs'
+    },
+    {
+      id:7,
+      name: 'Thanos',
+      content: 'I dont even know who you are.',
       lastTexted: 'thurs'
     },
   
@@ -59,6 +72,9 @@ export class ChatSectionComponent implements OnInit {
         this.chatProfile = data
       }
     })
-  } 
+  }
 
+  changeSelectedIndex(id: number){
+    this.selectedIndex = id;
+  }
 }
