@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { async, Observable } from 'rxjs';
 import { IPost } from 'src/assets/interfaces/post.model';
 import { IProfile } from 'src/assets/interfaces/profile.model';
@@ -17,7 +18,14 @@ export class PostdetailComponent implements OnInit {
 
   selectedPost?: IPost
   selectedPostUserDetail?: IProfile
-  constructor(private route: ActivatedRoute,private postService: PostService, private profileService: ProfileService, private loaderService: LoaderService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private postService: PostService, 
+    private profileService: ProfileService, 
+    private loaderService: LoaderService, 
+    private router: Router, 
+    private modalService: NgbModal
+  ) { }
 
   ngOnInit(): void {
     
@@ -54,5 +62,13 @@ export class PostdetailComponent implements OnInit {
     // console.log("Id:"+id)
     this.postService.sendEmail(id) //sending email
   }
+
+  navigateToUserPage(): void{
+    this.router.navigate(['user'],{ queryParams: { userId: this.selectedPost?.user_id } });
+  }
+
+  open(content: any) {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
+	}
 
 }

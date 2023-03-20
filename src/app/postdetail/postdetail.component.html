@@ -1,10 +1,13 @@
 
 <div class="card post-card my-2">
     <div class="row">
+
+        <!-- CONTENT SECTION -->
         <div class="col-md-8">
 
+            <!-- USER DATA -->
             <div class="d-flex align-items-center p-2 my-2">
-                <img src="assets/images/post-placeholder.jpg" alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle">
+                <img src="assets/images/post-placeholder.jpg" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" (click)="navigateToUserPage()">
                 <div class="d-block mx-3">
                     <p class="text-body mx-1 my-0"><span class="lead fs-6">{{selectedPostUserDetail?.username}} | </span> {{selectedPostUserDetail?.profession}} </p>
                     <span class="post-date mx-1 my-0">JAN 28, 2023</span>
@@ -14,19 +17,38 @@
                 </div>
             </div>
 
+            <!-- POST DATA -->
             <div class="my-2">
                 <h3 class="fs-4 my-3 text-body">{{selectedPost?.post_title}}</h3>
                 <p>{{selectedPost?.post_description}}</p>
-                <!-- <div class="hover-container">
-                    <a href="">Explore</a>
-                </div> -->
+
+                <!-- COLLABORATORS -->
+                <p class="fs-5">Collaborators</p>
+                <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2 flex-wrap">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                </div>
             </div>
+
         </div>
+
+        <!-- POST IMAGE -->
         <div class="col-md-3 p-4">
-            <img *ngIf="selectedPost?.image_urls"  [src]="selectedPost?.image_urls" alt="post-placeholder" class="post-placeholder">
+            <img *ngIf="selectedPost?.image_urls"  [src]="selectedPost?.image_urls" alt="post" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
+
+        <!-- ACTION SECTION -->
         <div class="col-md-1 text-center">
+            <div class="py-3">
+                <span class="status-icon" placement="top" ngbTooltip="Active">
+                    <i class="bi bi-circle-fill fs-6"></i>
+                </span>
+            </div>
             <div class="py-3">
                 <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
             </div>
@@ -37,7 +59,7 @@
     </div>
 
     <!-- <button class="btn btn-dark w-25" (click)="deletePost(selectedPost!.id)">Delete</button> -->
-    <button class="btn btn-dark w-25" (click)="collaborate(selectedPostUserDetail?.id)">Collaborate</button>
+    <button class="btn btn-dark w-25" (click)="collaborate(selectedPostUserDetail?.id)" (click)="open(content)">Collaborate</button>
 
     <hr class="my-4">
 
@@ -49,3 +71,45 @@
         <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
     </div> -->
 </div>    
+
+
+<!-- MODAL FOR COLLABORATION -->
+
+<!-- Modal -->
+<ng-template #content let-modal>
+	<div class="modal-header">
+        <div>
+            <h4 class="modal-title" id="modal-basic-title">Collaborate Request</h4>
+        </div>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+
+        <div>
+            <p>Collaboration with {{selectedPost?.post_title}}</p>
+            <ul class="confirmation-message">
+                <li>Ensure confidentiality of the information shared.</li>
+                <li>Respect the privacy of the project owner.</li>
+                <li>The owner will be accepting the request.</li>
+                <li>Do not misuse the code for other purposes.</li>
+                <li>Follow moral and ethical principles.</li>
+            </ul>
+        </div>
+        <div>
+            <input class="form-check-input" type="checkbox" value="" id="termsAndCondCheck">
+            <label class="form-check-label ms-2 confirmation-message" for="termsAndCondCheck">
+                I agree to all the above terms & conditions.
+            </label>
+        </div>
+        <div class="my-4">
+            <p>Leave a note for {{selectedPostUserDetail?.username}}</p>
+            <textarea class="form-control" aria-label="With textarea"></textarea>
+            <p class="confirmation-message justify-content-start mt-2">*Upon confirmation an email will be sent to the project owner</p>
+        </div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Confirm</button>
+	</div>
+</ng-template>
+

@@ -19,6 +19,15 @@
   font-size: small;
 }
 
-.icon{
-  color: red;
+.status-icon{
+  i{
+    color: #EB9532;
+    // color: #66cc33;
+    // color: #656565;
+    // color: #66cc33;
+  }
+}
+
+.like-button{
+  transition: 0.3s ease 0s;
 }
