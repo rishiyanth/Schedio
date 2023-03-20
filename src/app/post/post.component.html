@@ -3,7 +3,7 @@
 
         <!-- POST IMAGE -->
         <div class="col-md-3 p-4">
-            <img [src]="postData?.image_urls" alt="post-placeholder" class="post-placeholder">
+            <img [src]="postData?.image_urls" alt="post" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
 
@@ -12,7 +12,7 @@
 
             <!-- USER DATA -->
             <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2">
-                <img src={{userData?.profile_photo}} alt="post-profile-placeholder" width="40px" class="post-profile-placeholder rounded-circle" role="button" (click)="navigateToUserPage()">
+                <img src={{userData?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" role="button" (click)="navigateToUserPage()">
                 <div class="d-block mx-3">
                     <p class="text-body mx-1 my-0"><span class="lead fs-6">{{userData?.first_name}} | </span> {{userData?.profession}} </p>
                     <span class="post-date mx-1 my-0">{{postData?.last_edit | date: 'shortDate'}}</span>
@@ -30,10 +30,15 @@
         <!-- ACTION SECTION -->
         <div class="col-md-1 text-center">
             <div class="py-3">
+                <span class="status-icon" placement="top" ngbTooltip="Active">
+                    <i class="bi bi-circle-fill fs-6"></i>
+                </span>
+            </div>
+            <div class="py-3">
                 <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
             </div>
             <div class="py-3">
-                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill icon' : 'bi-heart'" (click)="toggleLike()"></i>
+                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill text-danger like-button' : 'bi-heart'" (click)="toggleLike()"></i>
             </div>
             <div class="py-3">
                 <i class="bi bi-arrow-right fs-4" role="button" (click)="openPost(postData?.id)"></i>
@@ -43,13 +48,6 @@
 
     <hr class="my-0">
 
-    <!-- <div>
-        <button class="btn btn-dark" (click)="toggleCropStatus()">Edit</button>
-    </div>
-
-    <div *ngIf="cropStatus">
-        <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
-    </div> -->
 </div>
 
 
