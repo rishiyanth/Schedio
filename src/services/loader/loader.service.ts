@@ -13,6 +13,7 @@ export class LoaderService {
   isLoading = new Subject<boolean>();
   userData:any
   userProfile: any
+  status?: boolean
  
   constructor(private cookieservice: CookieService,private http: HttpClient,private router: Router) {
     
@@ -26,18 +27,29 @@ export class LoaderService {
      this.isLoading.next(false);
   }
 
+  // checkUser(){
+  //   let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
+  //   this.http.get(BACKEND_URL+USER_EXISTS,{headers:logoutheader}).subscribe(
+  //     (data:any)=>{
+  //       // console.log(data)
+  //       if(!data.user_exists)
+  //         this.router.navigate(['login'])
+  //     },
+  //     (error)=>{
+  //       this.router.navigate(['login'])
+  //     }
+  //   )
+  // }
+
   checkUser(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
     this.http.get(BACKEND_URL+USER_EXISTS,{headers:logoutheader}).subscribe(
       (data:any)=>{
-        // console.log(data)
-        if(!data.user_exists)
-          this.router.navigate(['login'])
-      },
-      (error)=>{
-        this.router.navigate(['login'])
+        this.status = data.user_exists
+        // console.log(data.user_exists)
       }
-    )
+    );
+    return this.status
   }
 
   checkLogin(){

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'src/services/auth/auth.guard';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { ChatSectionComponent } from './chat-section/chat-section.component';
 import { FeedComponent } from './feed/feed.component';
@@ -12,13 +13,13 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
-  {path:'newuser',component:NewuserComponent},
-  {path:'feed',component:FeedComponent},
-  {path:'profile',component:ProfileComponent},
-  {path:'user',component:UserProfileComponent},
-  {path: 'chat', component:ChatSectionComponent},
-  {path: 'post',component:PostdetailComponent},
-  {path: 'notifications',component:NotificationsComponent},
+  {path:'newuser',component:NewuserComponent,canActivate:[AuthGuard]},
+  {path:'feed',component:FeedComponent,canActivate:[AuthGuard]},
+  {path:'profile',component:ProfileComponent,canActivate:[AuthGuard]},
+  {path:'user',component:UserProfileComponent,canActivate:[AuthGuard]},
+  {path: 'chat', component:ChatSectionComponent,canActivate:[AuthGuard]},
+  {path: 'post',component:PostdetailComponent,canActivate:[AuthGuard]},
+  {path: 'notifications',component:NotificationsComponent,canActivate:[AuthGuard]},
   {path: '',component: LoginComponent}
 ];
 

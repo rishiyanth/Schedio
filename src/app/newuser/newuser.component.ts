@@ -33,7 +33,7 @@ export class NewuserComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private loaderService: LoaderService,private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
-    this.loaderService.checkUser();
+    // this.loaderService.checkUser();
     this.loaderService.getUserData();
     this.basicDetails = this.formBuilder.group({
       firstname: ['',Validators.required],

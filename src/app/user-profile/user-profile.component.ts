@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
   isFollowed = false;
 
   ngOnInit(): void {
-    this.loaderService.checkUser()
+    // this.loaderService.checkUser()
 
     this.route.queryParams.subscribe((params) => {
       this.userId = params['userId'];
