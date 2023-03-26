@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IProfile } from 'src/assets/interfaces/profile.model';
-import { BACKEND_URL, GET_MY_PROFILE } from 'src/assets/constants/url';
+import { BACKEND_URL, GET_ALL_USERS, GET_MY_PROFILE } from 'src/assets/constants/url';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
@@ -20,6 +20,10 @@ export class ProfileService {
 
   getUserProfile(id: number): Observable<IProfile> {
     return this.http.get<IProfile>(BACKEND_URL + `user/id/${id}`);
+  }
+
+  getAllUserProfile(): Observable<IProfile[]>{
+    return this.http.get<IProfile[]>(BACKEND_URL + GET_ALL_USERS);
   }
 
 }

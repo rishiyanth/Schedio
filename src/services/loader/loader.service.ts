@@ -86,8 +86,9 @@ export class LoaderService {
     this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(logoutheader)
-        console.log(data.email)
+        console.log(data)
         this.userProfile = data
+        return data
       },
       (error)=>{
         console.log(this.cookieservice.get('Token'))

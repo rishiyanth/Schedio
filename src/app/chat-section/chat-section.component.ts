@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IPost } from 'src/assets/interfaces/post.model';
 import { IProfile } from 'src/assets/interfaces/profile.model';
 import { ProfileService } from '../profile/profile.service';
+import { TalkService } from 'src/services/chat/talk.service';
+import Talk from 'talkjs';
 
 @Component({
   selector: 'app-chat-section',
@@ -10,71 +12,62 @@ import { ProfileService } from '../profile/profile.service';
 })
 
 export class ChatSectionComponent implements OnInit {
+  private inbox!: Talk.Inbox;
+  private session!: Talk.Session;
+  currentUser?: IProfile = {};
+  otherUsers?: IProfile[] = [];
+  selectedUser?: IProfile;
+  otherUser?: IProfile;
+  otherSearchedUsers: IProfile[] = [];
+  selectedTechStackId = ""
+  currentSearchTerm: string = "";
+  currentSearchItems: IProfile[] = [];
+  counter = 0;
 
-  chatProfile : any
-  myProfile?: IProfile = {};
-  selectedIndex: number = 0;
-  contacts = [
-    {
-      id:1,
-      name: 'Krishna Sameer',
-      content: 'dei mama',
-      lastTexted: 'wed'
-    },
-    {
-      id:2,
-      name: 'Rishiyanth',
-      content: 'worst ra',
-      lastTexted: 'tue'
-    },
-    {
-      id:3,
-      name: 'Chris Pratt',
-      content: 'how you doing?',
-      lastTexted: 'tue'
-    },
-    {
-      id:4,
-      name: 'Groot',
-      content: 'Im Groot.Im Groot.Im Groot.Im Groot.Im Groot.',
-      lastTexted: 'tue'
-    },
-    {
-      id:5,
-      name: 'Batman',
-      content: 'Im Batman.',
-      lastTexted: 'thurs'
-    },
-    {
-      id:6,
-      name: 'Iron Man',
-      content: 'Im IronMan.',
-      lastTexted: 'thurs'
-    },
-    {
-      id:7,
-      name: 'Thanos',
-      content: 'I dont even know who you are.',
-      lastTexted: 'thurs'
-    },
-  
-  ]
 
-  constructor(private profileService:ProfileService) { }
-
-  ngOnInit(): void {
-    this.profileService.getMyProfile().subscribe((profile) => {this.myProfile = profile;console.log(profile)});
+  @ViewChild('talkjsContainer') talkjsContainer!: ElementRef;
+  constructor(private talkService: TalkService,private profileService: ProfileService){
   }
 
-  openChat(id:any){
-    this.contacts.filter((data)=>{
-      if(data.id == id){
-        this.chatProfile = data
-      }
+  async ngOnInit() {
+    this.currentUser = await this.profileService.getMyProfile().toPromise();
+    this.selectedUser = this.currentUser
+    this.otherUsers = await this.profileService.getAllUserProfile().toPromise();
+    this.otherSearchedUsers = this.otherUsers!
+    this.createInbox();
+  }
+
+  async openChat(){
+    if(this.selectedTechStackId){
+      this.selectedUser = await this.profileService.getUserProfile(+this.selectedTechStackId).toPromise();
+      console.log(this.selectedUser)
+      this.createInbox()
+    }
+  }
+
+  private async createInbox() {
+    const session = await this.talkService.createCurrentSession(this.currentUser);
+    // console.log(this.currentUser)
+    this.inbox = await this.talkService.createInbox(session,this.selectedUser);
+    this.inbox.mount(this.talkjsContainer.nativeElement);
+  }
+
+  
+
+  whileSearch = ($event: { term: string; items: IProfile[]; }) => {
+    this.currentSearchTerm = $event.term;
+    this.currentSearchItems = []
+    $event.items.forEach((item: IProfile) => {
+      this.currentSearchItems.push(item);
     })
   }
 
-  changeSelectedIndex(id: number){
-    this.selectedIndex = id;
+  filterOnEnter = ($event: KeyboardEvent): boolean => {
+    if($event.key == "Enter"){
+      // this.renderFilteredPosts()
+      this.otherSearchedUsers = this.currentSearchItems;
+    }
+    return true;
   }
+
 }
