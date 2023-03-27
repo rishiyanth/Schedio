@@ -9,4 +9,6 @@ export interface IPost {
     last_edit: Date,
     tech_stack: string[],
     likes: number,
+    status: string,
+    collaborators: string[] //Subject to changes
 }

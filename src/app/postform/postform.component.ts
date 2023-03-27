@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { BACKEND_URL, CREATE_POST } from 'src/assets/constants/url';
+import { BACKEND_URL, CREATE_POST, EDIT_POST } from 'src/assets/constants/url';
 import { techstack } from 'src/assets/datastore/techstack-data';
+import { IPost } from 'src/assets/interfaces/post.model';
 import { Techstack } from 'src/assets/interfaces/Techstack.model';
+import { LoaderService } from 'src/services/loader/loader.service';
 
 @Component({
   selector: 'app-postform',
@@ -12,19 +14,21 @@ import { Techstack } from 'src/assets/interfaces/Techstack.model';
 })
 export class PostformComponent implements OnInit {
 
+  @Input() postData?: IPost;
+
   postForm !: FormGroup
-  loaderService: any;
   techstacks:Techstack[] = techstack;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private loaderService: LoaderService) { }
 
   ngOnInit(): void {
     this.postForm = new FormGroup({
-      titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
-      gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
-      descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
-      techStack : new FormControl([""]),
-      file : new FormControl("")
+      titleInput: new FormControl(this.postData?.post_title,[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
+      gistInput: new FormControl(this.postData?.post_gist,[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
+      descriptionInput: new FormControl(this.postData?.post_description,[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
+      techStack : new FormControl("",[Validators.required]),
+      status: new FormControl("",[Validators.required]),
+      // file : new FormControl("")
       // postImage: new FormControl(null,Validators.required)
     })
   }
@@ -58,5 +62,12 @@ export class PostformComponent implements OnInit {
     return postFormData
   }
 
+  updatePost(){
+    var postFormData: any = this.getPostFormData()
+
+    this.http.put(BACKEND_URL+EDIT_POST+this.postData?.id,postFormData).subscribe((data)=>{
+      console.log("Done", data)
+    })
+  }
 
 }

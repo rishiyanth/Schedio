@@ -21,6 +21,7 @@ export const GET_MY_POSTS = "post/myposts/";    //token required
 export const GET_ALL_POSTS = "post/all/";
 export const GET_POST_DATA = "post/userid/";
 export const CREATE_POST = "post/newpost/";
+export const EDIT_POST = "post/edit/";
 export const GET_SELECTED_POST = "post/id/";
 export const DELETE_POST = "post/delete/";
 export const LIKE_POST = "post/like/";

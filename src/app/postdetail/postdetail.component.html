@@ -176,7 +176,7 @@
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
     </div>
     <div class="modal-body">
-        <app-postform></app-postform>
+        <app-postform [postData]="selectedPost"></app-postform>
     </div>
     <div class="modal-footer">
         <!-- <button type="button" class="btn btn-primary" [disabled]="this.postForm.invalid"  (click)="uploadPost(); modal.close('Close click')">Post</button> -->

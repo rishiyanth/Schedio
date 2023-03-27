@@ -39,7 +39,9 @@ export class FeedComponent implements OnInit {
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
       descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
-      techStack : new FormControl([""]),
+      techStack : new FormControl("",[Validators.required]),
+      status: new FormControl("",[Validators.required]),
+      // collaborators: new FormControl("",[Validators.required]),
       file : new FormControl("")
       // postImage: new FormControl(null,Validators.required)
     })  
@@ -58,7 +60,7 @@ export class FeedComponent implements OnInit {
   imageFile : any
 
   openScrollableContent(longContent: any) {
-		this.modalService.open(longContent, { scrollable: true,size: 'lg' });
+		this.modalService.open(longContent, { scrollable: true,size: 'xl'  });
 	}
 
   renderImage(imageURL: any): void{
@@ -78,7 +80,7 @@ export class FeedComponent implements OnInit {
   }
 
   uploadPost(){
-
+    // console.log(this.postForm.controls)
     var postFormData: any = this.getPostFormData()
     postFormData.append('file',this.imageTemp)
     console.log(postFormData.get("file"))
@@ -101,6 +103,7 @@ export class FeedComponent implements OnInit {
     postFormData.append('post_description',this.postform['descriptionInput'].value);
     postFormData.append('tech_stack',this.postform['techStack'].value);
     postFormData.append('file',this.imageFile)
+    // console.log(this.postform['techStack'].value)
     return postFormData
   }
 

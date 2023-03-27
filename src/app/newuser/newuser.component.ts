@@ -36,12 +36,12 @@ export class NewuserComponent implements OnInit {
     // this.loaderService.checkUser();
     this.loaderService.getUserData();
     this.basicDetails = this.formBuilder.group({
-      firstname: ['Jagajeet',Validators.required],
-      lastname: ['Puttaa'],
+      firstname: ['',Validators.required],
+      lastname: [''],
       dob: ['',Validators.required],
-      gender: ['Male',Validators.required], 
-      email: ['jagajeet@student.tce.edu', Validators.required],
-      phone: ['7010570545',Validators.required],
+      gender: ['',Validators.required], 
+      email: ['', Validators.required],
+      phone: ['',Validators.required],
       country: [null,Validators.required],
       profession: [null,Validators.required],
       organisation: ['TCE']

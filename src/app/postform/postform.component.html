@@ -1,5 +1,6 @@
-    <div>
-
+<div class="overflow-auto">
+    <form [formGroup]="postForm">
+        
         <!-- Title input -->
         <div class="form-floating mb-3">
             <input type="text" class="form-control" formControlName="titleInput" id="titleInput" placeholder="Project title">
@@ -27,42 +28,102 @@
             </div>
         </div>
 
-        <!-- TechStack input -->
-        <div class="mb-">
-            <label for="techStack" class="mb-2">TechStack</label>
-
-            <!-- <select formControlName="techStack" id="techStack" class="form-control newuser-form-input shadow-none selectpicker" multiple size="3">
-              <option *ngFor="let techstack of techstacks" [ngValue]="techstack.name">{{techstack.name}}</option>
-              <option ngValue="Other">Other</option>
-            </select> -->
-
-            <!-- <ng-select
-                [items]="techstacks"
-                [multiple]="true"
-                [closeOnSelect]="false"
-                [searchable]="false"
-                bindLabel="name"
-                placeholder="Select people"
-                appendTo=".modal-body"
-            >
-            </ng-select> -->
-
-            <ng-select 
-                appearance="outline" 
-                [searchable]="false" 
-                [clearable]="false" 
-                [multiple]="true"
-                [closeOnSelect]="false"
-                labelForId="techStack" 
-                formControlName="techStack"
-                [isOpen]="true"
-            >
-                <ng-option *ngFor="let techstack of techstacks" value="techstack.name">
-                    <img src={{techstack.img}} width="30px" height="30px" class="rounded"/>
-                    {{techstack.name}}
-                </ng-option>
-            </ng-select>
-
+        <!-- Status of the project -->
+        <div class="form-floating mb-3">
+            <select formControlName="status" id="status" class="form-control">
+              <option [ngValue]="null" disabled selected>*Status of the project</option>
+              <option value="Student">Ongoing</option>
+              <option value="Professor">Completed</option>
+              <option value="Software Engineer">Archived</option>
+            </select>
+            <label for="status">Status of the project</label>
+            <div class="form-text text-danger" *ngIf="postform['status'].errors?.['required'] && postform['status'].touched">
+                Select the current status of the project
+            </div>
         </div>
         
+        <!-- TechStack input -->        
+        <ngb-accordion #acc="ngbAccordion">
+            <ngb-panel>
+                <ng-template ngbPanelTitle>
+                    <span>Tech Stack</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                        <!-- <div class="mb-3">             -->
+                            <!-- <select formControlName="techStack" id="techStack" class="form-control newuser-form-input shadow-none selectpicker" multiple size="3">
+                                <option *ngFor="let techstack of techstacks" [ngValue]="techstack.name">{{techstack.name}}</option>
+                                <option ngValue="Other">Other</option>
+                            </select> -->
+
+                            <!-- <ng-select
+                                [items]="techstacks"
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                [searchable]="false"
+                                bindLabel="name"
+                                placeholder="Select people"
+                                appendTo=".modal-body"
+                            >
+                            </ng-select> -->
+
+                            <ng-select 
+                                appearance="outline" 
+                                [searchable]="false" 
+                                [clearable]="false" 
+                                [multiple]="true"
+                                [closeOnSelect]="false"
+                                labelForId="techStack" 
+                                placeholder="Choose tech stack for your project"
+                                formControlName="techStack"
+                                [(ngModel)]="postData!.tech_stack"
+                            >
+                                <ng-option *ngFor="let techstack of techstacks" value="{{techstack.name}}">
+                                    <img src={{techstack.img}} width="30px" height="30px" class="rounded"/>
+                                    {{techstack.name}}
+                                </ng-option>
+                            </ng-select>
+
+                        <!-- </div> -->
+                </ng-template>   
+            </ngb-panel>
+
+            <!-- Current Collaborators -->
+            <!-- <ngb-panel>
+                <ng-template ngbPanelTitle>
+                    <span>Collaborators</span>
+                </ng-template>
+                <ng-template ngbPanelContent>
+                    <div class="form-floating mb-3">
+                        <ng-select [items]="postsAll"
+                            bindLabel="post_title"
+                            bindValue="id"
+                            [searchFn]="customSearchFn"
+                            [editableSearchTerm]="true"
+                            [closeOnSelect]="true"
+                            [markFirst]="false"  
+                            [(ngModel)]="selectedTechStackId"  
+                            (close)="navigateToSelectedPost()"
+                            [keyDownFn]="filterOnEnter"
+                            (search)="whileSearch($event)"
+                            placeholder="Add collaborators"
+                        >
+                            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+                                <span [ngOptionHighlight]="search">{{item.post_title}}</span>
+                                {{item.post_title}} 
+                                <br/>
+                                <small [ngOptionHighlight]="search" class="text-body-secondary">{{item.tech_stack}}</small>
+                            </ng-template>
+                        </ng-select>
+                        <div class="form-text text-danger" *ngIf="postform['gistInput'].errors?.['required'] && postform['gistInput'].touched">
+                            Enter a gist
+                        </div>                                
+                    </div>
+                </ng-template>
+            </ngb-panel> -->
+        </ngb-accordion> 
+
+    </form>     
+    <div class="p-3">
+        <button type="button" class="btn btn-primary" (click)="updatePost()">Save Changes</button>
     </div>
+</div>
