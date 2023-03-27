@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loaderService.checkUser()
-    this.profileService.getMyProfile().subscribe((profile) => {this.profileData = profile;console.log(profile)});
-    this.postService.getMyPosts().subscribe((posts) => {this.posts = posts; console.log(posts)});
+    this.profileService.getMyProfile().subscribe((profile) => {this.profileData = profile;});
+    this.postService.getMyPosts().subscribe((posts) => {this.posts = posts;});
   }
 }

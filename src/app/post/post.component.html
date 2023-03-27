@@ -29,11 +29,30 @@
 
         <!-- ACTION SECTION -->
         <div class="col-md-1 text-center">
+            
+
             <div class="py-3">
                 <span class="status-icon" placement="top" ngbTooltip="Active">
                     <i class="bi bi-circle-fill fs-6"></i>
                 </span>
             </div>
+
+            <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+                <button
+                    type="button"
+                    class="btn me-2"
+                    id="dropdownManual"     
+                    (focus)="myDrop.open()"
+                >
+                    <i class="bi bi-three-dots"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem>Edit</button>
+                    <button ngbDropdownItem>Report</button>
+                    <button ngbDropdownItem>Delete</button>
+                </div>
+            </div>
+            
             <div class="py-3">
                 <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
             </div>

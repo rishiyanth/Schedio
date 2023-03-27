@@ -7,7 +7,7 @@
 
             <!-- USER DATA -->
             <div class="d-flex align-items-center p-2 my-2">
-                <img src="assets/images/post-placeholder.jpg" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" (click)="navigateToUserPage()">
+                <img src="assets/images/post-placeholder.jpg" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" (click)="navigateToUserProfile(selectedPost?.id)">
                 <div class="d-block mx-3">
                     <p class="text-body mx-1 my-0"><span class="lead fs-6">{{selectedPostUserDetail?.username}} | </span> {{selectedPostUserDetail?.profession}} </p>
                     <span class="post-date mx-1 my-0">JAN 28, 2023</span>
@@ -24,13 +24,14 @@
 
                 <!-- COLLABORATORS -->
                 <p class="fs-5">Collaborators</p>
-                <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2 flex-wrap">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
-                    <img src={{selectedPostUserDetail?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle mx-1" role="button">
+                <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2 flex-wrap" (click)="open(collaboratorsModal)">
+                    <img *ngFor="let collaborator of collaborators" 
+                        src={{collaborator.profile_photo}} 
+                        alt="post-profile" 
+                        width="40px" 
+                        class="post-profile-placeholder rounded-circle mx-1" 
+                        role="button"
+                    >
                 </div>
             </div>
 
@@ -49,17 +50,34 @@
                     <i class="bi bi-circle-fill fs-6"></i>
                 </span>
             </div>
+
+            <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+                <button
+                    type="button"
+                    class="btn me-2"
+                    id="dropdownManual"     
+                    (focus)="myDrop.open()"
+                >
+                    <i class="bi bi-three-dots"></i>
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownManual">
+                    <button ngbDropdownItem (click)="open(editPostModal)">Edit</button>
+                    <button ngbDropdownItem>Report</button>
+                    <button ngbDropdownItem>Delete</button>
+                </div>
+            </div>
+            
             <div class="py-3">
                 <i class="bi fs-4" role="button" [ngClass]="isSaved ? 'bi-bookmark-fill' : 'bi-bookmark'" (click)="toggleSave()"></i>
             </div>
             <div class="py-3">
-                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill' : 'bi-heart'" (click)="toggleLike()"></i>
+                <i class="bi fs-4" role="button" [ngClass]="isLiked ? 'bi-heart-fill text-danger like-button' : 'bi-heart'" (click)="toggleLike()"></i>
             </div>
         </div>
     </div>
 
     <!-- <button class="btn btn-dark w-25" (click)="deletePost(selectedPost!.id)">Delete</button> -->
-    <button class="btn btn-dark w-25" (click)="collaborate(selectedPostUserDetail?.id)" (click)="open(content)">Collaborate</button>
+    <button class="btn btn-dark w-25" (click)="collaborate(selectedPostUserDetail?.id)" (click)="open(collaborationRequestModal)">Collaborate</button>
 
     <hr class="my-4">
 
@@ -73,10 +91,10 @@
 </div>    
 
 
-<!-- MODAL FOR COLLABORATION -->
+<!-- MODAL FOR COLLABORATION REQUEST -->
 
 <!-- Modal -->
-<ng-template #content let-modal>
+<ng-template #collaborationRequestModal let-modal>
 	<div class="modal-header">
         <div>
             <h4 class="modal-title" id="modal-basic-title">Collaborate Request</h4>
@@ -113,3 +131,54 @@
 	</div>
 </ng-template>
 
+<!-- MODAL TO VIEW COLLABORATORS -->
+
+<!-- Modal -->
+<ng-template #collaboratorsModal let-modal>
+	<div class="modal-header">
+        <div>
+            <h4 class="modal-title" id="modal-basic-title">Collaborators</h4>
+        </div>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+
+        <div *ngFor="let collaborator of collaborators">
+            <div  class="d-flex justify-content-between">
+                <div class="d-flex">
+                    <div>
+                        <img src="{{collaborator.profile_photo}}" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle">
+                    </div>
+                    <div class="mx-3">
+                        <p class="fs-6 my-0">{{collaborator.first_name}}  {{collaborator.last_name}}</p>
+                        <p class="m-0 confirmation-message">{{collaborator.profession}}</p>
+                    </div>
+                </div>
+
+                <div>
+                    <i class="bi bi-arrow-right fs-5" role="button" (click)="navigateToUserProfile(collaborator.id);modal.close('Navigating to profile')"></i>
+                </div>
+            </div>
+            <hr class="my-2">
+        </div>
+
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark">Close</button>
+	</div>
+</ng-template>
+
+
+<ng-template #editPostModal let-modal>
+	<div class="modal-header">
+        <h4 class="modal-title">Edit Post</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+        <app-postform></app-postform>
+    </div>
+    <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary" [disabled]="this.postForm.invalid"  (click)="uploadPost(); modal.close('Close click')">Post</button> -->
+    </div>
+</ng-template>
