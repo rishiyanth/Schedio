@@ -111,7 +111,8 @@ export class FeedComponent implements OnInit {
     postFormData.append('post_gist',this.postform['gistInput'].value);
     postFormData.append('post_description',this.postform['descriptionInput'].value);
     postFormData.append('tech_stack',this.postform['techStack'].value);
-    postFormData.append('collaboraters',this.postform['techStack'].value);
+    postFormData.append('collaboraters', this.postform['collaborators'].value);
+    postFormData.append('status',this.postform['status'].value);
     postFormData.append('file',this.imageFile)
     // console.log(this.postform['techStack'].value)
     return postFormData
