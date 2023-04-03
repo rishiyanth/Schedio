@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { LoaderService } from 'src/services/loader/loader.service';
 import { Newuser } from 'src/assets/interfaces/Newuser.model';
-import { BACKEND_URL, USER_LOGIN, USER_REGISTER } from 'src/assets/constants/url';
+import { BACKEND_URL, GET_MY_PROFILE, USER_LOGIN, USER_REGISTER } from 'src/assets/constants/url';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgIf } from '@angular/common';
 @Component({
@@ -64,12 +64,15 @@ export class LoginComponent implements OnInit {
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
+      // this.loaderService.getUserProfile()
+      this.loaderService.setUserData();
+      this.loaderService.setUserProfile();
       this.router.navigate(['feed'])
     },
     (error)=>{
       this.invalid_credentials = true
     })
-    
+  
   }
 
   validateSignupUser(){
@@ -86,11 +89,13 @@ export class LoginComponent implements OnInit {
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
+      this.loaderService.setUserData();
       this.router.navigate(['newuser'])
     },
     (error)=>{
       this.invalid_username = true
     })
+
   }
 
 }

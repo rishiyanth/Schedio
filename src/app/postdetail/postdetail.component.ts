@@ -17,6 +17,7 @@ import { ProfileService } from '../profile/profile.service';
 export class PostdetailComponent implements OnInit {
   selectedPost?: IPost;
   selectedPostUserDetail?: IProfile;
+  userDetail: any
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
@@ -27,7 +28,9 @@ export class PostdetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loaderService.getUserProfile();
+    // this.loaderService.getUserProfile();
+    // this.userDetail = localStorage.getItem('UserDetail')
+    // this.userDetail = JSON.parse(this.userDetail)
     this.route.queryParams.subscribe((params) => {
       this.postService.getSelectedPost(params['id']).subscribe((postData) => {
         this.selectedPost = postData[0];

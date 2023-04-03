@@ -169,23 +169,22 @@
                                     </ng-template>
                                     <ng-template ngbPanelContent>
                                         <div class="form-floating mb-3">
-                                            <ng-select [items]="postsAll"
-                                                bindLabel="post_title"
+                                            <ng-select [items]="profilesAll"
+                                                bindLabel="username"
                                                 bindValue="id"
-                                                [searchFn]="customSearchFn"
+                                                [searchFn]="customSearchCollaboratorsFn"
                                                 [editableSearchTerm]="true"
                                                 [closeOnSelect]="true"
-                                                [markFirst]="false"  
-                                                [(ngModel)]="selectedTechStackId"  
-                                                (close)="navigateToSelectedPost()"
-                                                [keyDownFn]="filterOnEnter"
-                                                (search)="whileSearch($event)"
+                                                [markFirst]="false"   
+                                                (search)="whileSearchCollaborators($event)"
+                                                [(ngModel)]="selectedTechStackId"
+                                                [multiple]="true"
                                                 placeholder="Add collaborators"
+                                                formControlName="collaborators"
                                             >
                                                 <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
-                                                    <span [ngOptionHighlight]="search">{{item.post_title}}</span>
+                                                    <span [ngOptionHighlight]="search">{{item.username}}</span>
                                                     <!-- {{item.post_title}}  --><br/>
-                                                    <small [ngOptionHighlight]="search" class="text-body-secondary">{{item.tech_stack}}</small>
                                                 </ng-template>
                                             </ng-select>
                                             <div class="form-text text-danger" *ngIf="postform['gistInput'].errors?.['required'] && postform['gistInput'].touched">

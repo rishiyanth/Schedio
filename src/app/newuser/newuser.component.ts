@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, UrlSegment } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { async } from 'rxjs';
 import { BACKEND_URL, CREATE_USER_PROFILE } from 'src/assets/constants/url';
 import { countries } from 'src/assets/datastore/country-data';
@@ -20,7 +21,9 @@ export class NewuserComponent implements OnInit {
   selectedItemsList:any = [];
   checkedIDs:any = [];
   alert_techstack = false;
-  user: any = this.loaderService.userData
+  user: any
+  userDetail: any
+
 
   public techstack:any = techstack
   public countries:any = countries
@@ -30,21 +33,26 @@ export class NewuserComponent implements OnInit {
   techstack_step = false;
   step = 1;
 
-  constructor(private formBuilder: FormBuilder,private loaderService: LoaderService,private http:HttpClient,private router:Router) { }
+  constructor(private formBuilder: FormBuilder,private loaderService: LoaderService,private http:HttpClient,private router:Router,private cookieService: CookieService) { }
 
   ngOnInit(): void {
     // this.loaderService.checkUser();
-    this.loaderService.getUserData();
+    this.user = localStorage.getItem("User")
+    this.user = JSON.parse(this.user)
+
+    this.userDetail = localStorage.getItem('UserDetail')
+    this.userDetail = JSON.parse(this.userDetail)
+
     this.basicDetails = this.formBuilder.group({
       firstname: ['',Validators.required],
       lastname: [''],
       dob: ['',Validators.required],
       gender: ['',Validators.required], 
-      email: ['', Validators.required],
+      email: [this.user.email, Validators.required],
       phone: ['',Validators.required],
       country: [null,Validators.required],
       profession: [null,Validators.required],
-      organisation: ['TCE']
+      organisation: ['']
     });
   }
 
@@ -94,6 +102,7 @@ export class NewuserComponent implements OnInit {
       else { 
         this.alert_techstack = false
         this.http.post(BACKEND_URL+CREATE_USER_PROFILE,newUserData).subscribe((data) =>{
+          this.loaderService.setUserProfile()
           this.router.navigate(['feed']);
         },
         (error)=>{
@@ -105,7 +114,7 @@ export class NewuserComponent implements OnInit {
 
   getNewUserData():any{
     var newUserData: any = new FormData();
-    newUserData.append('username', this.loaderService.userData.username);
+    newUserData.append('username', this.user.username);
     newUserData.append('first_name', this.basic['firstname'].value);
     newUserData.append('last_name', this.basic['lastname'].value);
     newUserData.append('tech_stack' , this.checkedIDs);

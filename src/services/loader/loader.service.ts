@@ -66,29 +66,33 @@ export class LoaderService {
     )
   }
 
-  getUserData(){
+  setUserData(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
     this.http.get(BACKEND_URL+GET_MY_USERNAME,{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(logoutheader)
-        console.log(data.email)
-        this.userData = data
+        // this.userData = data
+        // console.log(this.userData)
+        localStorage.setItem('User',JSON.stringify(data));
+        // console.log(data)
+        console.log(localStorage.getItem('User'))
       },
       (error)=>{
         console.log(this.cookieservice.get('Token'))
         // this.router.navigate(['login'])
       }
     );
+    // return this.userData
   }
 
-  getUserProfile(){
+  setUserProfile(){
     let logoutheader = new HttpHeaders().set('Authorization',this.cookieservice.get('Token'))
     this.http.get(BACKEND_URL+GET_MY_PROFILE,{headers:logoutheader}).subscribe(
       (data:any)=>{
         // console.log(logoutheader)
-        console.log(data)
-        this.userProfile = data
-        return data
+        // console.log(data)
+        localStorage.setItem('UserDetail',JSON.stringify(data))
+        console.log(localStorage.getItem('UserDetail'))
       },
       (error)=>{
         console.log(this.cookieservice.get('Token'))

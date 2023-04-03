@@ -25,6 +25,8 @@ export class SidebarComponent implements OnInit {
 
     })
     this.cookieService.delete('Token')
+    localStorage.removeItem('User')
+    localStorage.removeItem('UserDetail')
     // console.log(this.cookieService.get('Token'))
     this.route.navigate(['login'])
   }

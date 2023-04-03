@@ -11,6 +11,8 @@ import { IPost } from 'src/assets/interfaces/post.model';
 import { PostService } from '../post/post.service';
 import { techstack } from 'src/assets/datastore/techstack-data';
 import { Techstack } from 'src/assets/interfaces/Techstack.model';
+import { ProfileService } from '../profile/profile.service';
+import { IProfile } from 'src/assets/interfaces/profile.model';
 
 @Component({
   selector: 'app-feed',
@@ -21,27 +23,31 @@ export class FeedComponent implements OnInit {
 
   postsAll: IPost[] = []
   posts: IPost[] = []
+  profilesAll: IProfile[] = []
   postForm !: FormGroup
   modal:any
   techstacks:Techstack[] = techstack;
   searchText: string = "";
+  user: any
 
   constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,
-    private http:HttpClient, private postService: PostService, private router: Router) {
+    private http:HttpClient, private postService: PostService, private router: Router,private profileService: ProfileService) {
     config.backdrop = 'static';
 		config.keyboard = false;
    }
 
   ngOnInit(): void {
     // this.loaderService.checkUser()
-    this.loaderService.getUserData();
+    // this.loaderService.getUserData();
+    this.user = localStorage.getItem('User');
+    this.user = JSON.parse(this.user);
     this.postForm = new FormGroup({
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
       descriptionInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
       techStack : new FormControl("",[Validators.required]),
       status: new FormControl("",[Validators.required]),
-      // collaborators: new FormControl("",[Validators.required]),
+      collaborators: new FormControl("",[Validators.required]),
       file : new FormControl("")
       // postImage: new FormControl(null,Validators.required)
     })  
@@ -50,6 +56,10 @@ export class FeedComponent implements OnInit {
       // console.log(posts)
       this.posts = posts;
       this.postsAll = posts;
+    })
+
+    this.profileService.getAllUserProfile().subscribe((profiles) =>{
+      this.profilesAll = profiles
     })
   }
 
@@ -97,11 +107,12 @@ export class FeedComponent implements OnInit {
 
   getPostFormData(): FormData{
     var postFormData = new FormData();
-    postFormData.append('user_id',this.loaderService.userData.id)
+    postFormData.append('user_id',this.user.id)
     postFormData.append('post_title',this.postform['titleInput'].value);
     postFormData.append('post_gist',this.postform['gistInput'].value);
     postFormData.append('post_description',this.postform['descriptionInput'].value);
     postFormData.append('tech_stack',this.postform['techStack'].value);
+    postFormData.append('collaboraters',this.postform['techStack'].value);
     postFormData.append('file',this.imageFile)
     // console.log(this.postform['techStack'].value)
     return postFormData
@@ -112,6 +123,7 @@ export class FeedComponent implements OnInit {
   selectedTechStackId = ""
   currentSearchTerm: string = "";
   currentSearchItems: IPost[] = [];
+  currentSearchProfiles: IProfile[] = [];
   counter = 0;
 
   customSearchFn(term: string, item: IPost) {
@@ -140,6 +152,21 @@ export class FeedComponent implements OnInit {
     this.currentSearchItems = []
     $event.items.forEach((item: IPost) => {
       this.currentSearchItems.push(item);
+    })
+  }
+
+  customSearchCollaboratorsFn(term: string, item: IProfile) {
+    term = term.toLowerCase();
+    // const termTitleCase = term.charAt(0).toUpperCase() + term.slice(1);
+    return item.username!.toLowerCase().indexOf(term) > -1
+    // const techStackLowerCase = item.tech_stack.map((stack)=> stack.toLowerCase());
+  }
+
+  whileSearchCollaborators = ($event: { term: string; items: IProfile[]; }) => {
+    this.currentSearchTerm = $event.term;
+    this.currentSearchProfiles = []
+    $event.items.forEach((item: IProfile) => {
+      this.currentSearchProfiles.push(item);
     })
   }
 
