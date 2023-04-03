@@ -39,16 +39,18 @@ export class NewuserComponent implements OnInit {
     // this.loaderService.checkUser();
 
     this.basicDetails = this.formBuilder.group({
-      firstname: ['',Validators.required],
-      lastname: [''],
-      dob: ['',Validators.required],
-      gender: ['',Validators.required], 
+      firstname: [this.user.first_name,Validators.required],
+      lastname: [this.user.last_name],
+      dob: [this.userDetail.dob,Validators.required],
+      gender: [this.userDetail.gender,Validators.required],  //look into this
       email: [this.user.email, Validators.required],
-      phone: ['',Validators.required],
-      country: [null,Validators.required],
-      profession: [null,Validators.required],
-      organisation: ['']
+      phone: [this.userDetail.phone,Validators.required],   //look into this
+      country: [this.userDetail.country,Validators.required],
+      profession: [this.userDetail.profession,Validators.required],
+      organisation: [this.userDetail.organisation]
     });
+
+    this.checkedIDs = this.userDetail.tech_stack //look into this
   }
 
   changeSelection(event:any) {

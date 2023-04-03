@@ -21,8 +21,9 @@ import { IProfile } from 'src/assets/interfaces/profile.model';
 })
 export class FeedComponent implements OnInit {
 
-  postsAll: IPost[] = []
+  postsLiked: IPost[] = []
   posts: IPost[] = []
+  postsAll: IPost[] = []
   profilesAll: IProfile[] = []
   postForm !: FormGroup
   modal:any
@@ -59,6 +60,10 @@ export class FeedComponent implements OnInit {
 
     this.profileService.getAllUserProfile().subscribe((profiles) =>{
       this.profilesAll = profiles
+    })
+
+    this.postService.getLikedPosts().subscribe((posts)=>{
+      this.postsLiked = posts;
     })
   }
 
@@ -170,4 +175,17 @@ export class FeedComponent implements OnInit {
     })
   }
 
+  userLiked(id:any):boolean{
+    for (var post of this.postsLiked){
+      if(post.id==id){
+        return true
+      } 
+    }
+    return false
+  }
+
+  userSaved():boolean{
+    return false
+  }
 }
+

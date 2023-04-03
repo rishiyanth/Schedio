@@ -25,6 +25,8 @@ export const EDIT_POST = "post/edit/";
 export const GET_SELECTED_POST = "post/id/";
 export const DELETE_POST = "post/delete/";
 export const LIKE_POST = "post/like/";
+export const USER_LIKED_POST = "user/getlikedposts/"; //token required
+export const POST_LIKED_BOOLEAN = "post/userlike/"; //token required
 
 //COLLABORATE
 

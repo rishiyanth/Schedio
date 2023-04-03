@@ -18,6 +18,10 @@ export class PostdetailComponent implements OnInit {
   selectedPost?: IPost;
   selectedPostUserDetail?: IProfile;
   userDetail: any
+
+  isLiked = false;
+  isSaved = false;
+
   constructor(
     private route: ActivatedRoute,
     private postService: PostService,
@@ -40,11 +44,15 @@ export class PostdetailComponent implements OnInit {
             this.selectedPostUserDetail = userData;
           });
       });
+
+      this.postService.getPostLikedStatus(params['id']).subscribe((data) => { 
+        this.isLiked = data.liked
+      })
     });
+
+
   }
 
-  isLiked = false;
-  isSaved = false;
   collaborators: IProfile[] = [
     {
       id: 1,

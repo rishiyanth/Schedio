@@ -14,7 +14,13 @@ import { Router } from '@angular/router';
 export class PostComponent implements OnInit {
 
   @Input() postData?: IPost;
+  @Input() liked?: boolean;
+  @Input() saved?: boolean;
   userData?: IProfile;
+
+  isLiked? = false
+  isSaved? = false
+  
 
   constructor(
     private profileService: ProfileService,
@@ -24,14 +30,14 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileService.getUserProfile(this.postData!.user_id).subscribe((userData)=> this.userData = userData);
+    this.isLiked = this.liked;
+    this.isSaved = this.saved;
   }
 
   cropStatus = false;
   imageTemp = "assets/images/schedio_cover.jpg";
   imageOriginal = "assets/images/schedio_cover.jpg"
 
-  isLiked = false;
-  isSaved = false;
 
   toggleCropStatus(): void{
     this.cropStatus = !this.cropStatus;
@@ -72,6 +78,17 @@ export class PostComponent implements OnInit {
   }
   navigateToUserPage(): void{
     this.router.navigate(['user'],{ queryParams: { userId: this.postData?.user_id } });
+  }
+
+  userLiked(): boolean{
+    this.postService.getLikedPosts().subscribe((data)=>{
+      console.log(data)
+    })
+    return false
+  }
+
+  userSaved():boolean{
+    return false
   }
 
 }

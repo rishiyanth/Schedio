@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpBackend } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IPost } from 'src/assets/interfaces/post.model';
-import { BACKEND_URL, DELETE_POST, GET_ALL_POSTS, GET_MY_POSTS, GET_POST_DATA, GET_SELECTED_POST, GET_USER_DATA, LIKE_POST, SEND_EMAIL } from 'src/assets/constants/url';
+import { BACKEND_URL, DELETE_POST, GET_ALL_POSTS, GET_MY_POSTS, GET_POST_DATA, GET_SELECTED_POST, GET_USER_DATA, LIKE_POST, POST_LIKED_BOOLEAN, SEND_EMAIL, USER_LIKED_POST } from 'src/assets/constants/url';
 import { CookieService } from 'ngx-cookie-service';
 import { TitleStrategy } from '@angular/router';
 
@@ -58,5 +58,13 @@ export class PostService {
 
   sendEmail(id: number): Observable<any>{
     return this.httpClientHandler.get(BACKEND_URL+SEND_EMAIL+id,{headers:this.token});
+  }
+
+  getLikedPosts(): Observable<any>{
+    return this.httpClientHandler.get(BACKEND_URL+USER_LIKED_POST,{headers:this.token});
+  }
+
+  getPostLikedStatus(id:any):Observable<any>{
+    return this.httpClientHandler.get(BACKEND_URL+POST_LIKED_BOOLEAN+id,{headers:this.token});
   }
 }

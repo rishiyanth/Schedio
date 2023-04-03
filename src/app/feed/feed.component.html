@@ -59,7 +59,7 @@
 
     <!-- Feed posts -->
     <div *ngFor="let post of posts; index as id;"> 
-        <app-post [postData]="post"></app-post>
+        <app-post [postData]="post" [liked]="userLiked(post.id)"></app-post>  <!--[liked]= "" [saved]="userSaved()"-->
     </div>
 </div>
 
