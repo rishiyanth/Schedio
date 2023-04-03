@@ -21,8 +21,8 @@ export class NewuserComponent implements OnInit {
   selectedItemsList:any = [];
   checkedIDs:any = [];
   alert_techstack = false;
-  user: any
-  userDetail: any
+  user: any = JSON.parse(localStorage.getItem('User')!)
+  userDetail: any = JSON.parse(localStorage.getItem('UserDetail')!)
 
 
   public techstack:any = techstack
@@ -37,11 +37,6 @@ export class NewuserComponent implements OnInit {
 
   ngOnInit(): void {
     // this.loaderService.checkUser();
-    this.user = localStorage.getItem("User")
-    this.user = JSON.parse(this.user)
-
-    this.userDetail = localStorage.getItem('UserDetail')
-    this.userDetail = JSON.parse(this.userDetail)
 
     this.basicDetails = this.formBuilder.group({
       firstname: ['',Validators.required],

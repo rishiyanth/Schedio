@@ -28,7 +28,7 @@ export class FeedComponent implements OnInit {
   modal:any
   techstacks:Techstack[] = techstack;
   searchText: string = "";
-  user: any
+  user: any = JSON.parse(localStorage.getItem('User')!)
 
   constructor(private loaderService:LoaderService,private modalService: NgbModal,config: NgbModalConfig,
     private http:HttpClient, private postService: PostService, private router: Router,private profileService: ProfileService) {
@@ -39,8 +39,7 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     // this.loaderService.checkUser()
     // this.loaderService.getUserData();
-    this.user = localStorage.getItem('User');
-    this.user = JSON.parse(this.user);
+
     this.postForm = new FormGroup({
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),

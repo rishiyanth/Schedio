@@ -18,10 +18,12 @@ export class PostformComponent implements OnInit {
 
   postForm !: FormGroup
   techstacks:Techstack[] = techstack;
+  user: any = JSON.parse(localStorage.getItem('User')!)
 
   constructor(private http:HttpClient,private loaderService: LoaderService) { }
 
   ngOnInit(): void {
+
     this.postForm = new FormGroup({
       titleInput: new FormControl(this.postData?.post_title,[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl(this.postData?.post_gist,[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
@@ -53,7 +55,7 @@ export class PostformComponent implements OnInit {
 
   getPostFormData(): FormData{
     var postFormData = new FormData();
-    postFormData.append('user_id',this.loaderService.userData.id)
+    postFormData.append('user_id',this.user.id)
     postFormData.append('post_title',this.postform['titleInput'].value);
     postFormData.append('post_gist',this.postform['gistInput'].value);
     postFormData.append('post_description',this.postform['descriptionInput'].value);

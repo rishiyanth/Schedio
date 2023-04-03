@@ -14,14 +14,14 @@ import Talk from 'talkjs';
 export class ChatSectionComponent implements OnInit {
   private inbox!: Talk.Inbox;
   private session!: Talk.Session;
-  currentUser?: IProfile = {};
-  otherUsers?: IProfile[] = [];
-  selectedUser?: IProfile;
-  otherUser?: IProfile;
-  otherSearchedUsers: IProfile[] = [];
+  currentUser?: any = {};
+  otherUsers?: any[] = [];
+  selectedUser?: any;
+  otherUser?: any;
+  otherSearchedUsers: any[] = [];
   selectedTechStackId = ""
   currentSearchTerm: string = "";
-  currentSearchItems: IProfile[] = [];
+  currentSearchItems: any[] = [];
   counter = 0;
 
 
@@ -31,9 +31,12 @@ export class ChatSectionComponent implements OnInit {
 
   async ngOnInit() {
     this.currentUser = await this.profileService.getMyProfile().toPromise();
+    console.log(this.currentUser)
     this.selectedUser = this.currentUser
     this.otherUsers = await this.profileService.getAllUserProfile().toPromise();
     this.otherSearchedUsers = this.otherUsers!
+    console.log(this.otherUsers)
+
     this.createInbox();
   }
 

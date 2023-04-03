@@ -13,7 +13,7 @@ export const USER_LOGOUT_ALL = "user/logoutall/";
 export const GET_ALL_USERS = "user/all/";
 export const CREATE_USER_PROFILE = "user/createprofile/";
 export const GET_MY_PROFILE = "user/myprofile/";  //token required
-export const GET_USER_DATA = "user/id/";
+export const GET_USER_DATA = "user/";
 export const GET_MY_USERNAME = "user/info" // token required
 // POST
 
