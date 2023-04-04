@@ -82,10 +82,14 @@ export class FeedComponent implements OnInit {
     console.log(imageURL)
 
     this.imageTemp = imageURL;
-    this.imageFile = new File([this.imageTemp],"name");
 
     // let blob = new Blob([value], {type: 'text/plain'});
     // this.imageTemp = URL.createObjectURL(blob)
+  }
+
+  getFile(imageFile: any):void{
+    console.log("File",imageFile)
+    this.imageFile = imageFile
   }
 
   resetImage(){
@@ -96,7 +100,7 @@ export class FeedComponent implements OnInit {
   uploadPost(){
     // console.log(this.postForm.controls)
     var postFormData: any = this.getPostFormData()
-    postFormData.append('file',this.imageTemp)
+    postFormData.append('file',this.imageFile)
     console.log(postFormData.get("file"))
     this.http.post(BACKEND_URL+CREATE_POST,postFormData).subscribe((data) =>{
       this.postForm.reset()

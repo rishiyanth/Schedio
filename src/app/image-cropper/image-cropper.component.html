@@ -29,7 +29,7 @@
     
             <div class="col-3">
                 <div>
-                    <input type="file" (change)="fileChangeEvent($event)" />
+                    <input type="file" (change)="fileChangeEvent($event)" accept="image/png, image/jpg, image/jpeg" (change)="onChange($event)"/>
     
                     <div class="m-2">
                         <i class="btn btn-dark bi bi-zoom-in mx-2" (click)="zoomIn()"></i>

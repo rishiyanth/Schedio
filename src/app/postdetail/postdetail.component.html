@@ -44,7 +44,7 @@
 
         <!-- POST IMAGE -->
         <div class="col-md-3 p-4" *ngIf="isPostExists">
-            <img *ngIf="selectedPost?.image_urls" [src]="selectedPost?.image_urls" alt="post" class="post-placeholder">
+            <img *ngIf="selectedPost?.image_url" [src]="selectedPost?.image_url" alt="post" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
 

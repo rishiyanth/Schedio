@@ -34,7 +34,7 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.postData)
+    console.log(this.postData)
     this.profileService.getUserProfile(this.postData!.user).subscribe((userData)=> this.userData = userData);
     this.isLiked = this.liked;
     this.isSaved = this.saved;
@@ -112,7 +112,7 @@ export class PostComponent implements OnInit {
   }
 
   assignPostImage(){
-    if(this.postData?.image_urls != undefined){
+    if(this.postData?.image_url != undefined){
       this.isPostExists = true
     }
     else{

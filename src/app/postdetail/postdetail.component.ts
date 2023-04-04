@@ -250,7 +250,7 @@ export class PostdetailComponent implements OnInit {
   }
 
   assignPostImage(){
-    if(this.selectedPost?.image_urls != undefined){
+    if(this.selectedPost?.image_url != undefined){
       this.isPostExists = true
     }
     else{

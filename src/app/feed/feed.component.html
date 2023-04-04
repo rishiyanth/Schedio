@@ -221,7 +221,7 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-        <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)" (closeEvent)="modal.dismiss('Cross click')"></app-image-cropper>
+        <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)" (imageFileEvent)="getFile($event)" (closeEvent)="modal.dismiss('Cross click')"></app-image-cropper>
 	</div>
 </ng-template>
 
