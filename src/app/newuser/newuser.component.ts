@@ -103,7 +103,7 @@ export class NewuserComponent implements OnInit {
           this.router.navigate(['feed']);
         },
         (error)=>{
-          this.router.navigate(['newuser']);
+          this.router.navigate(['userdetail']);
         })
       }
     }

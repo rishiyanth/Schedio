@@ -1,10 +1,10 @@
 <div class="container-fluid bg-light">
     <div class="row justify-content-center">
         <!-- <div class="col-md-1"></div> -->
-        <div class="col-md-2" *ngIf = "!(router.url === '/login' || router.url === '/newuser' || router.url === '/')">
+        <div class="col-md-2" *ngIf = "!(router.url === '/login' || router.url === '/userdetail' || router.url === '/')">
             <app-sidebar></app-sidebar>
         </div>
-        <div class="{{!(router.url === '/login' || router.url === '/newuser' || router.url == '/') ? 'col-md-8' : ''}} bg-light">
+        <div class="{{!(router.url === '/login' || router.url === '/userdetail' || router.url == '/') ? 'col-md-8' : ''}} bg-light">
             <router-outlet>
                 <app-loader></app-loader>
             </router-outlet> 

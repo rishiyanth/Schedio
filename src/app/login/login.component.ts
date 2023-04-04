@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
       this.loaderService.setUserData();
-      this.router.navigate(['newuser'])
+      this.router.navigate(['userdetail'])
     },
     (error)=>{
       this.invalid_username = true

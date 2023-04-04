@@ -101,7 +101,7 @@ export class FeedComponent implements OnInit {
     // console.log(this.postForm.controls)
     var postFormData: any = this.getPostFormData()
     postFormData.append('file',this.imageFile)
-    console.log(postFormData.get("file"))
+    console.log(this.postform['status'].value)
     this.http.post(BACKEND_URL+CREATE_POST,postFormData).subscribe((data) =>{
       this.postForm.reset()
       console.log("Done")

@@ -4,6 +4,7 @@ import { ProfileService } from './profile.service';
 import { IProfile } from '../../assets/interfaces/profile.model';
 import { PostService } from '../post/post.service';
 import { IPost } from 'src/assets/interfaces/post.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private loaderService:LoaderService, 
     private profileService: ProfileService,
-    private postService: PostService 
+    private postService: PostService ,
+    private router: Router
   ) {}
 
   profileData?: any = {};
@@ -37,6 +39,10 @@ export class ProfileComponent implements OnInit {
     else{
       this.profileImage =  "assets/images/profile-icon.png";
     }
+  }
+
+  editProfile(){
+    this.router.navigateByUrl('userdetail')
   }
 
 }
