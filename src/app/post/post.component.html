@@ -2,26 +2,31 @@
     <div class="row">
 
         <!-- POST IMAGE -->
-        <div class="col-md-3 p-4">
+        <div class="col-md-3 p-4" *ngIf="isPostExists">
             <img [src]="postData?.image_urls" alt="post" class="post-placeholder">
             <!-- <img src="data:image/jpeg;base64,'.base64_encode($blob).'" alt="post-placeholder" class="post-placeholder"> -->
         </div>
 
         <!-- CONTENT SECTION -->
-        <div class="col-md-8">
+        <div class="{{(isPostExists) ? 'col-md-8' : 'px-5 col-md-11'}}" >
 
             <!-- USER DATA -->
             <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2">
-                <img src={{userData?.profile_photo}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" role="button" (click)="navigateToUserPage()">
+                <img src={{profileImage}} alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle" role="button" (click)="navigateToUserPage()">
                 <div class="d-block mx-3">
                     <p class="text-body mx-1 my-0"><span class="lead fs-6">{{userData?.first_name}} | </span> {{userData?.profession}} </p>
-                    <span class="post-date mx-1 my-0">{{postData?.last_edit | date: 'shortDate'}}</span>
+                    <span class="post-date mx-1 my-0">{{postData?.time_created | date: 'mediumDate'}}</span>
                 </div>
             </div>
 
             <!-- POST DATA -->
-            <div class="my-2">
+            <!-- <div class="my-2">
                 <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of postData?.tech_stack">{{tech | titlecase}} | </span></p>
+                <h3 class="fs-md-4 fs-lg-4 fs-xl-4 fs-6 my-3 text-body">{{postData?.post_title}}</h3>
+                <p class="fs-md-5 fs-lg-4 fs-xl-4 fs-6">{{postData?.post_gist}}</p>
+            </div> -->
+            <div class="my-2">
+                <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of tech_stack_names">{{tech.tech_name}} | </span></p>
                 <h3 class="fs-md-4 fs-lg-4 fs-xl-4 fs-6 my-3 text-body">{{postData?.post_title}}</h3>
                 <p class="fs-md-5 fs-lg-4 fs-xl-4 fs-6">{{postData?.post_gist}}</p>
             </div>
@@ -32,8 +37,8 @@
             
 
             <div class="py-3">
-                <span class="status-icon" placement="top" ngbTooltip="Active">
-                    <i class="bi bi-circle-fill fs-6"></i>
+                <span class="status-icon" placement="top" ngbTooltip={{postData?.status}}>
+                    <i class="bi bi-circle-fill fs-6" [ngStyle]="{'color': statuscolor}"></i>
                 </span>
             </div>
             

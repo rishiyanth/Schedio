@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
     private postService: PostService 
   ) {}
 
-  profileData?: IProfile = {};
+  profileData?: any = {};
   posts: IPost[] = [];
 
   ngOnInit(): void {

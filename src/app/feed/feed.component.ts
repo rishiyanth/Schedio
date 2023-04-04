@@ -53,7 +53,6 @@ export class FeedComponent implements OnInit {
     })  
 
     this.postService.getAllPosts().subscribe((posts) => {
-      // console.log(posts)
       this.posts = posts;
       this.postsAll = posts;
     })
@@ -64,6 +63,7 @@ export class FeedComponent implements OnInit {
 
     this.postService.getLikedPosts().subscribe((posts)=>{
       this.postsLiked = posts;
+      // console.log(posts)
     })
   }
 
@@ -179,7 +179,7 @@ export class FeedComponent implements OnInit {
     for (var post of this.postsLiked){
       if(post.id==id){
         return true
-      } 
+      }
     }
     return false
   }

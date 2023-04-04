@@ -29,7 +29,8 @@ export class PostformComponent implements OnInit {
       gistInput: new FormControl(this.postData?.post_gist,[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
       descriptionInput: new FormControl(this.postData?.post_description,[Validators.required,Validators.minLength(1),Validators.maxLength(3000)]),
       techStack : new FormControl("",[Validators.required]),
-      status: new FormControl("",[Validators.required]),
+      status: new FormControl(this.postData?.status,[Validators.required]),
+      collaborators: new FormControl("",[Validators.required])
       // file : new FormControl("")
       // postImage: new FormControl(null,Validators.required)
     })

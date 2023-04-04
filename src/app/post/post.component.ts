@@ -5,6 +5,7 @@ import { PostService } from './post.service';
 import { IProfile } from 'src/assets/interfaces/profile.model';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { statuscolors } from 'src/assets/constants/statuscolors';
 
 @Component({
   selector: 'app-post',
@@ -20,7 +21,11 @@ export class PostComponent implements OnInit {
 
   isLiked? = false
   isSaved? = false
-  
+  isPostExists? : boolean;
+  statuscolor?: string
+  sc = statuscolors
+  profileImage = "";
+  tech_stack_names: any
 
   constructor(
     private profileService: ProfileService,
@@ -29,9 +34,15 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.profileService.getUserProfile(this.postData!.user_id).subscribe((userData)=> this.userData = userData);
+    // console.log(this.postData)
+    this.profileService.getUserProfile(this.postData!.user).subscribe((userData)=> this.userData = userData);
     this.isLiked = this.liked;
     this.isSaved = this.saved;
+    
+    this.getPostStackNames();
+    this.assignProfileImage();
+    this.assignPostImage();
+    this.statuscolor = this.sc.get(this.postData!.status.toString());
   }
 
   cropStatus = false;
@@ -77,7 +88,7 @@ export class PostComponent implements OnInit {
     this.router.navigate(["/post"],{queryParams:{id:postId}})
   }
   navigateToUserPage(): void{
-    this.router.navigate(['user'],{ queryParams: { userId: this.postData?.user_id } });
+    this.router.navigate(['/user'],{ queryParams: { userId: this.postData!.user} });
   }
 
   userLiked(): boolean{
@@ -91,4 +102,31 @@ export class PostComponent implements OnInit {
     return false
   }
 
+  assignProfileImage(){
+    if(this.userData?.profile_photo != undefined){
+      this.profileImage = this.userData?.profile_photo;
+    }
+    else{
+      this.profileImage =  "assets/images/profile-icon.png";
+    }
+  }
+
+  assignPostImage(){
+    if(this.postData?.image_urls != undefined){
+      this.isPostExists = true
+    }
+    else{
+      this.isPostExists = false
+    }
+  }
+
+  getPostStackNames(){
+    // console.log("inside getpoststackname",this.postData?.tech_stack)
+    this.postService.getPostStackNames(this.postData?.tech_stack!).subscribe((data)=>{
+      this.tech_stack_names = data
+      // console.log(this.tech_stack_names)
+    })
+  }
+
 }
+

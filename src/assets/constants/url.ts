@@ -14,6 +14,7 @@ export const GET_ALL_USERS = "user/all/";
 export const CREATE_USER_PROFILE = "user/createprofile/";
 export const GET_MY_PROFILE = "user/myprofile/";  //token required
 export const GET_USER_DATA = "user/";
+export const GET_USER_DATA_SECONDARY = "userprofile/";
 export const GET_MY_USERNAME = "user/info" // token required
 // POST
 
@@ -27,6 +28,8 @@ export const DELETE_POST = "post/delete/";
 export const LIKE_POST = "post/like/";
 export const USER_LIKED_POST = "user/getlikedposts/"; //token required
 export const POST_LIKED_BOOLEAN = "post/userlike/"; //token required
+export const GET_POST_STACK_NAMES = "post/getstacknames";
+
 
 //COLLABORATE
 

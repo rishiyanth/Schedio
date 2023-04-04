@@ -14,4 +14,5 @@ export interface IProfile{
     profession?: string,
     organisation?: string,
     followers?: string[],
+    user: number
 }

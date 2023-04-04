@@ -4,11 +4,12 @@ export interface IPost {
     post_title: string,
     post_gist: string,
     post_description: string,
-    user_id: number;
+    user: number;
     time_created: Date,
     last_edit: Date,
-    tech_stack: string[],
+    tech_stack: number[],
     likes: number,
     status: string,
-    collaborators: string[] //Subject to changes
+    collaboraters: string[], //Subject to changes
+    file: string 
 }

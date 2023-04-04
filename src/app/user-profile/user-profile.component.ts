@@ -12,6 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
+  profileImage: any;
 
   constructor(
     private loaderService:LoaderService, 
@@ -20,8 +21,8 @@ export class UserProfileComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
 
-  profileData?: IProfile = {};
-  posts: IPost[] = [];
+  profileData?: any = {};
+  posts: any[] = [];
   userId:number = 0;
 
   isFollowed = false;
@@ -31,8 +32,10 @@ export class UserProfileComponent implements OnInit {
 
     this.route.queryParams.subscribe((params) => {
       this.userId = params['userId'];
+      console.log(this.userId)
       this.profileService.getUserProfile(this.userId).subscribe((profile) => {this.profileData = profile;});
       this.postService.getUserPosts(this.userId).subscribe((posts) => {this.posts = posts;});
+      this.assignProfileImage();
     })
   }
 
@@ -42,5 +45,14 @@ export class UserProfileComponent implements OnInit {
 
   unfollowUser(): void {
     this.isFollowed = false;
+  }
+
+  assignProfileImage(){
+    if(this.profileData?.profile_photo != undefined){
+      this.profileImage = this.profileData?.profile_photo;
+    }
+    else{
+      this.profileImage =  "assets/images/profile-icon.png";
+    }
   }
 }

@@ -32,9 +32,9 @@
         <div class="form-floating mb-3">
             <select formControlName="status" id="status" class="form-control">
               <option [ngValue]="null" disabled selected>*Status of the project</option>
-              <option value="Student">Ongoing</option>
-              <option value="Professor">Completed</option>
-              <option value="Software Engineer">Archived</option>
+              <option value="Ongoing">Ongoing</option>
+              <option value="Completed">Completed</option>
+              <option value="Archived">Archived</option>
             </select>
             <label for="status">Status of the project</label>
             <div class="form-text text-danger" *ngIf="postform['status'].errors?.['required'] && postform['status'].touched">
