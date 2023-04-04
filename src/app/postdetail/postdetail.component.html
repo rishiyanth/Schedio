@@ -30,13 +30,14 @@
                 <!-- COLLABORATORS -->
                 <p class="fs-5">Collaborators</p>
                 <div class="d-flex align-items-center p-md-2 p-lg-2 p-xl-2 p-4 my-2 flex-wrap" (click)="open(collaboratorsModal)">
-                    <img *ngFor="let collaborator of collaborators" 
+                    <!-- <img *ngFor="let collaborator of collaborators" 
                         src={{collaborator.profile_photo}} 
                         alt="post-profile" 
                         width="40px" 
                         class="post-profile-placeholder rounded-circle mx-1" 
                         role="button"
-                    >
+                    > -->
+                    <div *ngFor="let collaborator of collaborators" role="button" class="post-profile-placeholder rounded-circle mx-1 border border-dark"><h3>{{collaborator.username[0] | uppercase}}{{collaborator.username[1] | uppercase}}</h3></div>
                 </div>
             </div>
 
@@ -157,12 +158,15 @@
         <div *ngFor="let collaborator of collaborators">
             <div  class="d-flex justify-content-between">
                 <div class="d-flex">
-                    <div>
+                    <!-- <div>
                         <img src="{{collaborator.profile_photo}}" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle">
-                    </div>
-                    <div class="mx-3">
+                    </div> -->
+                    <!-- <div class="mx-3">
                         <p class="fs-6 my-0">{{collaborator.first_name}}  {{collaborator.last_name}}</p>
                         <p class="m-0 confirmation-message">{{collaborator.profession}}</p>
+                    </div> -->
+                    <div class="mx-3">
+                        <p class="fs-6 my-0">{{collaborator.username}}</p>
                     </div>
                 </div>
 
@@ -176,7 +180,7 @@
 
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark">Close</button>
+		<button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Close</button>
 	</div>
 </ng-template>
 

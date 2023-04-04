@@ -63,7 +63,7 @@ export class FeedComponent implements OnInit {
 
     this.postService.getLikedPosts().subscribe((posts)=>{
       this.postsLiked = posts;
-      // console.log(posts)
+      console.log(posts)
     })
   }
 
@@ -105,6 +105,9 @@ export class FeedComponent implements OnInit {
     this.http.post(BACKEND_URL+CREATE_POST,postFormData).subscribe((data) =>{
       this.postForm.reset()
       console.log("Done")
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigateByUrl('feed');
+      }); 
     },
     (error) =>{
       console.log(error)

@@ -34,7 +34,7 @@ export class PostComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.postData)
+    // console.log(this.postData)
     this.profileService.getUserProfile(this.postData!.user).subscribe((userData)=> this.userData = userData);
     this.isLiked = this.liked;
     this.isSaved = this.saved;

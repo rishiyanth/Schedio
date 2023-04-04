@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
+  postsLiked: IPost[] = []
+
+
   constructor(
     private loaderService:LoaderService, 
     private profileService: ProfileService,
@@ -30,7 +33,12 @@ export class ProfileComponent implements OnInit {
     this.profileService.getMyProfile().subscribe((profile) => {this.profileData = profile;});
     this.postService.getMyPosts().subscribe((posts) => {this.posts = posts;});
     this.assignProfileImage();
+    this.postService.getLikedPosts().subscribe((posts)=>{
+      this.postsLiked = posts;
+      console.log(posts)
+    })
   }
+
 
   assignProfileImage(){
     if(this.profileData?.profile_photo != undefined){
@@ -43,6 +51,15 @@ export class ProfileComponent implements OnInit {
 
   editProfile(){
     this.router.navigateByUrl('userdetail')
+  }
+
+  userLiked(id:any):boolean{
+    for (var post of this.postsLiked){
+      if(post.id==id){
+        return true
+      }
+    }
+    return false
   }
 
 }

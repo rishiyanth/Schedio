@@ -84,7 +84,7 @@ export class PostdetailComponent implements OnInit {
     // console.log(collaboratorsId)
     collaboratorsId?.forEach((id)=>{
       this.profileService
-          .getUserData(id)
+          .getUserProfile(id)
           .subscribe((userData) => {
             // console.log(userData)
             this.collaborators.push(userData)
