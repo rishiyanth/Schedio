@@ -92,6 +92,13 @@
     <div *ngIf="cropStatus">
         <app-image-cropper [originalImage]="imageOriginal" [receivedImage]="imageTemp" (imageCropEvent)="renderImage($event)"></app-image-cropper>
     </div> -->
+
+    <div class="position-absolute top-0 end-0">
+        <ngb-toast [autohide]="true" *ngIf= "delete_success" class="bg-dark text-light" [delay]="5000"> Post deleted successfuly </ngb-toast>
+    </div>
+    <div class="position-absolute top-0 end-0">
+        <ngb-toast [autohide]="true" *ngIf= "delete_success_error" class="bg-dark text-light" [delay]="5000"> There was a problem deleting the post! Retry </ngb-toast>
+    </div>
 </div>    
 
 

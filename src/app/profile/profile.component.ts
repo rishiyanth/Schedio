@@ -20,10 +20,23 @@ export class ProfileComponent implements OnInit {
 
   profileData?: any = {};
   posts: IPost[] = [];
+  profileImage: any;
+
 
   ngOnInit(): void {
     // this.loaderService.checkUser()
     this.profileService.getMyProfile().subscribe((profile) => {this.profileData = profile;});
     this.postService.getMyPosts().subscribe((posts) => {this.posts = posts;});
+    this.assignProfileImage();
   }
+
+  assignProfileImage(){
+    if(this.profileData?.profile_photo != undefined){
+      this.profileImage = this.profileData?.profile_photo;
+    }
+    else{
+      this.profileImage =  "assets/images/profile-icon.png";
+    }
+  }
+
 }

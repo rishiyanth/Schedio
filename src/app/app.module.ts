@@ -32,6 +32,7 @@ import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
 import { ChatpageComponent } from './chatpage/chatpage.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PostformComponent } from './postform/postform.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { PostformComponent } from './postform/postform.component';
     ChatpageComponent,
     NotificationsComponent,
     PostformComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

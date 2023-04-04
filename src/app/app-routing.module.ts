@@ -10,6 +10,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { PostdetailComponent } from './postdetail/postdetail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'chat', component:ChatSectionComponent,canActivate:[AuthGuard]},
   {path: 'post',component:PostdetailComponent,canActivate:[AuthGuard]},
   {path: 'notifications',component:NotificationsComponent,canActivate:[AuthGuard]},
-  {path: '',component: LoginComponent}
+  {path: '',component: LoginComponent},
+  { path: '**', pathMatch: 'full',component:PagenotfoundComponent},
 ];
 
 @NgModule({

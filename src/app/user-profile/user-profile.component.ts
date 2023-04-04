@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-  profileImage: any;
 
   constructor(
     private loaderService:LoaderService, 
@@ -24,6 +23,8 @@ export class UserProfileComponent implements OnInit {
   profileData?: any = {};
   posts: any[] = [];
   userId:number = 0;
+  profileImage: any;
+
 
   isFollowed = false;
 

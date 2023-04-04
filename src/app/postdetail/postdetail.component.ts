@@ -30,6 +30,7 @@ export class PostdetailComponent implements OnInit {
   collaborators: any[] = []
   tech_stack_names: any
   delete_success: boolean = false
+  delete_success_error: boolean = false
 
 
   constructor(
@@ -47,7 +48,8 @@ export class PostdetailComponent implements OnInit {
     // this.userDetail = JSON.parse(this.userDetail)
     console.log(this.currentUser)
     this.route.queryParams.subscribe((params) => {
-      this.postService.getSelectedPost(params['id']).subscribe((postData) => {
+      this.postService.getSelectedPost(params['id']).subscribe({
+        next:(postData)=>{
         this.selectedPost = postData[0];
         console.log(postData[0])
         this.statuscolor = this.sc.get(this.selectedPost!.status.toString())
@@ -62,6 +64,11 @@ export class PostdetailComponent implements OnInit {
             this.assignPostImage()
           });
         this.getPostStackNames()
+        },
+        error:(err)=>{
+          console.log(err)
+          this.router.navigateByUrl("**")
+        }
       });
 
       this.postService.getPostLikedStatus(params['id']).subscribe((data) => { 
@@ -71,7 +78,6 @@ export class PostdetailComponent implements OnInit {
     });
 
   }
-
 
   assignCollaborators() {
     let collaboratorsId = this.selectedPost?.collaboraters
@@ -201,12 +207,14 @@ export class PostdetailComponent implements OnInit {
 
   deletePost(id: any): void {
     id = parseInt(id)
-    // this.postService.deleteMyPost(id).subscribe((res) => {
-    //   this.delete_success = true
-    // },
-    // (err) =>{
-    //   this.delete_success = false
-    // });
+    this.postService.deleteMyPost(id).subscribe((res) => {
+      this.delete_success = true
+      this.router.navigateByUrl('/feed')
+    },
+    (err) =>{
+      this.delete_success_error = true
+    });
+
   }
 
   collaborate(id: any) {
@@ -257,5 +265,6 @@ export class PostdetailComponent implements OnInit {
       // console.log(this.tech_stack_names)
     })
   }
+
 
 }
