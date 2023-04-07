@@ -33,6 +33,7 @@ import { ChatpageComponent } from './chatpage/chatpage.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { PostformComponent } from './postform/postform.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { EditprofileComponent } from './editprofile/editprofile.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     NotificationsComponent,
     PostformComponent,
     PagenotfoundComponent,
+    EditprofileComponent,
   ],
   imports: [
     BrowserModule,

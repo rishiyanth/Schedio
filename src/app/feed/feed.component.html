@@ -177,7 +177,6 @@
                                                 [closeOnSelect]="true"
                                                 [markFirst]="false"   
                                                 (search)="whileSearchCollaborators($event)"
-                                                [(ngModel)]="selectedTechStackId"
                                                 [multiple]="true"
                                                 placeholder="Add collaborators"
                                                 formControlName="collaborators"
@@ -187,8 +186,8 @@
                                                     <!-- {{item.post_title}}  --><br/>
                                                 </ng-template>
                                             </ng-select>
-                                            <div class="form-text text-danger" *ngIf="postform['gistInput'].errors?.['required'] && postform['gistInput'].touched">
-                                                Enter a gist
+                                            <div class="form-text text-danger" *ngIf="postform['collaborators'].errors?.['required'] && postform['collaborators'].touched">
+                                                Enter collaborators
                                             </div>                                
                                         </div>
                                     </ng-template>

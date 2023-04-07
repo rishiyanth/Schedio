@@ -50,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile(){
-    this.router.navigateByUrl('userdetail')
+    this.router.navigateByUrl('editprofile')
   }
 
   userLiked(id:any):boolean{

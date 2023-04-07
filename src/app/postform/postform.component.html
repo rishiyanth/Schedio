@@ -88,30 +88,30 @@
             </ngb-panel>
 
             <!-- Current Collaborators -->
-            <!-- <ngb-panel>
+            
+            <ngb-panel>
                 <ng-template ngbPanelTitle>
                     <span>Collaborators</span>
                 </ng-template>
                 <ng-template ngbPanelContent>
                     <div class="form-floating mb-3">
-                        <ng-select [items]="postsAll"
-                            bindLabel="post_title"
+                        <ng-select
+                            [items]="profilesAll"
+                            bindLabel="username"
                             bindValue="id"
-                            [searchFn]="customSearchFn"
+                            [searchFn]="customSearchCollaboratorsFn"
                             [editableSearchTerm]="true"
                             [closeOnSelect]="true"
-                            [markFirst]="false"  
-                            [(ngModel)]="selectedTechStackId"  
-                            (close)="navigateToSelectedPost()"
-                            [keyDownFn]="filterOnEnter"
-                            (search)="whileSearch($event)"
+                            [markFirst]="false"   
+                            (search)="whileSearchCollaborators($event)"
+                            [(ngModel)]="postData!.collaboraters"
+                            [multiple]="true"
                             placeholder="Add collaborators"
+                            formControlName="collaborators"
                         >
                             <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
-                                <span [ngOptionHighlight]="search">{{item.post_title}}</span>
-                                {{item.post_title}} 
-                                <br/>
-                                <small [ngOptionHighlight]="search" class="text-body-secondary">{{item.tech_stack}}</small>
+                                <span [ngOptionHighlight]="search">{{item.username}}</span>
+                                <!-- {{item.post_title}}  --><br/>
                             </ng-template>
                         </ng-select>
                         <div class="form-text text-danger" *ngIf="postform['gistInput'].errors?.['required'] && postform['gistInput'].touched">
@@ -119,11 +119,11 @@
                         </div>                                
                     </div>
                 </ng-template>
-            </ngb-panel> -->
+            </ngb-panel>
         </ngb-accordion> 
 
     </form>     
     <div class="p-3">
-        <button type="button" class="btn btn-primary" (click)="updatePost()">Save Changes</button>
+        <button type="button" class="btn btn-primary" (click)="updatePost();">Save Changes</button>
     </div>
 </div>
