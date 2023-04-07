@@ -37,7 +37,9 @@
                         class="post-profile-placeholder rounded-circle mx-1" 
                         role="button"
                     > -->
-                    <div *ngFor="let collaborator of collaborators" role="button" class="post-profile-placeholder rounded-circle mx-1 border border-dark"><h3>{{collaborator.username[0] | uppercase}}{{collaborator.username[1] | uppercase}}</h3></div>
+                    <div *ngFor="let collaborator of collaborators" role="button" class="post-profile-placeholder rounded-circle mx-1 border border-dark">
+                        <img src="{{collaborator.image_url}}" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle">
+                    </div>
                 </div>
             </div>
 
@@ -158,16 +160,16 @@
         <div *ngFor="let collaborator of collaborators">
             <div  class="d-flex justify-content-between">
                 <div class="d-flex">
-                    <!-- <div>
-                        <img src="{{collaborator.profile_photo}}" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle">
-                    </div> -->
-                    <!-- <div class="mx-3">
+                    <div>
+                        <img src="{{collaborator.image_url}}" alt="post-profile" width="40px" class="post-profile-placeholder rounded-circle">
+                    </div>
+                    <div class="mx-3">
                         <p class="fs-6 my-0">{{collaborator.first_name}}  {{collaborator.last_name}}</p>
                         <p class="m-0 confirmation-message">{{collaborator.profession}}</p>
-                    </div> -->
-                    <div class="mx-3">
-                        <p class="fs-6 my-0">{{collaborator.username}}</p>
                     </div>
+                    <!-- <div class="mx-3">
+                        <p class="fs-6 my-0">{{collaborator.username}}</p>
+                    </div> -->
                 </div>
 
                 <div>

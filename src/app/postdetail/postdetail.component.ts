@@ -28,6 +28,7 @@ export class PostdetailComponent implements OnInit {
   statuscolor?: string
   profileImage = ""
   collaborators: any[] = []
+  collaboratorsData: any = {}
   tech_stack_names: any
   delete_success: boolean = false
   delete_success_error: boolean = false
@@ -84,11 +85,18 @@ export class PostdetailComponent implements OnInit {
     // console.log(collaboratorsId)
     collaboratorsId?.forEach((id)=>{
       this.profileService
-          .getUserProfile(id)
+          .getUserData(id)
           .subscribe((userData) => {
-            // console.log(userData)
-            this.collaborators.push(userData)
+            this.profileService
+                .getUserProfile(id)
+                .subscribe((userProfile) => {
+                  const data = {...userData, ...userProfile}
+                  console.log(data)
+                  this.collaborators.push(data)
+            });
           });
+      
+      
     })
   }
 

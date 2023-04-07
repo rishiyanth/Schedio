@@ -40,7 +40,7 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     // this.loaderService.checkUser()
     // this.loaderService.getUserData();
-
+    console.log(this.user)
     this.postForm = new FormGroup({
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),

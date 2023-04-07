@@ -89,11 +89,13 @@ export class LoginComponent implements OnInit {
     ).subscribe((data:any)=>{
       this.cookieService.set('Token','Token '+ data.token)
       console.log(this.cookieService.get('Token'))
-      this.loaderService.setUserData();
-      this.router.navigateByUrl('userdetail')
+      this.loaderService.setUserData()
     },
     (error)=>{
       this.invalid_username = true
+    },
+    ()=>{
+      this.router.navigateByUrl('userdetail');
     })
 
   }
