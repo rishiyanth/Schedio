@@ -26,7 +26,7 @@
                 <p class="fs-md-5 fs-lg-4 fs-xl-4 fs-6">{{postData?.post_gist}}</p>
             </div> -->
             <div class="my-2">
-                <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of tech_stack_names">{{tech.tech_name}} | </span></p>
+                <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of postData?.tech_stack">{{tech}} | </span></p>
                 <h3 class="fs-md-4 fs-lg-4 fs-xl-4 fs-6 my-3 text-body">{{postData?.post_title}}</h3>
                 <p class="fs-md-5 fs-lg-4 fs-xl-4 fs-6">{{postData?.post_gist}}</p>
             </div>

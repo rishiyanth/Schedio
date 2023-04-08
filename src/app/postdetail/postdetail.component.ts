@@ -64,7 +64,6 @@ export class PostdetailComponent implements OnInit {
             this.assignProfileImage()
             this.assignPostImage()
           });
-        this.getPostStackNames()
         },
         error:(err)=>{
           console.log(err)
@@ -99,111 +98,6 @@ export class PostdetailComponent implements OnInit {
       
     })
   }
-
-  // collaborators: IProfile[] = [
-  //   {
-  //     id: 1,
-  //     username: 'talion',
-  //     first_name: 'Talion',
-  //     last_name: 'Tark',
-  //     user_bio: 'I am the Lord of Mordor',
-  //     techstack: ['Angular', 'MongoDB', 'Node'],
-  //     profile_photo: 'https://picsum.photos/id/18/500/500',
-  //     email: 'talion@gmail.com',
-  //     dob: new Date('2012-12-12'),
-  //     user_gender: 'Male',
-  //     phone_number: '+917012365234',
-  //     country: 'Argentina',
-  //     profession: 'Software Engineer',
-  //     organisation: 'IBM',
-  //     followers: [],
-  //   },
-  //   {
-  //     id: 2,
-  //     username: 'Lara',
-  //     first_name: 'Lara',
-  //     last_name: 'Croft',
-  //     user_bio: 'Your all time favourite adventurer',
-  //     techstack: ['Exploration', 'React'],
-  //     profile_photo: 'https://picsum.photos/id/99/500/500',
-  //     email: 'lara@gmail.com',
-  //     dob: new Date('2021-06-22'),
-  //     user_gender: 'Female',
-  //     phone_number: '+917070705454',
-  //     country: 'India',
-  //     profession: 'Student',
-  //     organisation: 'TCE',
-  //     followers: [],
-  //   },
-  //   {
-  //     id: 3,
-  //     username: 'karma',
-  //     first_name: 'karma',
-  //     last_name: 'jane',
-  //     user_bio: '',
-  //     techstack: ['Angular', 'Vue', 'Django', 'MongoDB', 'React'],
-  //     profile_photo: 'https://picsum.photos/id/118/500/500',
-  //     email: 'karma@gmail.com',
-  //     dob: new Date('2023-02-07'),
-  //     user_gender: 'Female',
-  //     phone_number: '+916352670545',
-  //     country: 'Germany',
-  //     profession: 'Software Engineer',
-  //     organisation: 'BlueOps',
-  //     followers: [],
-  //   },
-  //   {
-  //     id: 4,
-  //     username: 'talion',
-  //     first_name: 'Talion',
-  //     last_name: 'Tark',
-  //     user_bio: 'I am the Lord of Mordor',
-  //     techstack: ['Angular', 'MongoDB', 'Node'],
-  //     profile_photo: 'https://picsum.photos/id/18/500/500',
-  //     email: 'talion@gmail.com',
-  //     dob: new Date('2012-12-12'),
-  //     user_gender: 'Male',
-  //     phone_number: '+917012365234',
-  //     country: 'Argentina',
-  //     profession: 'Software Engineer',
-  //     organisation: 'IBM',
-  //     followers: [],
-  //   },
-  //   {
-  //     id: 5,
-  //     username: 'Lara',
-  //     first_name: 'Lara',
-  //     last_name: 'Croft',
-  //     user_bio: 'Your all time favourite adventurer',
-  //     techstack: ['Exploration', 'React'],
-  //     profile_photo: 'https://picsum.photos/id/99/500/500',
-  //     email: 'lara@gmail.com',
-  //     dob: new Date('2021-06-22'),
-  //     user_gender: 'Female',
-  //     phone_number: '+917070705454',
-  //     country: 'India',
-  //     profession: 'Student',
-  //     organisation: 'TCE',
-  //     followers: [],
-  //   },
-  //   {
-  //     id: 6,
-  //     username: 'karma',
-  //     first_name: 'karma',
-  //     last_name: 'jane',
-  //     user_bio: '',
-  //     techstack: ['Angular', 'Vue', 'Django', 'MongoDB', 'React'],
-  //     profile_photo: 'https://picsum.photos/id/118/500/500',
-  //     email: 'karma@gmail.com',
-  //     dob: new Date('2023-02-07'),
-  //     user_gender: 'Female',
-  //     phone_number: '+916352670545',
-  //     country: 'Germany',
-  //     profession: 'Software Engineer',
-  //     organisation: 'BlueOps',
-  //     followers: [],
-  //   },
-  // ];
   
   toggleLike(): void {
     this.isLiked = !this.isLiked;
@@ -266,13 +160,13 @@ export class PostdetailComponent implements OnInit {
     }
   }
 
-  getPostStackNames(){
-    // console.log(this.selectedPost?.tech_stack)
-    this.postService.getPostStackNames(this.selectedPost?.tech_stack!).subscribe((data)=>{
-      this.tech_stack_names = data
-      // console.log(this.tech_stack_names)
-    })
-  }
+  // getPostStackNames(){
+  //   console.log(this.selectedPost?.tech_stack)
+  //   this.postService.getPostStackNames(this.selectedPost?.tech_stack!).subscribe((data)=>{
+  //     this.tech_stack_names = data
+  //     console.log(this.tech_stack_names)
+  //   })
+  // }
 
 
 }

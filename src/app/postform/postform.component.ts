@@ -94,15 +94,6 @@ export class PostformComponent implements OnInit {
     })
   }
 
-  getPostStackNames(tech_stack: any){
-    // console.log("inside getpoststackname",this.postData?.tech_stack)
-    this.postService.getPostStackNames(tech_stack).subscribe((data)=>{
-      console.log(data)
-      return data 
-      // console.log(this.tech_stack_names)
-    })
-  }
-
   customSearchCollaboratorsFn(term: string, item: IProfile) {
     term = term.toLowerCase();
     // const termTitleCase = term.charAt(0).toUpperCase() + term.slice(1);

@@ -21,7 +21,7 @@
             <div class="my-2">
 
                 <div class="my-2">
-                    <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of tech_stack_names">{{tech.tech_name}} | </span></p>
+                    <p class="text-body-secondary tech-stack-tag"><span *ngFor="let tech of selectedPost?.tech_stack">{{tech}} | </span></p>
                 </div>
 
                 <h3 class="fs-4 my-3 text-body">{{selectedPost?.post_title}}</h3>

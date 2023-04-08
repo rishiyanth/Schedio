@@ -39,7 +39,6 @@ export class PostComponent implements OnInit {
     this.isLiked = this.liked;
     this.isSaved = this.saved;
     
-    this.getPostStackNames();
     this.assignProfileImage();
     this.assignPostImage();
     this.statuscolor = this.sc.get(this.postData!.status.toString());
@@ -120,13 +119,13 @@ export class PostComponent implements OnInit {
     }
   }
 
-  getPostStackNames(){
-    // console.log("inside getpoststackname",this.postData?.tech_stack)
-    this.postService.getPostStackNames(this.postData?.tech_stack!).subscribe((data)=>{
-      this.tech_stack_names = data
-      // console.log(this.tech_stack_names)
-    })
-  }
+  // getPostStackNames(){
+  //   console.log("inside getpoststackname",this.postData?.tech_stack)
+  //   this.postService.getPostStackNames(this.postData?.tech_stack!).subscribe((data)=>{
+  //     this.tech_stack_names = data
+  //     console.log(this.tech_stack_names)
+  //   })
+  // }
 
 }
 
