@@ -64,7 +64,7 @@ export class PostComponent implements OnInit {
   }
 
   toggleLike(): void{
-    this.isLiked = !this.isLiked;
+    this.liked = !this.liked;
     this.postService.likePost(this.postData?.id as number).subscribe((data)=>{
       },
       (error: any)=>{

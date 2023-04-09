@@ -16,7 +16,7 @@ export class ProfileService {
 
   getMyProfile(): Observable<any> {
     // console.log(this.token)
-    return this.http.get<any>(BACKEND_URL+GET_MY_USERNAME,{headers: this.token});
+    return this.http.get<any>(BACKEND_URL+GET_MY_PROFILE,{headers: this.token});
   }
 
   getUserProfile(id: any): Observable<any> {

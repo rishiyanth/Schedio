@@ -21,7 +21,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { ChatSectionComponent } from './chat-section/chat-section.component';
 import { CookieService } from 'ngx-cookie-service';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { PostComponent } from './post/post.component';
 import { SafePipe } from './safehtml.pipe';
@@ -34,6 +34,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
 import { PostformComponent } from './postform/postform.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { EditprofileComponent } from './editprofile/editprofile.component';
     MatButtonModule,
     NgSelectModule,
     NgOptionHighlightModule,
+    ClipboardModule,
   ],
   providers: [
     {

@@ -95,7 +95,7 @@
 
                         <!-- Description input -->
                         <div class="form-floating mb-3">
-                            <textarea class="form-control" formControlName="descriptionInput" placeholder="Tell more about your project" id="descriptionInput"></textarea>
+                            <textarea class="form-control" formControlName="descriptionInput" id="descriptionInput" rows="5" style="height:100%;"></textarea>
                             <label for="descriptionInput">Project Description</label>
                             <div class="form-text text-danger" *ngIf="postform['descriptionInput'].errors?.['required'] && postform['descriptionInput'].touched">
                                 Enter a description

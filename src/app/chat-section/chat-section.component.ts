@@ -31,11 +31,11 @@ export class ChatSectionComponent implements OnInit {
 
   async ngOnInit() {
     this.currentUser = await this.profileService.getMyProfile().toPromise();
-    console.log(this.currentUser)
+    // console.log(this.currentUser)
     this.selectedUser = this.currentUser
     this.otherUsers = await this.profileService.getAllUserProfile().toPromise();
     this.otherSearchedUsers = this.otherUsers!
-    console.log(this.otherUsers)
+    // console.log(this.otherUsers)
 
     this.createInbox();
   }
@@ -43,7 +43,7 @@ export class ChatSectionComponent implements OnInit {
   async openChat(){
     if(this.selectedTechStackId){
       this.selectedUser = await this.profileService.getUserProfile(+this.selectedTechStackId).toPromise();
-      console.log(this.selectedUser)
+      // console.log(this.selectedUser)
       this.createInbox()
     }
   }

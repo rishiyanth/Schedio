@@ -35,7 +35,7 @@
     height:50%;
     border-radius:0 0 5px 5px;
     position: relative;
-    z-index: 9999;
+    z-index: 1;
   }
   .profile-card-3 .card-content::before {
       content: '';
@@ -59,7 +59,7 @@
     border: 2px solid rgba(255, 255, 255, 1);
     -webkit-transform: translate(-50%, 0%);
     transform: translate(-50%, 0%);
-    z-index:99999;
+    z-index:2;
   }
   .profile-card-3 h2 {
     margin: 0 0 5px;
@@ -71,31 +71,31 @@
     font-size: 15px;
     margin-top:10px;
   }
-  .profile-card-3 i {
-    display: inline-block;
-      font-size: 16px;
-      color: #232323;
-      text-align: center;
-      border: 1px solid #232323;
-      width: 30px;
-      height: 30px;
-      line-height: 30px;
-      border-radius: 50%;
-      margin:0 5px;
-  }
+  // .profile-card-3 i {
+  //   display: inline-block;
+  //     font-size: 16px;
+  //     color: #232323;
+  //     text-align: center;
+  //     border: 1px solid #232323;
+  //     width: 30px;
+  //     height: 30px;
+  //     line-height: 30px;
+  //     border-radius: 50%;
+  //     margin:0 5px;
+  // }
   .profile-card-3 .icon-block{
       float:left;
       width:100%;
       margin-top:15px;
   }
-  .profile-card-3 .icon-block a{
-      text-decoration:none;
-  }
-  .profile-card-3 i:hover {
-    background-color:#232323;
-    color:#fff;
-    text-decoration:none;
-  }
+  // .profile-card-3 .icon-block a{
+  //     text-decoration:none;
+  // }
+  // .profile-card-3 i:hover {
+  //   background-color:#232323;
+  //   color:#fff;
+  //   text-decoration:none;
+  // }
 
 .profile-tab-card .nav{
   // background-color: #efefef;

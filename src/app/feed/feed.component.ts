@@ -40,7 +40,7 @@ export class FeedComponent implements OnInit {
   ngOnInit(): void {
     // this.loaderService.checkUser()
     // this.loaderService.getUserData();
-    console.log(this.user)
+    console.log("User data",this.user)
     this.postForm = new FormGroup({
       titleInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(100)]),
       gistInput: new FormControl("",[Validators.required,Validators.minLength(1),Validators.maxLength(250)]),
@@ -63,7 +63,7 @@ export class FeedComponent implements OnInit {
 
     this.postService.getLikedPosts().subscribe((posts)=>{
       this.postsLiked = posts;
-      console.log(posts)
+      console.log("Posts Liked : ",posts)
     })
   }
 
@@ -104,7 +104,7 @@ export class FeedComponent implements OnInit {
     console.log(this.postform['status'].value)
     this.http.post(BACKEND_URL+CREATE_POST,postFormData).subscribe((data) =>{
       this.postForm.reset()
-      console.log("Done")
+      console.log("Uploading Post Done")
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigateByUrl('feed');
       }); 
@@ -196,3 +196,6 @@ export class FeedComponent implements OnInit {
   }
 }
 
+// https://github.com/jagajeet-puttaa
+// https://github.com/jagajeet-puttaa
+// Focusing is all about saying no

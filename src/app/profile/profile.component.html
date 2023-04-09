@@ -11,18 +11,26 @@
 
             <div class="row align-items-center">
                 <div class="col-4">
-                    <p>{{ profileData?.user_bio }}</p>
-                    <!-- <p>CVV'18 | KPC'20 | TCE'24</p> -->
                 </div>
                 <div class="col-4">
-                    <h2>{{ profileData?.username?.toUpperCase() }}<small>{{ profileData?.profession }}</small></h2>
+                    <h2>{{ this.user?.username | titlecase }}
+                        <small>{{ profileData?.profession }}</small>
+                    </h2>
+                    
                     <div class="icon-block">
+                        <p>{{ profileData?.user_bio }}</p>
+                    </div>
+
+                    <!-- <div class="icon-block">
                         <a href="#"><i class="bi bi-linkedin"></i></a>
                         <a href="#"><i class="bi bi-github"></i></a>
-                        <a href="#"><i class="bi bi-instagram"></i></a></div>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                    </div> -->
                 </div>
                 <div class="col-4">
+                    <button class="btn btn-dark mx-1" (click)="openModal(contactDetailsModal,'md')">Contact</button>
                     <button type="button" class="btn btn-dark mx-1" (click)="editProfile()">Edit Profile</button>
+                    <!-- <i class="bi bi-pencil-square fs-4 mx-3" role="button" (click)="editProfile()"></i> -->
                 </div>
             </div>
 
@@ -43,8 +51,56 @@
     <div *ngFor="let post of posts">
         <app-post [postData]="post" [liked]="userLiked(post.id)"></app-post>
     </div>
-
-            
+  
 </div>
 
 
+<!-- MODAL TO VIEW COLLABORATORS -->
+
+<!-- Modal -->
+<ng-template #contactDetailsModal let-modal>
+	<div class="modal-header">
+        <div>
+            <h4 class="modal-title" id="modal-basic-title">Contact Details</h4>
+        </div>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+
+        <!-- EMAIL -->
+
+        <div class="d-flex justify-content-between" *ngIf="this.user?.email">
+            <p><span><i class="bi bi-envelope-fill fs-4 mx-3"></i></span>{{this.user?.email}}</p>
+            <i [cdkCopyToClipboard]="this.user?.email" class="bi-clipboard fs-5 mx-2" role="button"></i>
+        </div>
+        <hr class="my-2">
+
+        <!-- LINKED IN -->
+
+        <div class="d-flex justify-content-between" *ngIf="this.profileData?.linkedin">
+            <p><span><i class="bi bi-linkedin fs-4 mx-3"></i></span>{{this.profileData?.linkedin}}</p>
+            <i [cdkCopyToClipboard]="this.profileData?.linkedin" class="bi-clipboard fs-5 mx-2" role="button"></i>
+        </div>
+        <hr class="my-2">
+
+        <!-- GITHUB -->
+        
+        <div class="d-flex justify-content-between" *ngIf="this.profileData?.github">
+            <p><span><i class="bi bi-github fs-4 mx-3"></i></span>{{this.profileData?.github}}</p>
+            <i [cdkCopyToClipboard]="this.profileData?.github" class="bi-clipboard fs-5 mx-2" role="button"></i>
+        </div>
+        <hr class="my-2">
+
+        <!-- PHONE -->
+
+        <div class="d-flex justify-content-between" *ngIf="this.profileData?.phone">
+            <p><span><i class="bi bi-telephone-fill fs-4 mx-3"></i></span>{{this.profileData?.phone}}</p>
+            <i [cdkCopyToClipboard]="this.profileData?.phone" class="bi-clipboard fs-5 mx-2" role="button"></i>
+        </div>
+        <hr class="my-2">
+
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Close</button>
+	</div>
+</ng-template>

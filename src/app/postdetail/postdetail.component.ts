@@ -101,6 +101,12 @@ export class PostdetailComponent implements OnInit {
   
   toggleLike(): void {
     this.isLiked = !this.isLiked;
+    this.postService.likePost(this.selectedPost?.id as number).subscribe((data)=>{
+    },
+    (error: any)=>{
+      console.log(error)
+    }
+  )
   }
 
   toggleSave(): void {
