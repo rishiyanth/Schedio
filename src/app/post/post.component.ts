@@ -35,12 +35,21 @@ export class PostComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.postData)
-    this.profileService.getUserProfile(this.postData!.user).subscribe((userData)=> this.userData = userData);
+    this.profileService.getUserProfile(this.postData!.user).subscribe((userData)=> {
+
+      this.profileService.getUserData(this.postData!.user).subscribe((detailedData)=> {
+        this.userData = Object.assign(userData,detailedData)
+
+        console.log("User Data : ",this.userData);
+        this.assignProfileImage();
+        this.assignPostImage();
+      });
+    });
+
+    
+
     this.isLiked = this.liked;
     this.isSaved = this.saved;
-    
-    this.assignProfileImage();
-    this.assignPostImage();
     this.statuscolor = this.sc.get(this.postData!.status.toString());
   }
 
@@ -102,8 +111,8 @@ export class PostComponent implements OnInit {
   }
 
   assignProfileImage(){
-    if(this.userData?.profile_photo != undefined){
-      this.profileImage = this.userData?.profile_photo;
+    if(this.userData?.image_url != undefined){
+      this.profileImage = this.userData?.image_url;
     }
     else{
       this.profileImage =  "assets/images/profile-icon.png";

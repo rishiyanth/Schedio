@@ -14,6 +14,10 @@ export class ProfileService {
 
   token = new HttpHeaders().set('Authorization',this.cookieService.get('Token'))
 
+  getMyData(): Observable<any>{
+    return this.http.get<any>(BACKEND_URL+GET_MY_USERNAME,{headers: this.token})
+  }
+
   getMyProfile(): Observable<any> {
     // console.log(this.token)
     return this.http.get<any>(BACKEND_URL+GET_MY_PROFILE,{headers: this.token});

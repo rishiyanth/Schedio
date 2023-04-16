@@ -30,7 +30,7 @@ export class ChatSectionComponent implements OnInit {
   }
 
   async ngOnInit() {
-    this.currentUser = await this.profileService.getMyProfile().toPromise();
+    this.currentUser = await this.profileService.getMyData().toPromise();
     // console.log(this.currentUser)
     this.selectedUser = this.currentUser
     this.otherUsers = await this.profileService.getAllUserProfile().toPromise();

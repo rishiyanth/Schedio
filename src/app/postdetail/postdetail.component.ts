@@ -60,9 +60,13 @@ export class PostdetailComponent implements OnInit {
         this.profileService
           .getUserProfile(this.selectedPost!.user)
           .subscribe((userData) => {
-            this.selectedPostUserDetail = userData;
-            this.assignProfileImage()
-            this.assignPostImage()
+            this.profileService.getUserData(this.selectedPost!.user).subscribe((detailedData)=> {
+              this.selectedPostUserDetail = Object.assign(userData,detailedData)
+      
+              console.log("User Data : ",this.selectedPostUserDetail);
+              this.assignProfileImage();
+              this.assignPostImage();
+            });
           });
         },
         error:(err)=>{
@@ -149,8 +153,8 @@ export class PostdetailComponent implements OnInit {
   }
 
   assignProfileImage(){
-    if(this.selectedPostUserDetail?.profile_photo != undefined){
-      this.profileImage = this.selectedPostUserDetail?.profile_photo;
+    if(this.selectedPostUserDetail?.image_url != undefined){
+      this.profileImage = this.selectedPostUserDetail?.image_url;
     }
     else{
       this.profileImage =  "assets/images/profile-icon.png";

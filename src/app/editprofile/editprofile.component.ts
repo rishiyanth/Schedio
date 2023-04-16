@@ -50,6 +50,9 @@ export class EditprofileComponent implements OnInit {
 
   ngOnInit(): void {
     this.loaderService.checkUser();
+
+    console.log("Usedetail :",this.userDetail.user.first_name)
+
     this.basicDetails = this.formBuilder.group({
       firstname: [this.user.first_name,Validators.required],
       lastname: [this.user.last_name],
@@ -66,6 +69,8 @@ export class EditprofileComponent implements OnInit {
     });
 
     this.checkedIDs = this.userDetail.tech_stack;
+
+    console.log("Checked Stacks",this.checkedIDs)
     this.imageTemp = this.userDetail.image_url;
 
     // console.log("Userdetail",this.userDetail);

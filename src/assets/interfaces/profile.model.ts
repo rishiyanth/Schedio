@@ -5,7 +5,7 @@ export interface IProfile{
     last_name?: string,
     user_bio?: string,
     techstack?: string[],
-    profile_photo?: string,
+    image_url?: string,
     email?: string,
     dob?: Date,
     user_gender?: string,

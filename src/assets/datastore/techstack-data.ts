@@ -3,33 +3,33 @@ import { Techstack } from "../interfaces/Techstack.model";
 export var techstack:Techstack [] = [
     {
       id:'1',
-      name: 'React',
-      img: 'https://reactjs.org/logo-og.png'
+      name: 'HTML',
+      img: 'https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748_640.png'
     },
     {
       id:'2',
-      name: 'Angular',
-      img: 'https://repository-images.githubusercontent.com/24195339/87018c00-694b-11e9-8b5f-c34826306d36'
+      name: 'CSS',
+      img: 'https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747_1280.png'
     },
     {
       id:'3',
-      name: 'MongoDB',
-      img: 'https://1000logos.net/wp-content/uploads/2020/08/MongoDB-Emblem.jpg'
+      name: 'Javascript',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png'
     },
     {
-      id: '4',
-      name: 'Node',
-      img: 'https://nodejs.org/static/images/logo-hexagon-card.png'
+      id:'4',
+      name: 'Bootstrap',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/1280px-Bootstrap_logo.svg.png'
     },
     {
       id: '5',
-      name: 'Vue',
-      img: 'https://miro.medium.com/max/1400/1*-8AAdexfOAK9R-AIha_PBQ.png'
+      name: 'C++',
+      img: 'https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png'
     },
     {
       id: '6',
-      name: 'Django',
-      img: 'https://d1wrxu8gicsgam.cloudfront.net/wp-content/files/django-logo-big.jpg'
+      name: 'Java',
+      img: 'https://1000logos.net/wp-content/uploads/2020/09/Java-Emblem.jpg'
     },
     {
       id: '7',
@@ -38,20 +38,93 @@ export var techstack:Techstack [] = [
     },
     {
       id: '8',
-      name: 'C++',
-      img: 'https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png'
+      name: 'Express',
+      img: 'https://w7.pngwing.com/pngs/925/447/png-transparent-express-js-node-js-javascript-mongodb-node-js-text-trademark-logo.png'
     },
     {
       id: '9',
-      name: 'Java',
-      img: 'https://1000logos.net/wp-content/uploads/2020/09/Java-Emblem.jpg'
+      name: 'Nest.js',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NestJS.svg/1200px-NestJS.svg.png'
     },
     {
-      id: '10',
+      id:'10',
+      name: 'React',
+      img: 'https://pbs.twimg.com/card_img/1643364151283290112/xRtg9YBY?format=png&name=medium'
+    },
+    {
+      id:'11',
+      name: 'Angular',
+      img: 'https://repository-images.githubusercontent.com/24195339/87018c00-694b-11e9-8b5f-c34826306d36'
+    },
+    {
+      id:'12',
+      name: 'MongoDB',
+      img: 'https://res.cloudinary.com/hevo/image/upload/v1626694700/hevo-blog/MongoDB-sm-logo-500x400-1-1.gif'
+    },
+    {
+      id: '13',
+      name: 'Node',
+      img: 'https://nodejs.org/static/images/logo-hexagon-card.png'
+    },
+    {
+      id: '14',
+      name: 'Vue',
+      img: 'https://miro.medium.com/max/1400/1*-8AAdexfOAK9R-AIha_PBQ.png'
+    },
+    {
+      id: '15',
+      name: 'Django',
+      img: 'https://d1wrxu8gicsgam.cloudfront.net/wp-content/files/django-logo-big.jpg'
+    },
+    {
+      id: '16',
+      name: 'OpenCV',
+      img: 'https://raw.githubusercontent.com/wiki/opencv/opencv/logo/OpenCV_logo_no_text.png'
+    },
+    {
+      id: '17',
+      name: 'Tensorflow',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Tensorflow_logo.svg/1915px-Tensorflow_logo.svg.png'
+    },
+    {
+      id: '18',
+      name: 'Flutter',
+      img: 'https://static1.xdaimages.com/wordpress/wp-content/uploads/2018/02/Flutter-Framework-Feature-Image-Background-Colour.png'
+    },
+    {
+      id: '19',
+      name: 'Keras',
+      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Keras_logo.svg/1200px-Keras_logo.svg.png'
+    },
+    {
+      id: '20',
+      name: 'Postgresql',
+      img: 'https://w7.pngwing.com/pngs/173/36/png-transparent-postgresql-logo-computer-software-database-open-source-s-text-head-snout.png'
+    },
+    {
+      id: '21',
+      name: 'Flask',
+      img: 'https://blog.paperspace.com/content/images/2019/11/flasklogo.jpg'
+    },
+    {
+      id: '22',
+      name: 'Firebase',
+      img: 'https://cdn.dribbble.com/users/528264/screenshots/3140440/firebase_logo.png'
+    },
+    {
+      id: '23',
       name: 'Github',
       img: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png'
     },
   ]
+
+
+
+
+
+
+
+
 
 // const userData = [
 //   {
@@ -145,3 +218,20 @@ export var techstack:Techstack [] = [
 //     budget: '$20,000',
 //   },
 // ];
+
+
+
++914565433442
+
+Fitness Tracker
+A tool for tracking fitness progress
+
+This project is a fitness tracker that helps users keep track of their fitness progress. 
+It has features like exercise tracking, workout plans, and progress tracking. 
+The tool is built using React Native for the frontend, and Firebase for the backend. It also uses Cloud Firestore for the database.
+
+React Firebase Node
+
+https://www.linkedin.com/in/krishnasameer-453ba31bb/
+https://github.com/Arkelyscorpion
+3rd Year CS Student | Competitive Programmer | App & Web Development

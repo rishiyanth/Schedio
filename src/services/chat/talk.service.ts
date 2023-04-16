@@ -37,7 +37,7 @@ export class TalkService {
     // };
     this.currentUser = await this.createUser(user);
     const session = new Talk.Session({
-         appId: 'tdsx8bIR',
+         appId: 't8oaKuOc',
          me: this.currentUser
     });
     return session;

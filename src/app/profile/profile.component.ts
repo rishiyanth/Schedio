@@ -37,7 +37,6 @@ export class ProfileComponent implements OnInit {
       this.profileData = profile;
       console.log("Profile Data",this.profileData)
       this.assignProfileImage();
-
     });
     this.postService.getMyPosts().subscribe((posts) => {this.posts = posts;});
     this.postService.getLikedPosts().subscribe((posts)=>{
