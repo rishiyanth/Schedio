@@ -221,17 +221,17 @@ export var techstack:Techstack [] = [
 
 
 
-+914565433442
+// +914565433442
 
-Fitness Tracker
-A tool for tracking fitness progress
+// Fitness Tracker
+// A tool for tracking fitness progress
 
-This project is a fitness tracker that helps users keep track of their fitness progress. 
-It has features like exercise tracking, workout plans, and progress tracking. 
-The tool is built using React Native for the frontend, and Firebase for the backend. It also uses Cloud Firestore for the database.
+// This project is a fitness tracker that helps users keep track of their fitness progress. 
+// It has features like exercise tracking, workout plans, and progress tracking. 
+// The tool is built using React Native for the frontend, and Firebase for the backend. It also uses Cloud Firestore for the database.
 
-React Firebase Node
+// React Firebase Node
 
-https://www.linkedin.com/in/krishnasameer-453ba31bb/
-https://github.com/Arkelyscorpion
-3rd Year CS Student | Competitive Programmer | App & Web Development
+// https://www.linkedin.com/in/krishnasameer-453ba31bb/
+// https://github.com/Arkelyscorpion
+// 3rd Year CS Student | Competitive Programmer | App & Web Development
